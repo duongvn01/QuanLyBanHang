@@ -1,0 +1,5 @@
+D:\CodePM\QuanLyBanHang\Object\bin\Debug\Object.dll
+D:\CodePM\QuanLyBanHang\Object\bin\Debug\Object.pdb
+D:\CodePM\QuanLyBanHang\Object\obj\Debug\Object.dll
+D:\CodePM\QuanLyBanHang\Object\obj\Debug\Object.pdb
+D:\CodePM\QuanLyBanHang\Object\obj\Debug\Object.csprojResolveAssemblyReference.cache

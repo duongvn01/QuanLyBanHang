@@ -1,0 +1,9 @@
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\obj\Debug\Bussiness_Logic_Layer.csprojResolveAssemblyReference.cache
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Bussiness_Logic_Layer.dll
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Bussiness_Logic_Layer.pdb
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Data_Acccess_Layer.dll
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Object.dll
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Data_Acccess_Layer.pdb
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\bin\Debug\Object.pdb
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\obj\Debug\Bussiness_Logic_Layer.dll
+D:\CodePM\QuanLyBanHang\Bussiness_Logic_Layer\obj\Debug\Bussiness_Logic_Layer.pdb
