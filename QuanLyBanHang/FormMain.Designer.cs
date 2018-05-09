@@ -197,6 +197,7 @@
             this.barbtnHangHoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnHangHoa.ImageOptions.Image")));
             this.barbtnHangHoa.Name = "barbtnHangHoa";
             this.barbtnHangHoa.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barbtnHangHoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnHangHoa_ItemClick);
             // 
             // barbtnInMaVach
             // 

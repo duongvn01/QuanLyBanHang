@@ -118,5 +118,12 @@ namespace Object
             get { return giaBanLe; }
             set { giaBanLe = value; }
         }
+        bool conQuanLy;
+
+        public bool ConQuanLy
+        {
+            get { return conQuanLy; }
+            set { conQuanLy = value; }
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace QuanLyBanHang
         {
             InitializeComponent();
             themOrSua = 1;
+            nhomHangBUS = new NhomHangBUS();
+            NH = new NhomHangO();
         }
         public FormNhomHang(int themOrSua, NhomHangO nh)
         {

@@ -22,6 +22,8 @@ namespace QuanLyBanHang
         {
             InitializeComponent();
             themOrSua = 1;
+            donViBUS = new DonViBUS();
+            DV = new DonViO();
         }
         public FormDonViTinh(int themOrSua, DonViO dv)
         {

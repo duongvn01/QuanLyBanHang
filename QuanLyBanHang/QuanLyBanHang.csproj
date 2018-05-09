@@ -141,6 +141,12 @@
     <Compile Include="UCDonViTinh.Designer.cs">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCHangHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCHangHoa.Designer.cs">
+      <DependentUpon>UCHangHoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCDonViTinh.resx">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCHangHoa.resx">
+      <DependentUpon>UCHangHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCKhachHang.resx">
       <DependentUpon>UCKhachHang.cs</DependentUpon>

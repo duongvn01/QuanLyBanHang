@@ -24,9 +24,10 @@ namespace QuanLyBanHang
         {
             InitializeComponent();
             themOrSua = 1;
+            nhaCungCapBUS = new NhaCungCapBUS();
+            NCC = new NhaCungCapO();
 
             khuVucBUS = new KhuVucBUS();
-
             // load lookupEdit khu vuc
             lueKhuVuc.Properties.DataSource = khuVucBUS.getAllKhuVuc();
             lueKhuVuc.Properties.DisplayMember = "TenKhuVuc";

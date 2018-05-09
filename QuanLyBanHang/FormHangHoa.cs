@@ -31,7 +31,7 @@ namespace QuanLyBanHang
             InitializeComponent();
             themOrSua = 1;
             hangHoaBUS = new HangHoaBUS();
-
+            initBUS();
         }
 
         public FormHangHoa(int themOrSua,HangHoaO hh)
@@ -48,6 +48,7 @@ namespace QuanLyBanHang
             nhomHangBUS = new NhomHangBUS();
             donViBUS = new DonViBUS();
             nhaCungCapBUS = new NhaCungCapBUS();
+            HH = new HangHoaO();
         }
         void loadLookUpEdit()
         {
@@ -57,19 +58,19 @@ namespace QuanLyBanHang
             lueKho.Properties.ValueMember = "MaKho";
 
             //Nhom Hang
-            lueKho.Properties.DataSource = nhomHangBUS.getAllNhomHang();
-            lueKho.Properties.DisplayMember = "TenNhomHang";
-            lueKho.Properties.ValueMember = "MaNhomHang";
+            lueNhomHang.Properties.DataSource = nhomHangBUS.getAllNhomHang();
+            lueNhomHang.Properties.DisplayMember = "TenNhomHang";
+            lueNhomHang.Properties.ValueMember = "MaNhomHang";
 
             //Don Vi
-            lueKho.Properties.DataSource = donViBUS.getAllDonVi();
-            lueKho.Properties.DisplayMember = "TenDonVi";
-            lueKho.Properties.ValueMember = "MaDonVi";
+            lueDonVi.Properties.DataSource = donViBUS.getAllDonVi();
+            lueDonVi.Properties.DisplayMember = "TenDonVi";
+            lueDonVi.Properties.ValueMember = "MaDonVi";
 
             //Nha Cung Cap
-            lueKho.Properties.DataSource = nhaCungCapBUS.getAllNhaCungCap();
-            lueKho.Properties.DisplayMember = "TenNhaCungCap";
-            lueKho.Properties.ValueMember = "MaNhaCungCap";
+            lueNhaCungCap.Properties.DataSource = nhaCungCapBUS.getAllNhaCungCap();
+            lueNhaCungCap.Properties.DisplayMember = "TenNhaCungCap";
+            lueNhaCungCap.Properties.ValueMember = "MaNhaCungCap";
         }
 
         private void FormHangHoa_Load(object sender, EventArgs e)
@@ -85,45 +86,73 @@ namespace QuanLyBanHang
                 txtMaVachNSX.Text = HH.MaVachNSX;
                 lueDonVi.EditValue = HH.MaDonVi;
                 txtXuatXu.Text = HH.XuatXu;
-
-                /*if (HH.ConQuanLy == true)
+                txtThue.Text = HH.Thue.ToString();
+                txtTonKhoToiThieu.Text = HH.TonKhoToiThieu.ToString();
+                txtTonHienTai.Text = HH.TonHienTai.ToString();
+                lueNhaCungCap.EditValue = HH.MaNhaCungCap;
+                txtGiaMua.Text = HH.GiaMua.ToString();
+                txtGiaBanSi.Text = HH.GiaBanSi.ToString();
+                txtGiaBanLe.Text = HH.GiaBanLe.ToString();
+               
+                if (HH.ConQuanLy == true)
                 {
                     chkConQuanLy.Checked = true;
                 }
                 else
                 {
                     chkConQuanLy.Checked = false;
-                }*/
+                }
+                if (HH.HangHoaOrDichVu == true)
+                {
+                    radioGroupHangHoaDichVu.SelectedIndex =0;
+                }
+                else
+                {
+                    radioGroupHangHoaDichVu.SelectedIndex = 1;
+                }
             }
             
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
-        {/*
+        {
             string err = "";
-            K.MaKho = txtMaKho.Text;
-            K.TenKho = txtTenKho.Text;
-            K.MaNguoiQuanLy = lueQuanLy.EditValue.ToString();
-            K.KyHieu = txtKyHieu.Text;
-            K.NguoiLienHe = txtNhaCungCap.Text;
-            K.DiaChi = txtDiaChi.Text;
-            K.Fax = txtFax.Text;
-            K.SoDienThoai = txtSoDienThoai.Text;
-            K.Email = txtXuatXu.Text;
-            K.DienGiai = txtDienGiai.Text;
+            HH.MaHangHoa = txtMaHangHoa.Text;
+            HH.MaKho = lueKho.EditValue.ToString();
+            HH.TenHangHoa = txtTenHangHoa.Text;
+            HH.MaNhomHang = lueNhomHang.EditValue.ToString();
+            HH.MaVachNSX = txtMaVachNSX.Text;
+            HH.MaDonVi = lueDonVi.EditValue.ToString();
+            HH.XuatXu = txtXuatXu.Text;
+            HH.Thue = Convert.ToInt32(txtThue.Text);
+            HH.TonKhoToiThieu = Convert.ToInt32(txtTonKhoToiThieu.Text);
+            HH.TonHienTai = Convert.ToInt32(txtTonHienTai.Text);
+            HH.MaNhaCungCap = lueNhaCungCap.EditValue.ToString();
+            HH.GiaMua = Convert.ToInt32(txtGiaMua.Text);
+            HH.GiaBanSi = Convert.ToInt32(txtGiaBanSi.Text);
+            HH.GiaBanLe = Convert.ToInt32(txtGiaBanLe.Text);
             if (chkConQuanLy.Checked == true)
-                K.ConQuanLy = true;
+            {
+                HH.ConQuanLy = true;
+            }         
             else
             {
-                if (chkConQuanLy.Checked == false)
-                    K.ConQuanLy = false;
+                HH.ConQuanLy = false;
+            }
+            if(radioGroupHangHoaDichVu.SelectedIndex==0)
+            {
+                HH.HangHoaOrDichVu = true;
+            }
+            else
+            {
+                HH.HangHoaOrDichVu = false;
             }
             if (themOrSua == 1)
             {
 
                 try
                 {
-                    bool f = khoBUS.ThemKhoBUS(ref err, K);
+                    bool f = hangHoaBUS.ThemHangHoaBUS(ref err, HH);
                     if (f == true)
                     {
                         MessageBox.Show("Them thanh cong");
@@ -144,7 +173,7 @@ namespace QuanLyBanHang
 
                 try
                 {
-                    bool f = khoBUS.CapNhatKhoBUS(ref err, K);
+                    bool f = hangHoaBUS.CapNhatHangHoaBUS(ref err, HH);
                     if (f == true)
                     {
                         MessageBox.Show("Sửa thành công");
@@ -158,12 +187,36 @@ namespace QuanLyBanHang
                 {
                     MessageBox.Show("Không sửa được. Lỗi: " + err);
                 }
-            }*/
+            }
         }
 
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnThemKho_Click(object sender, EventArgs e)
+        {
+            FormKhoHang frm = new FormKhoHang();
+            frm.ShowDialog();
+        }
+
+        private void btnThemNhomHang_Click(object sender, EventArgs e)
+        {
+            FormNhomHang frm = new FormNhomHang();
+            frm.ShowDialog();
+        }
+
+        private void btnThemDonVi_Click(object sender, EventArgs e)
+        {
+            FormDonViTinh frm = new FormDonViTinh();
+            frm.ShowDialog();
+        }
+
+        private void btnThemNhaCungCap_Click(object sender, EventArgs e)
+        {
+            FormNhaCungCap frm = new FormNhaCungCap();
+            frm.ShowDialog();
         }
     }
 }

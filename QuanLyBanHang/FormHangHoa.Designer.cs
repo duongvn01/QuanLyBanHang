@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHangHoa));
             this.lueKho = new DevExpress.XtraEditors.LookUpEdit();
-            this.btnThemKho = new DevExpress.XtraEditors.SimpleButton();
-            this.radioGroupDaiLyKhachLe = new DevExpress.XtraEditors.RadioGroup();
+            this.radioGroupHangHoaDichVu = new DevExpress.XtraEditors.RadioGroup();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txtXuatXu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -49,24 +48,25 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.btnDong = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.txtTonKhoToiThieu = new DevExpress.XtraEditors.CalcEdit();
             this.txtTonHienTai = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.lueNhomHang = new DevExpress.XtraEditors.LookUpEdit();
-            this.btnThemDonVi = new DevExpress.XtraEditors.SimpleButton();
             this.lueDonVi = new DevExpress.XtraEditors.LookUpEdit();
             this.txtThue = new DevExpress.XtraEditors.CalcEdit();
-            this.btnThemNhaCungCap = new DevExpress.XtraEditors.SimpleButton();
             this.lueNhaCungCap = new DevExpress.XtraEditors.LookUpEdit();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
-            this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
+            this.txtGiaMua = new DevExpress.XtraEditors.CalcEdit();
+            this.txtGiaBanSi = new DevExpress.XtraEditors.CalcEdit();
+            this.txtGiaBanLe = new DevExpress.XtraEditors.CalcEdit();
+            this.btnThemNhaCungCap = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemDonVi = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemNhomHang = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemKho = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDong = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.lueKho.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupDaiLyKhachLe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupHangHoaDichVu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtXuatXu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVachNSX.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkConQuanLy.Properties)).BeginInit();
@@ -78,9 +78,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueNhaCungCap.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaMua.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaBanSi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaBanLe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lueKho
@@ -91,30 +91,21 @@
             this.lueKho.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueKho.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhuVuc", "Mã Khu Vực"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhuVuc", "Tên Khu Vực")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKho", "Mã Kho"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKho", "Tên Kho")});
             this.lueKho.Properties.NullText = "";
             this.lueKho.Size = new System.Drawing.Size(189, 20);
             this.lueKho.TabIndex = 84;
             // 
-            // btnThemKho
+            // radioGroupHangHoaDichVu
             // 
-            this.btnThemKho.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKho.ImageOptions.Image")));
-            this.btnThemKho.Location = new System.Drawing.Point(510, 62);
-            this.btnThemKho.Name = "btnThemKho";
-            this.btnThemKho.Size = new System.Drawing.Size(23, 20);
-            this.btnThemKho.TabIndex = 83;
-            this.btnThemKho.Text = "simpleButton1";
-            // 
-            // radioGroupDaiLyKhachLe
-            // 
-            this.radioGroupDaiLyKhachLe.Location = new System.Drawing.Point(27, 6);
-            this.radioGroupDaiLyKhachLe.Name = "radioGroupDaiLyKhachLe";
-            this.radioGroupDaiLyKhachLe.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            this.radioGroupHangHoaDichVu.Location = new System.Drawing.Point(27, 6);
+            this.radioGroupHangHoaDichVu.Name = "radioGroupHangHoaDichVu";
+            this.radioGroupHangHoaDichVu.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Hàng Hóa"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Dịch Vụ")});
-            this.radioGroupDaiLyKhachLe.Size = new System.Drawing.Size(151, 39);
-            this.radioGroupDaiLyKhachLe.TabIndex = 82;
+            this.radioGroupHangHoaDichVu.Size = new System.Drawing.Size(151, 39);
+            this.radioGroupHangHoaDichVu.TabIndex = 82;
             // 
             // labelControl12
             // 
@@ -248,30 +239,6 @@
             this.labelControl1.TabIndex = 50;
             this.labelControl1.Text = "Mã Hàng Hóa";
             // 
-            // btnDong
-            // 
-            this.btnDong.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
-            this.btnDong.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnDong.Location = new System.Drawing.Point(333, 413);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(32, 36);
-            this.btnDong.TabIndex = 47;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
-            this.btnLuu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnLuu.Location = new System.Drawing.Point(298, 413);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(29, 33);
-            this.btnLuu.TabIndex = 46;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
             // txtTonKhoToiThieu
             // 
             this.txtTonKhoToiThieu.Location = new System.Drawing.Point(107, 269);
@@ -308,15 +275,6 @@
             this.labelControl19.TabIndex = 78;
             this.labelControl19.Text = "Giá Bán Lẻ";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(510, 121);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(23, 20);
-            this.simpleButton1.TabIndex = 83;
-            this.simpleButton1.Text = "simpleButton1";
-            // 
             // lueNhomHang
             // 
             this.lueNhomHang.EditValue = "";
@@ -325,20 +283,11 @@
             this.lueNhomHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueNhomHang.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhuVuc", "Mã Khu Vực"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhuVuc", "Tên Khu Vực")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNhomHang", "Mã Nhóm Hàng"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNhomHang", "Tên Nhóm Hàng")});
             this.lueNhomHang.Properties.NullText = "";
             this.lueNhomHang.Size = new System.Drawing.Size(404, 20);
             this.lueNhomHang.TabIndex = 84;
-            // 
-            // btnThemDonVi
-            // 
-            this.btnThemDonVi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemDonVi.ImageOptions.Image")));
-            this.btnThemDonVi.Location = new System.Drawing.Point(510, 182);
-            this.btnThemDonVi.Name = "btnThemDonVi";
-            this.btnThemDonVi.Size = new System.Drawing.Size(23, 20);
-            this.btnThemDonVi.TabIndex = 83;
-            this.btnThemDonVi.Text = "simpleButton1";
             // 
             // lueDonVi
             // 
@@ -348,8 +297,8 @@
             this.lueDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueDonVi.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhuVuc", "Mã Khu Vực"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhuVuc", "Tên Khu Vực")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaDonVi", "Mã Đơn Vị"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDonVi", "Tên Đơn Vị")});
             this.lueDonVi.Properties.NullText = "";
             this.lueDonVi.Size = new System.Drawing.Size(404, 20);
             this.lueDonVi.TabIndex = 84;
@@ -364,15 +313,6 @@
             this.txtThue.Size = new System.Drawing.Size(164, 20);
             this.txtThue.TabIndex = 85;
             // 
-            // btnThemNhaCungCap
-            // 
-            this.btnThemNhaCungCap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNhaCungCap.ImageOptions.Image")));
-            this.btnThemNhaCungCap.Location = new System.Drawing.Point(313, 321);
-            this.btnThemNhaCungCap.Name = "btnThemNhaCungCap";
-            this.btnThemNhaCungCap.Size = new System.Drawing.Size(23, 20);
-            this.btnThemNhaCungCap.TabIndex = 83;
-            this.btnThemNhaCungCap.Text = "simpleButton1";
-            // 
             // lueNhaCungCap
             // 
             this.lueNhaCungCap.EditValue = "";
@@ -381,60 +321,124 @@
             this.lueNhaCungCap.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueNhaCungCap.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhuVuc", "Mã Khu Vực"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhuVuc", "Tên Khu Vực")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNhaCungCap", "Mã Nhà Cung Cấp"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNhaCungCap", "Tên Nhà Cung Cấp")});
             this.lueNhaCungCap.Properties.NullText = "";
             this.lueNhaCungCap.Size = new System.Drawing.Size(209, 20);
             this.lueNhaCungCap.TabIndex = 84;
             // 
-            // calcEdit1
+            // txtGiaMua
             // 
-            this.calcEdit1.Location = new System.Drawing.Point(107, 346);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtGiaMua.Location = new System.Drawing.Point(107, 346);
+            this.txtGiaMua.Name = "txtGiaMua";
+            this.txtGiaMua.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit1.Size = new System.Drawing.Size(164, 20);
-            this.calcEdit1.TabIndex = 85;
+            this.txtGiaMua.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtGiaMua.Size = new System.Drawing.Size(164, 20);
+            this.txtGiaMua.TabIndex = 85;
             // 
-            // calcEdit2
+            // txtGiaBanSi
             // 
-            this.calcEdit2.Location = new System.Drawing.Point(107, 379);
-            this.calcEdit2.Name = "calcEdit2";
-            this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtGiaBanSi.Location = new System.Drawing.Point(107, 379);
+            this.txtGiaBanSi.Name = "txtGiaBanSi";
+            this.txtGiaBanSi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit2.Size = new System.Drawing.Size(164, 20);
-            this.calcEdit2.TabIndex = 85;
+            this.txtGiaBanSi.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtGiaBanSi.Size = new System.Drawing.Size(164, 20);
+            this.txtGiaBanSi.TabIndex = 85;
             // 
-            // calcEdit3
+            // txtGiaBanLe
             // 
-            this.calcEdit3.Location = new System.Drawing.Point(107, 405);
-            this.calcEdit3.Name = "calcEdit3";
-            this.calcEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtGiaBanLe.Location = new System.Drawing.Point(107, 405);
+            this.txtGiaBanLe.Name = "txtGiaBanLe";
+            this.txtGiaBanLe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit3.Size = new System.Drawing.Size(164, 20);
-            this.calcEdit3.TabIndex = 85;
+            this.txtGiaBanLe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtGiaBanLe.Size = new System.Drawing.Size(164, 20);
+            this.txtGiaBanLe.TabIndex = 85;
+            // 
+            // btnThemNhaCungCap
+            // 
+            this.btnThemNhaCungCap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNhaCungCap.ImageOptions.Image")));
+            this.btnThemNhaCungCap.Location = new System.Drawing.Point(313, 321);
+            this.btnThemNhaCungCap.Name = "btnThemNhaCungCap";
+            this.btnThemNhaCungCap.Size = new System.Drawing.Size(23, 20);
+            this.btnThemNhaCungCap.TabIndex = 83;
+            this.btnThemNhaCungCap.Text = "simpleButton1";
+            this.btnThemNhaCungCap.Click += new System.EventHandler(this.btnThemNhaCungCap_Click);
+            // 
+            // btnThemDonVi
+            // 
+            this.btnThemDonVi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemDonVi.ImageOptions.Image")));
+            this.btnThemDonVi.Location = new System.Drawing.Point(510, 182);
+            this.btnThemDonVi.Name = "btnThemDonVi";
+            this.btnThemDonVi.Size = new System.Drawing.Size(23, 20);
+            this.btnThemDonVi.TabIndex = 83;
+            this.btnThemDonVi.Text = "simpleButton1";
+            this.btnThemDonVi.Click += new System.EventHandler(this.btnThemDonVi_Click);
+            // 
+            // btnThemNhomHang
+            // 
+            this.btnThemNhomHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnThemNhomHang.Location = new System.Drawing.Point(510, 121);
+            this.btnThemNhomHang.Name = "btnThemNhomHang";
+            this.btnThemNhomHang.Size = new System.Drawing.Size(23, 20);
+            this.btnThemNhomHang.TabIndex = 83;
+            this.btnThemNhomHang.Text = "simpleButton1";
+            this.btnThemNhomHang.Click += new System.EventHandler(this.btnThemNhomHang_Click);
+            // 
+            // btnThemKho
+            // 
+            this.btnThemKho.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKho.ImageOptions.Image")));
+            this.btnThemKho.Location = new System.Drawing.Point(510, 62);
+            this.btnThemKho.Name = "btnThemKho";
+            this.btnThemKho.Size = new System.Drawing.Size(23, 20);
+            this.btnThemKho.TabIndex = 83;
+            this.btnThemKho.Text = "simpleButton1";
+            this.btnThemKho.Click += new System.EventHandler(this.btnThemKho_Click);
+            // 
+            // btnDong
+            // 
+            this.btnDong.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
+            this.btnDong.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnDong.Location = new System.Drawing.Point(333, 413);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(32, 36);
+            this.btnDong.TabIndex = 47;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
+            this.btnLuu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnLuu.Location = new System.Drawing.Point(298, 413);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(29, 33);
+            this.btnLuu.TabIndex = 46;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // FormHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 458);
-            this.Controls.Add(this.calcEdit3);
-            this.Controls.Add(this.calcEdit2);
-            this.Controls.Add(this.calcEdit1);
+            this.Controls.Add(this.txtGiaBanLe);
+            this.Controls.Add(this.txtGiaBanSi);
+            this.Controls.Add(this.txtGiaMua);
             this.Controls.Add(this.txtThue);
             this.Controls.Add(this.lueNhaCungCap);
             this.Controls.Add(this.btnThemNhaCungCap);
             this.Controls.Add(this.lueDonVi);
             this.Controls.Add(this.btnThemDonVi);
             this.Controls.Add(this.lueNhomHang);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnThemNhomHang);
             this.Controls.Add(this.lueKho);
             this.Controls.Add(this.btnThemKho);
-            this.Controls.Add(this.radioGroupDaiLyKhachLe);
+            this.Controls.Add(this.radioGroupHangHoaDichVu);
             this.Controls.Add(this.labelControl19);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.txtXuatXu);
@@ -463,7 +467,7 @@
             this.Text = "Hàng Hóa";
             this.Load += new System.EventHandler(this.FormHangHoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueKho.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroupDaiLyKhachLe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroupHangHoaDichVu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtXuatXu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVachNSX.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkConQuanLy.Properties)).EndInit();
@@ -475,9 +479,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueNhaCungCap.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaMua.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaBanSi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiaBanLe.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,7 +491,7 @@
 
         private DevExpress.XtraEditors.LookUpEdit lueKho;
         private DevExpress.XtraEditors.SimpleButton btnThemKho;
-        private DevExpress.XtraEditors.RadioGroup radioGroupDaiLyKhachLe;
+        private DevExpress.XtraEditors.RadioGroup radioGroupHangHoaDichVu;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.TextEdit txtXuatXu;
         private DevExpress.XtraEditors.LabelControl labelControl11;
@@ -511,15 +515,15 @@
         private DevExpress.XtraEditors.CalcEdit txtTonHienTai;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl19;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnThemNhomHang;
         private DevExpress.XtraEditors.LookUpEdit lueNhomHang;
         private DevExpress.XtraEditors.SimpleButton btnThemDonVi;
         private DevExpress.XtraEditors.LookUpEdit lueDonVi;
         private DevExpress.XtraEditors.CalcEdit txtThue;
         private DevExpress.XtraEditors.SimpleButton btnThemNhaCungCap;
         private DevExpress.XtraEditors.LookUpEdit lueNhaCungCap;
-        private DevExpress.XtraEditors.CalcEdit calcEdit1;
-        private DevExpress.XtraEditors.CalcEdit calcEdit2;
-        private DevExpress.XtraEditors.CalcEdit calcEdit3;
+        private DevExpress.XtraEditors.CalcEdit txtGiaMua;
+        private DevExpress.XtraEditors.CalcEdit txtGiaBanSi;
+        private DevExpress.XtraEditors.CalcEdit txtGiaBanLe;
     }
 }

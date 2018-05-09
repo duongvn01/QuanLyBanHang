@@ -19,19 +19,18 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllHangHoa()
         {
-            string query = string.Format("select * from HangHoa");
-           
-            return conn.executeSelectQueryNoParam(query);
+            return conn.executeGetTable("proGetHangHoa_Kho_NhomHang_DonVi_NhaCC");
         }
 
         public bool ThemHangHoa(ref string err, HangHoaO hh)
         {
             return conn.MyExecuteNonQuery("proThemHangHoa",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter("@HangHoaOrDichVu", hh.HangHoaOrDichVu),
-                new SqlParameter("@MaNhomHang", hh.MaNhomHang),
                 new SqlParameter("@MaHangHoa", hh.MaHangHoa),
                 new SqlParameter("@TenHangHoa", hh.TenHangHoa),
+                new SqlParameter("@MaKho", hh.MaKho),
+                new SqlParameter("@MaNhomHang", hh.MaNhomHang),
+                
                 new SqlParameter("@MaVachNSX", hh.MaVachNSX),
                 new SqlParameter("@MaDonVi", hh.MaDonVi),
                 new SqlParameter("@XuatXu", hh.XuatXu),
@@ -41,7 +40,9 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@MaNhaCungCap", hh.MaNhaCungCap),
                 new SqlParameter("@GiaMua", hh.GiaMua),
                 new SqlParameter("@GiaBanSi", hh.GiaBanSi),
-                new SqlParameter("@GiaBanLe", hh.GiaBanLe)
+                new SqlParameter("@GiaBanLe", hh.GiaBanLe),
+                new SqlParameter("@HangHoaOrDichVu", hh.HangHoaOrDichVu),
+                new SqlParameter("@ConQuanLy", hh.ConQuanLy)
                 );
         }
         public bool XoaHangHoa(ref string err, HangHoaO hh)
@@ -54,10 +55,11 @@ namespace Data_Acccess_Layer
         {
             return conn.MyExecuteNonQuery("proSuaHangHoa",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter("@HangHoaOrDichVu", hh.HangHoaOrDichVu),
-                new SqlParameter("@MaNhomHang", hh.MaNhomHang),
                 new SqlParameter("@MaHangHoa", hh.MaHangHoa),
                 new SqlParameter("@TenHangHoa", hh.TenHangHoa),
+                new SqlParameter("@MaKho", hh.MaKho),
+                new SqlParameter("@MaNhomHang", hh.MaNhomHang),
+
                 new SqlParameter("@MaVachNSX", hh.MaVachNSX),
                 new SqlParameter("@MaDonVi", hh.MaDonVi),
                 new SqlParameter("@XuatXu", hh.XuatXu),
@@ -67,7 +69,9 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@MaNhaCungCap", hh.MaNhaCungCap),
                 new SqlParameter("@GiaMua", hh.GiaMua),
                 new SqlParameter("@GiaBanSi", hh.GiaBanSi),
-                new SqlParameter("@GiaBanLe", hh.GiaBanLe)      
+                new SqlParameter("@GiaBanLe", hh.GiaBanLe),
+                new SqlParameter("@HangHoaOrDichVu", hh.HangHoaOrDichVu),
+                new SqlParameter("@ConQuanLy", hh.ConQuanLy)     
                 );
         }
     }

@@ -99,22 +99,22 @@ create table NhomHang
 go
 create table HangHoa
 (
-	HangHoaOrDichVu bit,--1. hang hoa, 2. dich vu
+	MaHangHoa varchar(15) primary key,
+	TenHangHoa nvarchar(50) not null,
 	MaKho varchar(15) not null,
 	MaNhomHang varchar(15) not null,
 	
-	MaHangHoa varchar(15) primary key,
-	TenHangHoa nvarchar(50) not null,
 	MaVachNSX varchar(30),
-	MaDonVi varchar(15),--DonViGoc(phan mem)
+	MaDonVi varchar(15) not null,--DonViGoc(phan mem)
 	XuatXu nvarchar(30),
 	Thue float,
 	TonKhoToiThieu int,
 	TonHienTai int,
-	MaNhaCungCap varchar(15),
+	MaNhaCungCap varchar(15) not null,
 	GiaMua money,
 	GiaBanSi money,
 	GiaBanLe money,
+	HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
 	ConQuanLy bit
 )
 go 
@@ -334,11 +334,12 @@ end
 
 go
 --Them hang hoa
-create procedure proThemHangHoa
-	@HangHoaOrDichVu bit,--1. hang hoa, 0. dich vu
-	@MaNhomHang varchar(15),
+create procedure [dbo].[proThemHangHoa]
 	@MaHangHoa varchar(15),
 	@TenHangHoa nvarchar(50),
+	@MaKho varchar(15),
+	@MaNhomHang varchar(15),
+	
 	@MaVachNSX varchar(30),
 	@MaDonVi varchar(15),--DonViGoc(phan mem)
 	@XuatXu nvarchar(30),
@@ -348,14 +349,17 @@ create procedure proThemHangHoa
 	@MaNhaCungCap varchar(15),
 	@GiaMua money,
 	@GiaBanSi money,
-	@GiaBanLe money
+	@GiaBanLe money,
+	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
+	@ConQuanLy bit	
 as
 begin
 	insert into HangHoa values(
-	@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
-	@MaNhomHang,
 	@MaHangHoa,
 	@TenHangHoa,
+	@MaKho,
+	@MaNhomHang,
+	
 	@MaVachNSX,
 	@MaDonVi,--DonViGoc(phan mem)
 	@XuatXu,
@@ -365,10 +369,11 @@ begin
 	@MaNhaCungCap,
 	@GiaMua,
 	@GiaBanSi,
-	@GiaBanLe
+	@GiaBanLe,
+	@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
+	@ConQuanLy
 	)
 end
-
 go
 --Them Bo Phan
 create procedure proThemBoPhan
@@ -607,11 +612,12 @@ end
 
 go
 --Sua hang hoa
-create procedure proSuaHangHoa
-	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
-	@MaNhomHang varchar(15),
+ALTER procedure [dbo].[proSuaHangHoa]
 	@MaHangHoa varchar(15),
 	@TenHangHoa nvarchar(50),
+	@MaKho varchar(15),
+	@MaNhomHang varchar(15),
+	
 	@MaVachNSX varchar(30),
 	@MaDonVi varchar(15),--DonViGoc(phan mem)
 	@XuatXu nvarchar(30),
@@ -621,14 +627,17 @@ create procedure proSuaHangHoa
 	@MaNhaCungCap varchar(15),
 	@GiaMua money,
 	@GiaBanSi money,
-	@GiaBanLe money
+	@GiaBanLe money,
+	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
+	@ConQuanLy bit	
 as
 begin
 	update HangHoa set
-	HangHoaOrDichVu=@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
-	@MaNhomHang=@MaNhomHang,
 	MaHangHoa=@MaHangHoa,
-	TenHangHoa=@TenHangHoa,
+	TenHangHoa=@TenHangHoa,	
+	MaKho=@MaKho,
+	MaNhomHang=@MaNhomHang,
+
 	MaVachNSX=@MaVachNSX,
 	MaDonVi=@MaDonVi,--DonViGoc(phan mem)
 	XuatXu=@XuatXu,
@@ -638,10 +647,22 @@ begin
 	MaNhaCungCap=@MaNhaCungCap,
 	GiaMua=@GiaMua,
 	GiaBanSi=@GiaBanSi,
-	GiaBanLe=@GiaBanLe
+	GiaBanLe=@GiaBanLe,
+	HangHoaOrDichVu=@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
+	ConQuanLy=@ConQuanLy
 	where  MaHangHoa=@MaHangHoa
 end
 
+go
+
+create procedure proGetHangHoa_Kho_NhomHang_DonVi_NhaCC
+as
+select MaHangHoa,TenHangHoa,HangHoa.MaKho,TenKho,HangHoa.MaNhomHang,TenNhomHang,MaVachNSX,HangHoa.MaDonVi,TenDonVi,XuatXu,
+	Thue,TonKhoToiThieu,TonHienTai,HangHoa.MaNhaCungCap,TenNhaCungCap,GiaMua,GiaBanSi,GiaBanLe,HangHoa.ConQuanLy,
+	HangHoaOrDichVu
+from HangHoa,Kho,NhomHang,DonVi,NhaCungCap
+where HangHoa.MaKho=Kho.MaKho and HangHoa.MaNhomHang=NhomHang.MaNhomHang
+	and HangHoa.MaDonVi=DonVi.MaDonVi and HangHoa.MaNhaCungCap=NhaCungCap.MaNhaCungCap
 
 go
 --Sua Bo Phan

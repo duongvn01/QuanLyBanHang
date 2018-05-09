@@ -5,3 +5,10 @@ D:\CodePM\QuanLyBanHang\Data_Acccess_Layer\bin\Debug\Object.pdb
 D:\CodePM\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.csprojResolveAssemblyReference.cache
 D:\CodePM\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.dll
 D:\CodePM\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.pdb
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\bin\Debug\Data_Acccess_Layer.dll
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\bin\Debug\Data_Acccess_Layer.pdb
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\bin\Debug\Object.dll
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\bin\Debug\Object.pdb
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.csprojResolveAssemblyReference.cache
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.dll
+D:\QLBH\QuanLyBanHang\Data_Acccess_Layer\obj\Debug\Data_Acccess_Layer.pdb
