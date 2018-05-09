@@ -99,6 +99,7 @@ create table NhomHang
 go
 create table HangHoa
 (
+<<<<<<< HEAD
 	MaHangHoa varchar(15) primary key,
 	TenHangHoa nvarchar(50) not null,
 	MaKho varchar(15) not null,
@@ -106,15 +107,32 @@ create table HangHoa
 	
 	MaVachNSX varchar(30),
 	MaDonVi varchar(15) not null,--DonViGoc(phan mem)
+=======
+	HangHoaOrDichVu bit,--1. hang hoa, 2. dich vu
+	MaKho varchar(15) not null,
+	MaNhomHang varchar(15) not null,
+	
+	MaHangHoa varchar(15) primary key,
+	TenHangHoa nvarchar(50) not null,
+	MaVachNSX varchar(30),
+	MaDonVi varchar(15),--DonViGoc(phan mem)
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	XuatXu nvarchar(30),
 	Thue float,
 	TonKhoToiThieu int,
 	TonHienTai int,
+<<<<<<< HEAD
 	MaNhaCungCap varchar(15) not null,
 	GiaMua money,
 	GiaBanSi money,
 	GiaBanLe money,
 	HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
+=======
+	MaNhaCungCap varchar(15),
+	GiaMua money,
+	GiaBanSi money,
+	GiaBanLe money,
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	ConQuanLy bit
 )
 go 
@@ -334,12 +352,20 @@ end
 
 go
 --Them hang hoa
+<<<<<<< HEAD
 create procedure [dbo].[proThemHangHoa]
 	@MaHangHoa varchar(15),
 	@TenHangHoa nvarchar(50),
 	@MaKho varchar(15),
 	@MaNhomHang varchar(15),
 	
+=======
+create procedure proThemHangHoa
+	@HangHoaOrDichVu bit,--1. hang hoa, 0. dich vu
+	@MaNhomHang varchar(15),
+	@MaHangHoa varchar(15),
+	@TenHangHoa nvarchar(50),
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	@MaVachNSX varchar(30),
 	@MaDonVi varchar(15),--DonViGoc(phan mem)
 	@XuatXu nvarchar(30),
@@ -349,6 +375,7 @@ create procedure [dbo].[proThemHangHoa]
 	@MaNhaCungCap varchar(15),
 	@GiaMua money,
 	@GiaBanSi money,
+<<<<<<< HEAD
 	@GiaBanLe money,
 	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
 	@ConQuanLy bit	
@@ -360,6 +387,16 @@ begin
 	@MaKho,
 	@MaNhomHang,
 	
+=======
+	@GiaBanLe money
+as
+begin
+	insert into HangHoa values(
+	@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
+	@MaNhomHang,
+	@MaHangHoa,
+	@TenHangHoa,
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	@MaVachNSX,
 	@MaDonVi,--DonViGoc(phan mem)
 	@XuatXu,
@@ -369,11 +406,18 @@ begin
 	@MaNhaCungCap,
 	@GiaMua,
 	@GiaBanSi,
+<<<<<<< HEAD
 	@GiaBanLe,
 	@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
 	@ConQuanLy
 	)
 end
+=======
+	@GiaBanLe
+	)
+end
+
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 go
 --Them Bo Phan
 create procedure proThemBoPhan
@@ -612,12 +656,20 @@ end
 
 go
 --Sua hang hoa
+<<<<<<< HEAD
 ALTER procedure [dbo].[proSuaHangHoa]
 	@MaHangHoa varchar(15),
 	@TenHangHoa nvarchar(50),
 	@MaKho varchar(15),
 	@MaNhomHang varchar(15),
 	
+=======
+create procedure proSuaHangHoa
+	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
+	@MaNhomHang varchar(15),
+	@MaHangHoa varchar(15),
+	@TenHangHoa nvarchar(50),
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	@MaVachNSX varchar(30),
 	@MaDonVi varchar(15),--DonViGoc(phan mem)
 	@XuatXu nvarchar(30),
@@ -627,6 +679,7 @@ ALTER procedure [dbo].[proSuaHangHoa]
 	@MaNhaCungCap varchar(15),
 	@GiaMua money,
 	@GiaBanSi money,
+<<<<<<< HEAD
 	@GiaBanLe money,
 	@HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
 	@ConQuanLy bit	
@@ -638,6 +691,16 @@ begin
 	MaKho=@MaKho,
 	MaNhomHang=@MaNhomHang,
 
+=======
+	@GiaBanLe money
+as
+begin
+	update HangHoa set
+	HangHoaOrDichVu=@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
+	@MaNhomHang=@MaNhomHang,
+	MaHangHoa=@MaHangHoa,
+	TenHangHoa=@TenHangHoa,
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	MaVachNSX=@MaVachNSX,
 	MaDonVi=@MaDonVi,--DonViGoc(phan mem)
 	XuatXu=@XuatXu,
@@ -647,6 +710,7 @@ begin
 	MaNhaCungCap=@MaNhaCungCap,
 	GiaMua=@GiaMua,
 	GiaBanSi=@GiaBanSi,
+<<<<<<< HEAD
 	GiaBanLe=@GiaBanLe,
 	HangHoaOrDichVu=@HangHoaOrDichVu,--1. hang hoa, 2. dich vu
 	ConQuanLy=@ConQuanLy
@@ -663,6 +727,12 @@ select MaHangHoa,TenHangHoa,HangHoa.MaKho,TenKho,HangHoa.MaNhomHang,TenNhomHang,
 from HangHoa,Kho,NhomHang,DonVi,NhaCungCap
 where HangHoa.MaKho=Kho.MaKho and HangHoa.MaNhomHang=NhomHang.MaNhomHang
 	and HangHoa.MaDonVi=DonVi.MaDonVi and HangHoa.MaNhaCungCap=NhaCungCap.MaNhaCungCap
+=======
+	GiaBanLe=@GiaBanLe
+	where  MaHangHoa=@MaHangHoa
+end
+
+>>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 
 go
 --Sua Bo Phan
