@@ -63,3 +63,4 @@ D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCNhanVien.resources
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCNhomHang.resources
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.GenerateResource.Cache
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.exe.licenses
+D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCMuaHang.resources

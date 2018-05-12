@@ -43,9 +43,12 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DonViDAO.cs" />
     <Compile Include="HangHoaDAO.cs" />
+    <Compile Include="HinhThucThanhToanDAO.cs" />
     <Compile Include="KhachHangDAO.cs" />
     <Compile Include="KhoDAO.cs" />
     <Compile Include="KhuVucDAO.cs" />
+    <Compile Include="KieuThanhToanDAO.cs" />
+    <Compile Include="MuaHangDAO.cs" />
     <Compile Include="NhaCungCapDAO.cs" />
     <Compile Include="NhanVienDAO.cs" />
     <Compile Include="NhomHangDAO.cs" />

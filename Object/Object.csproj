@@ -45,6 +45,7 @@
     <Compile Include="KhachHangO.cs" />
     <Compile Include="KhoO.cs" />
     <Compile Include="KhuVucO.cs" />
+    <Compile Include="MuaHangO.cs" />
     <Compile Include="NhaCungCapO.cs" />
     <Compile Include="NhanVienO.cs" />
     <Compile Include="NhomHangO.cs" />

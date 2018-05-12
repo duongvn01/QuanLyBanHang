@@ -47,7 +47,6 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtTaiKhoan = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaSoThue = new DevExpress.XtraEditors.TextEdit();
@@ -56,7 +55,6 @@
             this.chkConQuanLy = new DevExpress.XtraEditors.CheckEdit();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.txtTenNhaCungCap = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaNhaCungCap = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -70,6 +68,7 @@
             this.lueKhuVuc = new DevExpress.XtraEditors.LookUpEdit();
             this.txtThongTinKhac = new DevExpress.XtraEditors.TextEdit();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMaNhaCungCap = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChucVu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNganHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWebsite.Properties)).BeginInit();
@@ -83,24 +82,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkConQuanLy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaCungCap.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaCungCap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiHanNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChietKhau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoHienTai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueKhuVuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThongTinKhac.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaCungCap.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtChucVu
             // 
-            this.txtChucVu.Location = new System.Drawing.Point(352, 275);
+            this.txtChucVu.Location = new System.Drawing.Point(353, 271);
             this.txtChucVu.Name = "txtChucVu";
             this.txtChucVu.Size = new System.Drawing.Size(164, 20);
             this.txtChucVu.TabIndex = 79;
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(293, 278);
+            this.labelControl12.Location = new System.Drawing.Point(294, 274);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(40, 13);
             this.labelControl12.TabIndex = 77;
@@ -108,7 +107,7 @@
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(293, 225);
+            this.labelControl13.Location = new System.Drawing.Point(294, 221);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(54, 13);
             this.labelControl13.TabIndex = 78;
@@ -116,14 +115,14 @@
             // 
             // txtNganHang
             // 
-            this.txtNganHang.Location = new System.Drawing.Point(352, 196);
+            this.txtNganHang.Location = new System.Drawing.Point(353, 192);
             this.txtNganHang.Name = "txtNganHang";
             this.txtNganHang.Size = new System.Drawing.Size(164, 20);
             this.txtNganHang.TabIndex = 76;
             // 
             // labelControl14
             // 
-            this.labelControl14.Location = new System.Drawing.Point(293, 199);
+            this.labelControl14.Location = new System.Drawing.Point(294, 195);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(53, 13);
             this.labelControl14.TabIndex = 75;
@@ -131,14 +130,14 @@
             // 
             // txtWebsite
             // 
-            this.txtWebsite.Location = new System.Drawing.Point(352, 170);
+            this.txtWebsite.Location = new System.Drawing.Point(353, 166);
             this.txtWebsite.Name = "txtWebsite";
             this.txtWebsite.Size = new System.Drawing.Size(164, 20);
             this.txtWebsite.TabIndex = 74;
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(293, 173);
+            this.labelControl15.Location = new System.Drawing.Point(294, 169);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(39, 13);
             this.labelControl15.TabIndex = 73;
@@ -146,21 +145,21 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(92, 166);
+            this.txtEmail.Location = new System.Drawing.Point(93, 162);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(164, 20);
             this.txtEmail.TabIndex = 72;
             // 
             // txtSoDiDong
             // 
-            this.txtSoDiDong.Location = new System.Drawing.Point(352, 140);
+            this.txtSoDiDong.Location = new System.Drawing.Point(353, 136);
             this.txtSoDiDong.Name = "txtSoDiDong";
             this.txtSoDiDong.Size = new System.Drawing.Size(164, 20);
             this.txtSoDiDong.TabIndex = 71;
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(293, 143);
+            this.labelControl17.Location = new System.Drawing.Point(294, 139);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(53, 13);
             this.labelControl17.TabIndex = 70;
@@ -168,14 +167,14 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(352, 109);
+            this.txtFax.Location = new System.Drawing.Point(353, 105);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(164, 20);
             this.txtFax.TabIndex = 69;
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(293, 112);
+            this.labelControl18.Location = new System.Drawing.Point(294, 108);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(18, 13);
             this.labelControl18.TabIndex = 68;
@@ -183,14 +182,14 @@
             // 
             // txtNguoiLienHe
             // 
-            this.txtNguoiLienHe.Location = new System.Drawing.Point(92, 275);
+            this.txtNguoiLienHe.Location = new System.Drawing.Point(93, 271);
             this.txtNguoiLienHe.Name = "txtNguoiLienHe";
             this.txtNguoiLienHe.Size = new System.Drawing.Size(164, 20);
             this.txtNguoiLienHe.TabIndex = 67;
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(12, 275);
+            this.labelControl11.Location = new System.Drawing.Point(13, 271);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(66, 13);
             this.labelControl11.TabIndex = 65;
@@ -198,7 +197,7 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(12, 252);
+            this.labelControl8.Location = new System.Drawing.Point(13, 248);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(52, 13);
             this.labelControl8.TabIndex = 64;
@@ -206,7 +205,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(12, 226);
+            this.labelControl9.Location = new System.Drawing.Point(13, 222);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(55, 13);
             this.labelControl9.TabIndex = 62;
@@ -214,37 +213,29 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Location = new System.Drawing.Point(92, 192);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(93, 188);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(164, 20);
             this.txtTaiKhoan.TabIndex = 61;
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(12, 195);
+            this.labelControl10.Location = new System.Drawing.Point(13, 191);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(47, 13);
             this.labelControl10.TabIndex = 60;
             this.labelControl10.Text = "Tài Khoản";
             // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(-31, 216);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(24, 13);
-            this.labelControl7.TabIndex = 59;
-            this.labelControl7.Text = "Email";
-            // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(92, 140);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(93, 136);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(164, 20);
             this.txtSoDienThoai.TabIndex = 58;
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 143);
+            this.labelControl6.Location = new System.Drawing.Point(13, 139);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(51, 13);
             this.labelControl6.TabIndex = 57;
@@ -252,14 +243,14 @@
             // 
             // txtMaSoThue
             // 
-            this.txtMaSoThue.Location = new System.Drawing.Point(92, 109);
+            this.txtMaSoThue.Location = new System.Drawing.Point(93, 105);
             this.txtMaSoThue.Name = "txtMaSoThue";
             this.txtMaSoThue.Size = new System.Drawing.Size(164, 20);
             this.txtMaSoThue.TabIndex = 56;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(12, 112);
+            this.labelControl5.Location = new System.Drawing.Point(13, 108);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(56, 13);
             this.labelControl5.TabIndex = 55;
@@ -267,7 +258,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(262, 20);
+            this.labelControl4.Location = new System.Drawing.Point(263, 16);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(39, 13);
             this.labelControl4.TabIndex = 54;
@@ -275,7 +266,7 @@
             // 
             // chkConQuanLy
             // 
-            this.chkConQuanLy.Location = new System.Drawing.Point(12, 365);
+            this.chkConQuanLy.Location = new System.Drawing.Point(13, 361);
             this.chkConQuanLy.Name = "chkConQuanLy";
             this.chkConQuanLy.Properties.Caption = "Còn Quản Lý";
             this.chkConQuanLy.Size = new System.Drawing.Size(89, 19);
@@ -283,28 +274,21 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(92, 75);
+            this.txtDiaChi.Location = new System.Drawing.Point(93, 71);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(424, 20);
             this.txtDiaChi.TabIndex = 50;
             // 
             // txtTenNhaCungCap
             // 
-            this.txtTenNhaCungCap.Location = new System.Drawing.Point(92, 45);
+            this.txtTenNhaCungCap.Location = new System.Drawing.Point(93, 41);
             this.txtTenNhaCungCap.Name = "txtTenNhaCungCap";
             this.txtTenNhaCungCap.Size = new System.Drawing.Size(424, 20);
             this.txtTenNhaCungCap.TabIndex = 51;
             // 
-            // txtMaNhaCungCap
-            // 
-            this.txtMaNhaCungCap.Location = new System.Drawing.Point(92, 17);
-            this.txtMaNhaCungCap.Name = "txtMaNhaCungCap";
-            this.txtMaNhaCungCap.Size = new System.Drawing.Size(164, 20);
-            this.txtMaNhaCungCap.TabIndex = 52;
-            // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 78);
+            this.labelControl3.Location = new System.Drawing.Point(13, 74);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(34, 13);
             this.labelControl3.TabIndex = 47;
@@ -312,7 +296,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 48);
+            this.labelControl2.Location = new System.Drawing.Point(13, 44);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(18, 13);
             this.labelControl2.TabIndex = 48;
@@ -320,7 +304,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 17);
+            this.labelControl1.Location = new System.Drawing.Point(13, 13);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(14, 13);
             this.labelControl1.TabIndex = 49;
@@ -328,7 +312,7 @@
             // 
             // txtGioiHanNo
             // 
-            this.txtGioiHanNo.Location = new System.Drawing.Point(92, 223);
+            this.txtGioiHanNo.Location = new System.Drawing.Point(93, 219);
             this.txtGioiHanNo.Name = "txtGioiHanNo";
             this.txtGioiHanNo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -338,7 +322,7 @@
             // 
             // txtChietKhau
             // 
-            this.txtChietKhau.Location = new System.Drawing.Point(92, 249);
+            this.txtChietKhau.Location = new System.Drawing.Point(93, 245);
             this.txtChietKhau.Name = "txtChietKhau";
             this.txtChietKhau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -348,7 +332,7 @@
             // 
             // txtNoHienTai
             // 
-            this.txtNoHienTai.Location = new System.Drawing.Point(352, 222);
+            this.txtNoHienTai.Location = new System.Drawing.Point(353, 218);
             this.txtNoHienTai.Name = "txtNoHienTai";
             this.txtNoHienTai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -359,7 +343,7 @@
             // btnThemKhuVuc
             // 
             this.btnThemKhuVuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKhuVuc.ImageOptions.Image")));
-            this.btnThemKhuVuc.Location = new System.Drawing.Point(492, 16);
+            this.btnThemKhuVuc.Location = new System.Drawing.Point(493, 12);
             this.btnThemKhuVuc.Name = "btnThemKhuVuc";
             this.btnThemKhuVuc.Size = new System.Drawing.Size(24, 23);
             this.btnThemKhuVuc.TabIndex = 83;
@@ -371,7 +355,7 @@
             this.btnDong.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
             this.btnDong.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnDong.Location = new System.Drawing.Point(484, 359);
+            this.btnDong.Location = new System.Drawing.Point(485, 355);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(32, 36);
             this.btnDong.TabIndex = 46;
@@ -383,7 +367,7 @@
             this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnLuu.Location = new System.Drawing.Point(444, 361);
+            this.btnLuu.Location = new System.Drawing.Point(445, 357);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(29, 33);
             this.btnLuu.TabIndex = 45;
@@ -392,7 +376,7 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(12, 169);
+            this.labelControl16.Location = new System.Drawing.Point(13, 165);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(24, 13);
             this.labelControl16.TabIndex = 84;
@@ -401,7 +385,7 @@
             // lueKhuVuc
             // 
             this.lueKhuVuc.EditValue = "";
-            this.lueKhuVuc.Location = new System.Drawing.Point(307, 17);
+            this.lueKhuVuc.Location = new System.Drawing.Point(308, 13);
             this.lueKhuVuc.Name = "lueKhuVuc";
             this.lueKhuVuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -414,18 +398,25 @@
             // 
             // txtThongTinKhac
             // 
-            this.txtThongTinKhac.Location = new System.Drawing.Point(92, 313);
+            this.txtThongTinKhac.Location = new System.Drawing.Point(93, 309);
             this.txtThongTinKhac.Name = "txtThongTinKhac";
             this.txtThongTinKhac.Size = new System.Drawing.Size(419, 20);
             this.txtThongTinKhac.TabIndex = 87;
             // 
             // labelControl19
             // 
-            this.labelControl19.Location = new System.Drawing.Point(12, 313);
+            this.labelControl19.Location = new System.Drawing.Point(13, 309);
             this.labelControl19.Name = "labelControl19";
             this.labelControl19.Size = new System.Drawing.Size(72, 13);
             this.labelControl19.TabIndex = 86;
             this.labelControl19.Text = "Thông Tin khác";
+            // 
+            // txtMaNhaCungCap
+            // 
+            this.txtMaNhaCungCap.Location = new System.Drawing.Point(93, 13);
+            this.txtMaNhaCungCap.Name = "txtMaNhaCungCap";
+            this.txtMaNhaCungCap.Size = new System.Drawing.Size(164, 20);
+            this.txtMaNhaCungCap.TabIndex = 52;
             // 
             // FormNhaCungCap
             // 
@@ -455,7 +446,6 @@
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.txtMaSoThue);
@@ -490,12 +480,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkConQuanLy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaCungCap.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaCungCap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiHanNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChietKhau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoHienTai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueKhuVuc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThongTinKhac.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaNhaCungCap.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,7 +512,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.TextEdit txtTaiKhoan;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit txtSoDienThoai;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit txtMaSoThue;
@@ -531,7 +520,6 @@
         private DevExpress.XtraEditors.CheckEdit chkConQuanLy;
         private DevExpress.XtraEditors.TextEdit txtDiaChi;
         private DevExpress.XtraEditors.TextEdit txtTenNhaCungCap;
-        private DevExpress.XtraEditors.TextEdit txtMaNhaCungCap;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -544,5 +532,6 @@
         private DevExpress.XtraEditors.LookUpEdit lueKhuVuc;
         private DevExpress.XtraEditors.TextEdit txtThongTinKhac;
         private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.TextEdit txtMaNhaCungCap;
     }
 }

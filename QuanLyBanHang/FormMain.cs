@@ -78,5 +78,12 @@ namespace QuanLyBanHang
             panel1.Controls.Clear();
             panel1.Controls.Add(hh);
         }
+
+        private void barbtnMuaHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UCMuaHang mh = new UCMuaHang();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(mh);
+        }
     }
 }

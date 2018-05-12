@@ -12,14 +12,29 @@ namespace Bussiness_Logic_Layer
     public class HangHoaBUS
     {
         HangHoaDAO hangHoaDAO;
+        HangHoaO HH;
         public HangHoaBUS()
         {
             hangHoaDAO = new HangHoaDAO();
+            HH = new HangHoaO();
         }
         public DataTable getAllHangHoa()
         {
-            return hangHoaDAO.GetAllHangHoa();
-          
+            return hangHoaDAO.GetAllHangHoa();        
+        }
+        public HangHoaO getOneHangHoa(HangHoaO hh)
+        {
+            DataTable dt = new DataTable();
+            dt = hangHoaDAO.GetAllHangHoa();
+            DataRow[] result = dt.Select("MaHangHoa= '" + hh.MaHangHoa + "'");
+            DataRow row = result[0];
+            HH.MaHangHoa = row["MaHangHoa"].ToString();
+            HH.TenHangHoa = row["TenHangHoa"].ToString();
+            HH.MaDonVi = row["MaDonVi"].ToString();
+            HH.GiaMua = Convert.ToDouble(row["GiaMua"].ToString());
+            HH.GiaBanSi = Convert.ToDouble(row["GiaBanSi"].ToString());
+            HH.GiaBanLe = Convert.ToDouble(row["GiaBanLe"].ToString());
+            return HH;
         }
         public bool ThemHangHoaBUS(ref string err, HangHoaO hh)
         {

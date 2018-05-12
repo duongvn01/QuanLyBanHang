@@ -47,6 +47,9 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnBoPhan = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnMuaHang = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnBanHang = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnNhapTraHang = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,9 +90,12 @@
             this.barbtnInMaVach,
             this.barButtonItem5,
             this.barbtnBoPhan,
-            this.barbtnNhanVien});
+            this.barbtnNhanVien,
+            this.barbtnMuaHang,
+            this.barbtnBanHang,
+            this.barbtnNhapTraHang});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 50);
-            this.ribbonControl1.MaxItemId = 20;
+            this.ribbonControl1.MaxItemId = 23;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -97,7 +103,7 @@
             this.ribbonPage3,
             this.ribbonPage4});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(1053, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(1079, 141);
             // 
             // barButtonItem1
             // 
@@ -233,6 +239,31 @@
             this.barbtnNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barbtnNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnNhanVien_ItemClick);
             // 
+            // barbtnMuaHang
+            // 
+            this.barbtnMuaHang.Caption = "Mua Hàng";
+            this.barbtnMuaHang.Id = 20;
+            this.barbtnMuaHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnMuaHang.ImageOptions.Image")));
+            this.barbtnMuaHang.Name = "barbtnMuaHang";
+            this.barbtnMuaHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barbtnMuaHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnMuaHang_ItemClick);
+            // 
+            // barbtnBanHang
+            // 
+            this.barbtnBanHang.Caption = "Bán Hàng";
+            this.barbtnBanHang.Id = 21;
+            this.barbtnBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnBanHang.ImageOptions.Image")));
+            this.barbtnBanHang.Name = "barbtnBanHang";
+            this.barbtnBanHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // barbtnNhapTraHang
+            // 
+            this.barbtnNhapTraHang.Caption = "Nhập Trả Hàng";
+            this.barbtnNhapTraHang.Id = 22;
+            this.barbtnNhapTraHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnNhapTraHang.ImageOptions.Image")));
+            this.barbtnNhapTraHang.Name = "barbtnNhapTraHang";
+            this.barbtnNhapTraHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -300,8 +331,11 @@
             // 
             // ribbonPageGroup3
             // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barbtnMuaHang);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barbtnBanHang);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barbtnNhapTraHang);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Nhập - Xuất";
             // 
             // ribbonPage4
             // 
@@ -328,14 +362,14 @@
             // 
             this.panel1.Location = new System.Drawing.Point(0, 197);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1053, 405);
+            this.panel1.Size = new System.Drawing.Size(1067, 566);
             this.panel1.TabIndex = 1;
             // 
             // tabFormControl1
             // 
             this.tabFormControl1.Location = new System.Drawing.Point(0, 0);
             this.tabFormControl1.Name = "tabFormControl1";
-            this.tabFormControl1.Size = new System.Drawing.Size(1053, 50);
+            this.tabFormControl1.Size = new System.Drawing.Size(1079, 50);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 3;
             this.tabFormControl1.TabStop = false;
@@ -344,7 +378,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 605);
+            this.ClientSize = new System.Drawing.Size(1079, 775);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.tabFormControl1);
@@ -393,6 +427,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraBars.TabFormControl tabFormControl1;
+        private DevExpress.XtraBars.BarButtonItem barbtnMuaHang;
+        private DevExpress.XtraBars.BarButtonItem barbtnBanHang;
+        private DevExpress.XtraBars.BarButtonItem barbtnNhapTraHang;
     }
 }
 

@@ -19,7 +19,7 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllHangHoa()
         {
-            return conn.executeGetTable("proGetHangHoa_Kho_NhomHang_DonVi_NhaCC");
+            return conn.executeGetTable("proGetAllHangHoa");
         }
 
         public bool ThemHangHoa(ref string err, HangHoaO hh)

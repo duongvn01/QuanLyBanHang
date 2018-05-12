@@ -42,9 +42,12 @@
     <Compile Include="BoPhanBUS.cs" />
     <Compile Include="DonViBUS.cs" />
     <Compile Include="HangHoaBUS.cs" />
+    <Compile Include="HinhThucThanhToanBUS.cs" />
     <Compile Include="KhachHangBUS.cs" />
     <Compile Include="KhoBUS.cs" />
     <Compile Include="KhuVucBUS.cs" />
+    <Compile Include="KieuThanhToanBUS.cs" />
+    <Compile Include="MuaHangBUS.cs" />
     <Compile Include="NhaCungCapBUS.cs" />
     <Compile Include="NhanVienBUS.cs" />
     <Compile Include="NhomHangBUS.cs" />

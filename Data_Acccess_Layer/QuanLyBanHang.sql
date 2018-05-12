@@ -1,4 +1,4 @@
-use master
+﻿use master
 go
 create database QuanLyBanHang
 go
@@ -99,7 +99,7 @@ create table NhomHang
 go
 create table HangHoa
 (
-<<<<<<< HEAD
+
 	MaHangHoa varchar(15) primary key,
 	TenHangHoa nvarchar(50) not null,
 	MaKho varchar(15) not null,
@@ -107,32 +107,17 @@ create table HangHoa
 	
 	MaVachNSX varchar(30),
 	MaDonVi varchar(15) not null,--DonViGoc(phan mem)
-=======
-	HangHoaOrDichVu bit,--1. hang hoa, 2. dich vu
-	MaKho varchar(15) not null,
-	MaNhomHang varchar(15) not null,
 	
-	MaHangHoa varchar(15) primary key,
-	TenHangHoa nvarchar(50) not null,
-	MaVachNSX varchar(30),
-	MaDonVi varchar(15),--DonViGoc(phan mem)
->>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	XuatXu nvarchar(30),
 	Thue float,
 	TonKhoToiThieu int,
 	TonHienTai int,
-<<<<<<< HEAD
+
 	MaNhaCungCap varchar(15) not null,
 	GiaMua money,
 	GiaBanSi money,
 	GiaBanLe money,
 	HangHoaOrDichVu int,--1. hang hoa, 2. dich vu
-=======
-	MaNhaCungCap varchar(15),
-	GiaMua money,
-	GiaBanSi money,
-	GiaBanLe money,
->>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
 	ConQuanLy bit
 )
 go 
@@ -161,7 +146,55 @@ create table NhanVien
 	MaNguoiQuanLy varchar(15)
 )
 
+
 go
+create table MuaHang
+(
+	MaPhieu varchar(15)primary key,
+	TenPhieu nvarchar(30),
+	NgayLapPhieu date,
+	SoHoaDonVAT varchar(20),
+	SoPhieuVietTay varchar(20),
+	MaThanhToan varchar(15),
+	MaHinhThuc varchar(15),
+	MaNhaCungCap varchar(15),
+	ThoiHanThanhToan date,
+	
+	GhiChu nvarchar(50),
+
+	MaNhanVien varchar(15),
+	MaKho varchar(15),
+
+	TongTien money,
+	PTramCK int,
+	Thue int,
+	TuongDuongTien money,
+	TienThanhToan money
+)
+go
+create table KieuThanhToan
+(
+	MaThanhToan varchar(15),
+	TenThanhToan nvarchar(30),
+	GhiChu nvarchar(50),
+)
+go
+create table HinhThucThanhToan
+(
+	MaHinhThuc varchar(15),
+	TenHinhThuc nvarchar(30),
+	GhiChu nvarchar(50)
+)
+go
+
+create table TonKho
+(
+	MaHangHoa varchar(15),
+	MaKho varchar(15),
+	MaDonVi varchar(15),
+	MaNhomHang varchar(15),
+	SoLuong int,
+)
 ---------------------------Stored Procedures------------------------------------------------------------------------
 --Them Khu Vuc
 
