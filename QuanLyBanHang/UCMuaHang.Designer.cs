@@ -79,11 +79,11 @@
             this.gridViewMuaHang = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMaHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMaDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnTimHangHoa = new DevExpress.XtraEditors.SimpleButton();
             this.txtMaHangHoa = new DevExpress.XtraEditors.TextEdit();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
@@ -548,6 +548,7 @@
             this.btnThemVaoGridview.Name = "btnThemVaoGridview";
             this.btnThemVaoGridview.Size = new System.Drawing.Size(61, 23);
             this.btnThemVaoGridview.TabIndex = 138;
+            this.btnThemVaoGridview.Click += new System.EventHandler(this.btnThemVaoGridview_Click);
             // 
             // btnRemoveKhoiGridview
             // 
@@ -600,12 +601,6 @@
             this.colTenHangHoa.Visible = true;
             this.colTenHangHoa.VisibleIndex = 1;
             // 
-            // colMaDonVi
-            // 
-            this.colMaDonVi.Caption = "Mã Đơn Vị";
-            this.colMaDonVi.FieldName = "MaDonVi";
-            this.colMaDonVi.Name = "colMaDonVi";
-            // 
             // colTenDonVi
             // 
             this.colTenDonVi.Caption = "Tên Đơn Vị";
@@ -637,6 +632,12 @@
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.Visible = true;
             this.colThanhTien.VisibleIndex = 5;
+            // 
+            // colMaDonVi
+            // 
+            this.colMaDonVi.Caption = "Mã Đơn Vị";
+            this.colMaDonVi.FieldName = "MaDonVi";
+            this.colMaDonVi.Name = "colMaDonVi";
             // 
             // btnTimHangHoa
             // 

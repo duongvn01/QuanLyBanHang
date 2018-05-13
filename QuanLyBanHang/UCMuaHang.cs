@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Bussiness_Logic_Layer;
 using Object;
 
+
 namespace QuanLyBanHang
 {
     public partial class UCMuaHang : UserControl
@@ -29,10 +30,13 @@ namespace QuanLyBanHang
 
         KieuThanhToanBUS kieuThanhToanBUS;
         HinhThucThanhToanBUS hinhThucThanhToanBUS;
+
+        DataTable dt;
         public UCMuaHang()
         {
             InitializeComponent();
-            initObjectBUS();        
+            initObjectBUS();
+            initDataTable();
         }
 
         void initObjectBUS()
@@ -47,6 +51,7 @@ namespace QuanLyBanHang
             nhanVienBUS = new NhanVienBUS();
             khoBUS = new KhoBUS();
             hangHoaBUS = new HangHoaBUS();
+            donViBUS = new DonViBUS();
 
             kieuThanhToanBUS = new KieuThanhToanBUS();
             hinhThucThanhToanBUS = new HinhThucThanhToanBUS();
@@ -67,7 +72,7 @@ namespace QuanLyBanHang
             lueKho.Properties.DataSource = khoBUS.getAllKhoBUS();
             lueKho.Properties.DisplayMember = "TenKho";
             lueKho.Properties.ValueMember = "MaKho";
-            
+
             //Hang Hoa
             lueHangHoa.Properties.DataSource = hangHoaBUS.getAllHangHoa();
             lueHangHoa.Properties.DisplayMember = "TenHangHoa";
@@ -83,6 +88,17 @@ namespace QuanLyBanHang
             lueHinhThucThanhToan.Properties.DataSource = hinhThucThanhToanBUS.getAllHinhThucThanhToan();
             lueHinhThucThanhToan.Properties.DisplayMember = "TenHinhThuc";
             lueHinhThucThanhToan.Properties.ValueMember = "MaHinhThuc";
+        }
+        void initDataTable()
+        {
+            dt = new DataTable();
+            dt.Columns.Add("MaHangHoa");
+            dt.Columns.Add("TenHangHoa");
+            dt.Columns.Add("MaDonVi");
+            dt.Columns.Add("TenDonVi");
+            dt.Columns.Add("SoLuong");
+            dt.Columns.Add("DonGia");
+            dt.Columns.Add("ThanhTien");
         }
         private void UCMuaHang_Load(object sender, EventArgs e)
         {
@@ -100,7 +116,7 @@ namespace QuanLyBanHang
 
         private void txtSoLuong_EditValueChanged(object sender, EventArgs e)
         {
-            txtThanhTien.Text = (HH.GiaMua * (Convert.ToDouble(txtSoLuong.Text))).ToString(); 
+            txtThanhTien.Text = (HH.GiaMua * (Convert.ToDouble(txtSoLuong.Text))).ToString();
         }
 
         private void txtDonGia_EditValueChanged(object sender, EventArgs e)
@@ -112,9 +128,69 @@ namespace QuanLyBanHang
         {
             HH.MaHangHoa = lueHangHoa.EditValue.ToString();
             HH = hangHoaBUS.getOneHangHoa(HH);
+            DV.MaDonVi = HH.MaDonVi;
             DV = donViBUS.getOneDonVi(DV);//lay don vi tu ma don vi
             txtDonGia.Text = HH.GiaMua.ToString();
             txtThanhTien.Text = (HH.GiaMua * (Convert.ToDouble(txtSoLuong.Text))).ToString();
+        }
+
+        private void btnThemVaoGridview_Click(object sender, EventArgs e)
+        {
+            if(dt!=null)
+            {
+                if (KiemTraTrung(lueHangHoa.EditValue.ToString()))
+                {
+                    /*
+                    DataRow r = new DataRow();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (ma == dt.Rows[i][0].ToString())
+                        {
+                            return true;
+                        }
+                    }*/
+                }
+                else
+                {
+                    DataRow row;
+                    row = dt.NewRow();
+                    row["MaHangHoa"] = HH.MaHangHoa;
+                    row["TenHangHoa"] = HH.TenHangHoa;
+                    row["MaDonVi"] = HH.MaDonVi;
+                    row["TenDonVi"] = DV.TenDonVi;
+                    row["SoLuong"] = txtSoLuong.Text;
+                    row["DonGia"] = txtDonGia.Text;
+                    row["ThanhTien"] = txtThanhTien.Text;
+
+                    dt.Rows.Add(row);
+                }
+            
+            }
+            
+
+            gridControlMuaHang.DataSource = dt;
+        }
+        bool ThemVaoDataTable()
+        {
+            return true;
+        }
+        bool KiemTraTrung(string ma)
+        {
+            if (dt != null)
+            {
+                DataRow r = new DataRow();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (ma == dt.Rows[i][0].ToString())
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
+
+
         }
 
     }
