@@ -172,6 +172,17 @@ create table MuaHang
 	TienThanhToan money
 )
 go
+
+create table  ChiTietPhieuMuaHang
+(
+	MaChiTietPhieu varchar(15) primary key,
+	MaPhieu varchar(15) not null,
+	MaHangHoa varchar(15) not null,
+	SoLuong int,
+	DonGia money,
+	ThanhTien money
+)
+go
 create table KieuThanhToan
 (
 	MaThanhToan varchar(15),
@@ -192,7 +203,6 @@ create table TonKho
 	MaHangHoa varchar(15),
 	MaKho varchar(15),
 	MaDonVi varchar(15),
-	MaNhomHang varchar(15),
 	SoLuong int,
 )
 ---------------------------Stored Procedures------------------------------------------------------------------------
@@ -340,6 +350,105 @@ begin
 	@DienGiai,
 	@ConQuanLy
 	)
+end
+
+go
+create procedure proThemMuaHang
+	@MaPhieu varchar(15),
+	@TenPhieu nvarchar(30),
+	@NgayLapPhieu date,
+	@SoHoaDonVAT varchar(20),
+	@SoPhieuVietTay varchar(20),
+	@MaThanhToan varchar(15),
+	@MaHinhThuc varchar(15),
+	@MaNhaCungCap varchar(15),
+	@ThoiHanThanhToan date,
+	
+	@GhiChu nvarchar(50),
+
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	insert into MuaHang values(
+	@MaPhieu,
+	@TenPhieu,
+	@NgayLapPhieu,
+	@SoHoaDonVAT,
+	@SoPhieuVietTay,
+	@MaThanhToan,
+	@MaHinhThuc,
+	@MaNhaCungCap,
+	@ThoiHanThanhToan,
+	
+	@GhiChu,
+
+	@MaNhanVien,
+	@MaKho,
+
+	@TongTien,
+	@PTramCK,
+	@Thue,
+	@TuongDuongTien,
+	@TienThanhToan
+	)
+end
+go
+
+create procedure proThemTonKho
+	@MaHangHoa varchar(15),
+	@MaKho varchar(15),
+	@SoLuong int
+as
+IF EXISTS
+(
+	SELECT MaHangHoa
+	FROM TonKho
+	WHERE @MaHangHoa=MaHangHoa and @MaKho=MaKho
+)
+begin
+	update TonKho set
+	SoLuong = SoLuong + @SoLuong
+end
+else
+begin
+insert into TonKho values
+(
+	@MaHangHoa,
+	@MaKho,
+	@SoLuong
+)
+end
+create procedure proSuaTonKho
+	@MaHangHoa varchar(15),
+	@MaKho varchar(15),
+	@MaDonVi varchar(15),
+	@MaNhomHang varchar(15),
+	@SoLuong int
+as
+begin
+	update TonKho set
+	MaHangHoa=@MaHangHoa,
+	MaKho=@MaKho,
+	MaDonVi=@MaDonVi,
+	MaNhomHang=@MaNhomHang,
+	SoLuong=@SoLuong
+	where MaHangHoa=@MaHangHoa
+end
+
+go
+
+create procedure proXoaTonKho
+@MaHangHoa varchar(15)
+as
+begin
+	delete from TonKho where MaHangHoa=@MaHangHoa
 end
 
 

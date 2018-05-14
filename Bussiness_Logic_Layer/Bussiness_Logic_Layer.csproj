@@ -52,6 +52,7 @@
     <Compile Include="NhanVienBUS.cs" />
     <Compile Include="NhomHangBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TonKhoBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data_Acccess_Layer\Data_Acccess_Layer.csproj">

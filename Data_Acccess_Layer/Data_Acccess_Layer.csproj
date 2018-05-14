@@ -53,6 +53,7 @@
     <Compile Include="NhanVienDAO.cs" />
     <Compile Include="NhomHangDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TonKhoDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Object\Object.csproj">

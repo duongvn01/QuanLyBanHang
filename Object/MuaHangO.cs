@@ -26,7 +26,7 @@ namespace Object
 
         public DateTime NgayLapPhieu
         {
-            get { return ngayLapPhieu; }
+            get { return ngayLapPhieu.Date; }
             set { ngayLapPhieu = value; }
         }
         String soHoaDonVAT;
@@ -67,7 +67,7 @@ namespace Object
         DateTime thoiHanThanhToan;
         public DateTime ThoiHanThanhToan
         {
-            get { return thoiHanThanhToan; }
+            get { return thoiHanThanhToan.Date; }
             set { thoiHanThanhToan = value; }
         }
         String ghiChu;
@@ -92,6 +92,7 @@ namespace Object
             get { return maKho; }
             set { maKho = value; }
         }
+
         double tongTien;
 
         public double TongTien

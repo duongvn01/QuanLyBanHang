@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoPhanO.cs" />
+    <Compile Include="ChiTietPhieuMuaHangO.cs" />
     <Compile Include="DonViO.cs" />
     <Compile Include="HangHoaO.cs" />
     <Compile Include="KhachHangO.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="NhanVienO.cs" />
     <Compile Include="NhomHangO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TonKhoO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
