@@ -12,9 +12,11 @@ namespace Bussiness_Logic_Layer
     public class KhoBUS
     {
         KhoDAO khoDAO;
+        KhoO K;
         public KhoBUS()
         {
             khoDAO = new KhoDAO();
+            K = new KhoO();
         }
         public DataTable getAllKhoBUS()
         {

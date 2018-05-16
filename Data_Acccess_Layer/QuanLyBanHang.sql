@@ -148,6 +148,7 @@ create table NhanVien
 
 
 go
+drop table muahang
 create table MuaHang
 (
 	MaPhieu varchar(15)primary key,
@@ -459,6 +460,28 @@ as
 select MaKho,TenKho,TenNhanVien as TenQuanLy,KyHieu,NguoiLienHe,Kho.DiaChi,Fax,Kho.SoDienThoai,Kho.Email,DienGiai,ConQuanLy
 from Kho,NhanVien
 where Kho.MaNguoiQuanLy = NhanVien.MaNhanVien
+-- lay tat ca TonKho
+go
+
+create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang
+@MaKho varchar(15)
+as
+begin
+	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
+	From Kho,TonKho,HangHoa,DonVi,NhomHang
+end
+
+go
+
+--lay bang kho = makho
+create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang_IfMaKho
+@MaKho varchar(15)
+as
+begin
+	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
+	From Kho,TonKho,HangHoa,DonVi,NhomHang
+	where @MaKho=Kho.MaKho
+end
 --Them don vi
 create procedure proThemDonVi
 	@MaDonVi varchar(15),

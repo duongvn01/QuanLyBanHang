@@ -299,13 +299,13 @@ namespace QuanLyBanHang
             //them mua hang            
             MH.MaPhieu = txtMaPhieu.Text;
             MH.TenPhieu = txtTenPhieu.Text;
-            MH.NgayLapPhieu = Convert.ToDateTime(deNgayLapPhieu.EditValue).Date;
+            MH.NgayLapPhieu = Convert.ToDateTime(deNgayLapPhieu.Text);
             MH.SoHoaDonVAT = txtSoHoaDonVAT.Text;
             MH.SoPhieuVietTay = txtSoPhieuVietTay.Text;
             MH.MaThanhToan = lueKieuThanhToan.EditValue.ToString();
             MH.MaHinhThuc = lueHinhThucThanhToan.EditValue.ToString();
             MH.MaNhaCungCap = lueNhaCungCap.EditValue.ToString();
-            MH.ThoiHanThanhToan = Convert.ToDateTime(deThoiHanThanhToan.EditValue).Date;
+            MH.ThoiHanThanhToan = Convert.ToDateTime(deThoiHanThanhToan.Text);
             MH.GhiChu = txtGhiChu.Text;
             MH.MaNhanVien = lueNhanVien.EditValue.ToString();
             MH.MaKho = lueKho.EditValue.ToString();
@@ -322,21 +322,20 @@ namespace QuanLyBanHang
                 try
                 {
                     bool f = muaHangBUS.ThemHangHoaBUS(ref err, MH);
-                    int dem=0;
-                    foreach (DataRow r in dt.Rows)
-                    {
-                        TK.MaHangHoa = r[0].ToString();
-                        TK.MaKho = lueKho.EditValue.ToString();
-                        TK.SoLuong = Convert.ToInt32(r[4]);
-                        bool f1 = tonKhoBUS.ThemTonKhoBUS(ref err, TK);
-                        if(f1==true)
-                        {
-                            dem++;
-                        }
-                    }
-                    
+                    int dem = 0;         
                     if (f == true)
                     {
+                        foreach (DataRow r in dt.Rows)
+                        {
+                            TK.MaHangHoa = r[0].ToString();
+                            TK.MaKho = lueKho.EditValue.ToString();
+                            TK.SoLuong = Convert.ToInt32(r[4]);
+                            bool f1 = tonKhoBUS.ThemTonKhoBUS(ref err, TK);
+                            if (f1 == true)
+                            {
+                                dem++;
+                            }
+                        }
                         MessageBox.Show("Them thanh cong");
                     }
                     else

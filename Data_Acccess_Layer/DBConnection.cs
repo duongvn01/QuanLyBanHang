@@ -117,6 +117,7 @@ namespace Data_Acccess_Layer
             {
                 myCommand.Connection = openConnection();
                 myCommand.CommandText = _query;
+                myCommand.CommandType = CommandType.StoredProcedure;
                 myCommand.Parameters.AddRange(sqlParameter);
                 myCommand.ExecuteNonQuery();
                 myAdapter.SelectCommand = myCommand;
@@ -188,6 +189,52 @@ namespace Data_Acccess_Layer
             }
             return dt;
         }
+        /*
+        //goi procedure lay table bang ma(co parameter)
+        public DataTable executeGetTableByID(String _query, SqlParameter[] sqlParameter)
+        {
+            SqlCommand myCommand = new SqlCommand();
+            DataTable dataTable = new DataTable();
+            dataTable = null;
+            DataSet ds = new DataSet();
+            try
+            {
+                myCommand.Connection = openConnection();
+                myCommand.CommandText = _query;
+                myCommand.Parameters.AddRange(sqlParameter);
+                myCommand.ExecuteNonQuery();
+                myAdapter.SelectCommand = myCommand;
+                myAdapter.Fill(ds);
+                dataTable = ds.Tables[0];
+            }
+
+
+
+
+            SqlCommand myCommand = new SqlCommand();
+            DataTable dt = new DataTable();
+            try
+            {
+
+                myCommand = new SqlCommand(_query, conn);
+    
+                myCommand.CommandType = CommandType.StoredProcedure;
+                myAdapter = new SqlDataAdapter(myCommand);
+                myAdapter.Fill(dt);
+            }
+            catch (SqlException e)
+            {
+                Console.Write("Error - Connection.executeSelectQuery - Query: "
+                    + _query + " \nException: " + e.StackTrace.ToString());
+                return null;
+            }
+            finally
+            {
+
+            }
+            return dt;
+        }
+         */
         //chinh sua, lay datatable tu function sql
         public int MyExecuteQueryReturnInt(
             string strSQL,

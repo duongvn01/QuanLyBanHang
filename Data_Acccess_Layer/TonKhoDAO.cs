@@ -19,12 +19,14 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllTonKho()
         {
-            string query = string.Format("select * from TonKho");
-           
-            return conn.executeSelectQueryNoParam(query);
+            return conn.executeGetTable("proGetTonKho_Kho_HangHoa_DonVi_NhomHang");
         }
-
-
+        public DataTable GetAllTonKhoByMaKho(TonKhoO tk)
+        {
+            return conn.executeSelectQuery("proGetTonKho_Kho_HangHoa_DonVi_NhomHang_IfMaKho",new SqlParameter("@MaKho", tk.MaKho),
+                new SqlParameter("@SoLuong", tk.SoLuong)
+                );
+        }
         public bool ThemTonKho(ref string err,TonKhoO tk)
         {
             return conn.MyExecuteNonQuery("proThemTonKho",
