@@ -21,9 +21,21 @@ namespace Data_Acccess_Layer
         {
             return conn.executeGetTable("proGetHangHoa_Kho_NhomHang_DonVi_NhaCC");
         }
+        public DataTable GetAllMuaHangByMaNhaCungCap(MuaHangO mh)
+        {
+            SqlParameter param = new SqlParameter();
+            param.ParameterName = "@MaNhaCungCap";
+            param.Value = mh.MaNhaCungCap;
+            return conn.executeSelectQuery("proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap", param);
+        }
         public DataTable GetAllMuaHangByNgayNayNgayKia(DateTime ngayNay,DateTime ngayKia)
         {
-            return conn.executeSelectQueryParamArray("proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia", ngayNay, ngayKia);
+            SqlParameter[] parameters = { new SqlParameter("@NgayNay", ngayNay),
+                                          new SqlParameter("@NgayKia", ngayKia)};
+ 
+            return conn.executeSelectQueryParamArray("proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia",
+                parameters
+                );
         }
         public bool ThemMuaHang(ref string err, MuaHangO mh)
         {

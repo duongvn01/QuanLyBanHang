@@ -96,7 +96,6 @@
             this.txtPhanTramThue = new DevExpress.XtraEditors.CalcEdit();
             this.txtTongTien = new DevExpress.XtraEditors.CalcEdit();
             this.lueHangHoa = new DevExpress.XtraEditors.LookUpEdit();
-            this.btnLichSuMuaHang = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaCungCap.Properties)).BeginInit();
@@ -768,23 +767,10 @@
             this.lueHangHoa.TabIndex = 126;
             this.lueHangHoa.EditValueChanged += new System.EventHandler(this.lueHangHoa_EditValueChanged);
             // 
-            // btnLichSuMuaHang
-            // 
-            this.btnLichSuMuaHang.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.btnLichSuMuaHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnLichSuMuaHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnLichSuMuaHang.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnLichSuMuaHang.Location = new System.Drawing.Point(304, 2);
-            this.btnLichSuMuaHang.Name = "btnLichSuMuaHang";
-            this.btnLichSuMuaHang.Size = new System.Drawing.Size(125, 23);
-            this.btnLichSuMuaHang.TabIndex = 148;
-            this.btnLichSuMuaHang.Text = "Lịch Sử Mua Hàng";
-            // 
             // UCMuaHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLichSuMuaHang);
             this.Controls.Add(this.txtPhanTramThue);
             this.Controls.Add(this.txtTuongDuongTien);
             this.Controls.Add(this.txtTienThanhToan);
@@ -950,6 +936,5 @@
         private DevExpress.XtraEditors.CalcEdit txtPhanTramThue;
         private DevExpress.XtraEditors.CalcEdit txtTongTien;
         private DevExpress.XtraEditors.LookUpEdit lueHangHoa;
-        private DevExpress.XtraEditors.SimpleButton btnLichSuMuaHang;
     }
 }

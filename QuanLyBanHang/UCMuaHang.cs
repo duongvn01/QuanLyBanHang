@@ -387,5 +387,12 @@ namespace QuanLyBanHang
             txtTienThanhToan.Text = (tongTien - tienChuyenKhoan + tienThueTuongDuong).ToString();
         }
 
+        private void btnLichSuMuaHang_Click(object sender, EventArgs e)
+        {
+            /*UCLichSuMuaHang lsmh = new UCLichSuMuaHang();
+            FormMain fm = new FormMain();
+            fm.Show();*/
+        }
+
     }
 }

@@ -463,6 +463,17 @@ where Kho.MaNguoiQuanLy = NhanVien.MaNhanVien
 -- lay tat ca TonKho
 go
 
+-- lay lich su mua hang theo MaNhaCungCap
+create procedure proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap
+@MaNhaCungCap varchar(15)
+as
+begin
+	select MuaHang.MaPhieu,TenPhieu,NgayLapPhieu,NhaCungCap.MaNhaCungCap,TenNhaCungCap,TongTien
+	,PTramCK,Thue,TienThanhToan,SoHoaDonVAT,GhiChu,Kho.MaKho,TenKho
+	from MuaHang,NhaCungCap,Kho
+	where NhaCungCap.MaNhaCungCap = @MaNhaCungCap
+		and MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
+end
 -- lay lich su mua hang theo ngay
 create procedure proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia
 @NgayNay date,

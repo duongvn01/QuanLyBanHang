@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress;
+using DevExpress.XtraEditors;
 
 namespace QuanLyBanHang
 {
@@ -82,6 +84,7 @@ namespace QuanLyBanHang
         private void barbtnMuaHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCMuaHang mh = new UCMuaHang();
+            panel1.Location = new System.Drawing.Point(130, 190);
             panel1.Controls.Clear();
             panel1.Controls.Add(mh);
         }
@@ -91,6 +94,26 @@ namespace QuanLyBanHang
             UCTonKho tk = new UCTonKho();
             panel1.Controls.Clear();
             panel1.Controls.Add(tk);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            //SimpleButton btnLichSuMuaHang = new SimpleButton();
+            /*panelChucNang.Controls.Add(btnLichSuMuaHang);
+            btnLichSuMuaHang.Text = "Lịch Sử Mua Hàng";
+            //btnLichSuMuaHang.ImageList = imageList1;
+            //btnLichSuMuaHang.ImageIndex = 0;
+            btnLichSuMuaHang.Size = btnLichSuMuaHang.CalcBestFit(btnLichSuMuaHang.CreateGraphics());
+            btnLichSuMuaHang.Location = new Point(1,10);
+            */
+            //panelChucNang.Visible = false;
+        }
+
+        private void btnLichSuMuaHang_Click(object sender, EventArgs e)
+        {
+            UCLichSuMuaHang lsmh = new UCLichSuMuaHang();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(lsmh);
         }
     }
 }

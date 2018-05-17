@@ -51,20 +51,22 @@
             this.deNgayKetThuc = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.lueNhaCungCap = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLichSuMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichSuMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayBatDau.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayBatDau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueNhaCungCap.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControlLichSuMuaHang
             // 
-            this.gridControlLichSuMuaHang.Location = new System.Drawing.Point(0, 47);
+            this.gridControlLichSuMuaHang.Location = new System.Drawing.Point(0, 88);
             this.gridControlLichSuMuaHang.MainView = this.gridViewLichSuMuaHang;
             this.gridControlLichSuMuaHang.Name = "gridControlLichSuMuaHang";
-            this.gridControlLichSuMuaHang.Size = new System.Drawing.Size(998, 382);
+            this.gridControlLichSuMuaHang.Size = new System.Drawing.Size(998, 341);
             this.gridControlLichSuMuaHang.TabIndex = 0;
             this.gridControlLichSuMuaHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLichSuMuaHang});
@@ -217,7 +219,7 @@
             // 
             this.btnXem.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.btnXem.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnXem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnXem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXem.ImageOptions.Image")));
             this.btnXem.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnXem.Location = new System.Drawing.Point(400, 3);
             this.btnXem.Name = "btnXem";
@@ -266,10 +268,25 @@
             this.labelControl2.TabIndex = 11;
             this.labelControl2.Text = "Đến";
             // 
+            // lueNhaCungCap
+            // 
+            this.lueNhaCungCap.Location = new System.Drawing.Point(3, 50);
+            this.lueNhaCungCap.Name = "lueNhaCungCap";
+            this.lueNhaCungCap.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueNhaCungCap.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNhaCungCap", "Mã Nhà Cung Cấp"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNhaCungCap", "Tên Nhà Cung Cấp")});
+            this.lueNhaCungCap.Properties.NullText = "";
+            this.lueNhaCungCap.Size = new System.Drawing.Size(382, 20);
+            this.lueNhaCungCap.TabIndex = 12;
+            this.lueNhaCungCap.EditValueChanged += new System.EventHandler(this.lueNhaCungCap_EditValueChanged);
+            // 
             // UCLichSuMuaHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lueNhaCungCap);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.deNgayKetThuc);
@@ -286,6 +303,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.deNgayBatDau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueNhaCungCap.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +333,6 @@
         private DevExpress.XtraEditors.DateEdit deNgayKetThuc;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LookUpEdit lueNhaCungCap;
     }
 }

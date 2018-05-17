@@ -15,19 +15,35 @@ namespace QuanLyBanHang
 {
     public partial class UCLichSuMuaHang : UserControl
     {
+        MuaHangO MH;
         MuaHangBUS muaHangBUS;
+        NhaCungCapBUS nhaCungCapBUS;
 
         public UCLichSuMuaHang()
         {
             InitializeComponent();
+            MH = new MuaHangO();
             muaHangBUS = new MuaHangBUS();
+            nhaCungCapBUS = new NhaCungCapBUS();
         }
-
+        void loadLookUpEdit()
+        {
+            lueNhaCungCap.Properties.DataSource = nhaCungCapBUS.getAllNhaCungCap();
+            lueNhaCungCap.Properties.DisplayMember = "TenNhaCungCap";
+            lueNhaCungCap.Properties.ValueMember = "MaNhaCungCap";
+  
+        }
         private void btnXem_Click(object sender, EventArgs e)
         {
             DateTime ngayDatDau = Convert.ToDateTime(deNgayBatDau.Text);
             DateTime ngayKetThuc = Convert.ToDateTime(deNgayKetThuc.Text);
             gridControlLichSuMuaHang.DataSource = muaHangBUS.getAllMuaHangByNgayNayNgayKiaBUS(ngayDatDau,ngayKetThuc);
+        }
+
+        private void lueNhaCungCap_EditValueChanged(object sender, EventArgs e)
+        {
+            MH.MaNhaCungCap = lueNhaCungCap.EditValue.ToString();
+            gridControlLichSuMuaHang.DataSource = muaHangBUS.getAllMuaHangByMaNhaCungCapBUS(MH);
         }
     }
 }

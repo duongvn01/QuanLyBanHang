@@ -70,8 +70,11 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabFormControl1 = new DevExpress.XtraBars.TabFormControl();
+            this.panelChucNang = new System.Windows.Forms.Panel();
+            this.btnLichSuMuaHang = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
+            this.panelChucNang.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -112,7 +115,7 @@
             this.ribbonPage3,
             this.ribbonPage4});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(1079, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(1236, 141);
             // 
             // barButtonItem1
             // 
@@ -412,33 +415,54 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 197);
+            this.panel1.Location = new System.Drawing.Point(130, 190);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1067, 566);
+            this.panel1.Size = new System.Drawing.Size(1029, 573);
             this.panel1.TabIndex = 1;
             // 
             // tabFormControl1
             // 
             this.tabFormControl1.Location = new System.Drawing.Point(0, 0);
             this.tabFormControl1.Name = "tabFormControl1";
-            this.tabFormControl1.Size = new System.Drawing.Size(1079, 50);
+            this.tabFormControl1.Size = new System.Drawing.Size(1236, 50);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 3;
             this.tabFormControl1.TabStop = false;
+            // 
+            // panelChucNang
+            // 
+            this.panelChucNang.Controls.Add(this.btnLichSuMuaHang);
+            this.panelChucNang.Location = new System.Drawing.Point(0, 190);
+            this.panelChucNang.Name = "panelChucNang";
+            this.panelChucNang.Size = new System.Drawing.Size(127, 295);
+            this.panelChucNang.TabIndex = 4;
+            // 
+            // btnLichSuMuaHang
+            // 
+            this.btnLichSuMuaHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLichSuMuaHang.ImageOptions.Image")));
+            this.btnLichSuMuaHang.Location = new System.Drawing.Point(3, 73);
+            this.btnLichSuMuaHang.Name = "btnLichSuMuaHang";
+            this.btnLichSuMuaHang.Size = new System.Drawing.Size(121, 21);
+            this.btnLichSuMuaHang.TabIndex = 0;
+            this.btnLichSuMuaHang.Text = "Lịch Sử Mua Hàng";
+            this.btnLichSuMuaHang.Click += new System.EventHandler(this.btnLichSuMuaHang_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 767);
+            this.ClientSize = new System.Drawing.Size(1236, 767);
+            this.Controls.Add(this.panelChucNang);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.tabFormControl1);
             this.Name = "FormMain";
             this.TabFormControl = this.tabFormControl1;
             this.Text = "Quản Lý Bán Hàng";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).EndInit();
+            this.panelChucNang.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,6 +511,8 @@
         private DevExpress.XtraBars.BarButtonItem barbtnKiemKe;
         private DevExpress.XtraBars.BarButtonItem barbtnNhapSoDuDauKy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private System.Windows.Forms.Panel panelChucNang;
+        private DevExpress.XtraEditors.SimpleButton btnLichSuMuaHang;
     }
 }
 

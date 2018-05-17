@@ -280,10 +280,5 @@ namespace Data_Acccess_Layer
             int soluong = Convert.ToInt32(dt.Rows[0][0]); //ở đây giá trị trả về là so luong             
             return soluong;
         }
-
-        internal DataTable executeSelectQueryParamArray(string p, DateTime ngayNay, DateTime ngayKia)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

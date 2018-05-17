@@ -20,6 +20,10 @@ namespace Bussiness_Logic_Layer
         {
             return muaHangDAO.GetAllMuaHang();
         }
+        public DataTable getAllMuaHangByMaNhaCungCapBUS(MuaHangO mh)
+        {
+            return muaHangDAO.GetAllMuaHangByMaNhaCungCap(mh);
+        }
         public DataTable getAllMuaHangByNgayNayNgayKiaBUS(DateTime ngayNay,DateTime ngayKia)
         {
             return muaHangDAO.GetAllMuaHangByNgayNayNgayKia(ngayNay, ngayKia);
