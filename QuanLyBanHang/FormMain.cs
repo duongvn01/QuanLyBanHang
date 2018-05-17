@@ -85,5 +85,12 @@ namespace QuanLyBanHang
             panel1.Controls.Clear();
             panel1.Controls.Add(mh);
         }
+
+        private void barbtnTonKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UCTonKho tk = new UCTonKho();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(tk);
+        }
     }
 }

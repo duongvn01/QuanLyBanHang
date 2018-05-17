@@ -107,7 +107,7 @@ namespace Data_Acccess_Layer
             }
             return true;
         }
-        public DataTable executeSelectQuery(String _query, SqlParameter[] sqlParameter)
+        public DataTable executeSelectQuery(String _query, SqlParameter sqlParameter)
         {
             SqlCommand myCommand = new SqlCommand();
             DataTable dataTable = new DataTable();
@@ -118,6 +118,38 @@ namespace Data_Acccess_Layer
                 myCommand.Connection = openConnection();
                 myCommand.CommandText = _query;
                 myCommand.CommandType = CommandType.StoredProcedure;
+
+                //myCommand.Parameters.AddRange(sqlParameter);
+                myCommand.Parameters.Add(sqlParameter);
+                myCommand.ExecuteNonQuery();
+                myAdapter.SelectCommand = myCommand;
+                myAdapter.Fill(ds);
+                dataTable = ds.Tables[0];
+            }
+            catch (SqlException e)
+            {
+                Console.Write("Error - Connection.executeSelectQuery - Query: "
+                    + _query + " \nException: " + e.StackTrace.ToString());
+                return null;
+            }
+            finally
+            {
+
+            }
+            return dataTable;
+        }
+        public DataTable executeSelectQueryParamArray(String _query, SqlParameter[] sqlParameter)
+        {
+            SqlCommand myCommand = new SqlCommand();
+            DataTable dataTable = new DataTable();
+            dataTable = null;
+            DataSet ds = new DataSet();
+            try
+            {
+                myCommand.Connection = openConnection();
+                myCommand.CommandText = _query;
+                myCommand.CommandType = CommandType.StoredProcedure;
+
                 myCommand.Parameters.AddRange(sqlParameter);
                 myCommand.ExecuteNonQuery();
                 myAdapter.SelectCommand = myCommand;
@@ -247,6 +279,11 @@ namespace Data_Acccess_Layer
             da.Fill(dt);
             int soluong = Convert.ToInt32(dt.Rows[0][0]); //ở đây giá trị trả về là so luong             
             return soluong;
+        }
+
+        internal DataTable executeSelectQueryParamArray(string p, DateTime ngayNay, DateTime ngayKia)
+        {
+            throw new NotImplementedException();
         }
     }
 }

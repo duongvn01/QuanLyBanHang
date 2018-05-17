@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.lueKho = new DevExpress.XtraEditors.LookUpEdit();
-            this.gridControlHangHoa = new DevExpress.XtraGrid.GridControl();
-            this.gridViewHangHoa = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlTonKho = new DevExpress.XtraGrid.GridControl();
+            this.gridViewTonKho = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMaHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaKho = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenKho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMaNhomHang = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTenNhomHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaNhomHang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTenNhomHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.lueKho.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlHangHoa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewHangHoa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlTonKho)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTonKho)).BeginInit();
             this.SuspendLayout();
             // 
             // lueKho
@@ -53,25 +53,26 @@
             this.lueKho.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueKho.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhuVuc", "Mã Khu Vực"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhuVuc", "Tên Khu Vực")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKho", "Mã Kho"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKho", "Tên Kho")});
             this.lueKho.Properties.NullText = "";
             this.lueKho.Size = new System.Drawing.Size(231, 20);
             this.lueKho.TabIndex = 46;
+            this.lueKho.EditValueChanged += new System.EventHandler(this.lueKho_EditValueChanged);
             // 
-            // gridControlHangHoa
+            // gridControlTonKho
             // 
-            this.gridControlHangHoa.Location = new System.Drawing.Point(3, 51);
-            this.gridControlHangHoa.MainView = this.gridViewHangHoa;
-            this.gridControlHangHoa.Name = "gridControlHangHoa";
-            this.gridControlHangHoa.Size = new System.Drawing.Size(805, 394);
-            this.gridControlHangHoa.TabIndex = 47;
-            this.gridControlHangHoa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewHangHoa});
+            this.gridControlTonKho.Location = new System.Drawing.Point(3, 51);
+            this.gridControlTonKho.MainView = this.gridViewTonKho;
+            this.gridControlTonKho.Name = "gridControlTonKho";
+            this.gridControlTonKho.Size = new System.Drawing.Size(805, 394);
+            this.gridControlTonKho.TabIndex = 47;
+            this.gridControlTonKho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewTonKho});
             // 
-            // gridViewHangHoa
+            // gridViewTonKho
             // 
-            this.gridViewHangHoa.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewTonKho.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMaHangHoa,
             this.colTenHangHoa,
             this.colMaKho,
@@ -81,9 +82,9 @@
             this.colMaNhomHang,
             this.colTenNhomHang,
             this.colSoLuong});
-            this.gridViewHangHoa.GridControl = this.gridControlHangHoa;
-            this.gridViewHangHoa.Name = "gridViewHangHoa";
-            this.gridViewHangHoa.OptionsFind.AlwaysVisible = true;
+            this.gridViewTonKho.GridControl = this.gridControlTonKho;
+            this.gridViewTonKho.Name = "gridViewTonKho";
+            this.gridViewTonKho.OptionsFind.AlwaysVisible = true;
             // 
             // colMaHangHoa
             // 
@@ -122,22 +123,6 @@
             this.colTenKho.VisibleIndex = 2;
             this.colTenKho.Width = 79;
             // 
-            // colMaNhomHang
-            // 
-            this.colMaNhomHang.Caption = "Mã Nhóm Hàng";
-            this.colMaNhomHang.FieldName = "MaNhomHang";
-            this.colMaNhomHang.Name = "colMaNhomHang";
-            this.colMaNhomHang.Width = 69;
-            // 
-            // colTenNhomHang
-            // 
-            this.colTenNhomHang.Caption = "Tên Nhóm Hàng";
-            this.colTenNhomHang.FieldName = "TenNhomHang";
-            this.colTenNhomHang.Name = "colTenNhomHang";
-            this.colTenNhomHang.Visible = true;
-            this.colTenNhomHang.VisibleIndex = 3;
-            this.colTenNhomHang.Width = 79;
-            // 
             // colMaDonVi
             // 
             this.colMaDonVi.Caption = "Mã đơnVị";
@@ -154,6 +139,22 @@
             this.colTenDonVi.VisibleIndex = 4;
             this.colTenDonVi.Width = 79;
             // 
+            // colMaNhomHang
+            // 
+            this.colMaNhomHang.Caption = "Mã Nhóm Hàng";
+            this.colMaNhomHang.FieldName = "MaNhomHang";
+            this.colMaNhomHang.Name = "colMaNhomHang";
+            this.colMaNhomHang.Width = 69;
+            // 
+            // colTenNhomHang
+            // 
+            this.colTenNhomHang.Caption = "Tên Nhóm Hàng";
+            this.colTenNhomHang.FieldName = "TenNhomHang";
+            this.colTenNhomHang.Name = "colTenNhomHang";
+            this.colTenNhomHang.Visible = true;
+            this.colTenNhomHang.VisibleIndex = 3;
+            this.colTenNhomHang.Width = 79;
+            // 
             // colSoLuong
             // 
             this.colSoLuong.Caption = "Số Lượng";
@@ -166,13 +167,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gridControlHangHoa);
+            this.Controls.Add(this.gridControlTonKho);
             this.Controls.Add(this.lueKho);
             this.Name = "UCTonKho";
             this.Size = new System.Drawing.Size(826, 448);
+            this.Load += new System.EventHandler(this.UCTonKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueKho.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlHangHoa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewHangHoa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlTonKho)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTonKho)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,8 +182,8 @@
         #endregion
 
         private DevExpress.XtraEditors.LookUpEdit lueKho;
-        private DevExpress.XtraGrid.GridControl gridControlHangHoa;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewHangHoa;
+        private DevExpress.XtraGrid.GridControl gridControlTonKho;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewTonKho;
         private DevExpress.XtraGrid.Columns.GridColumn colMaHangHoa;
         private DevExpress.XtraGrid.Columns.GridColumn colTenHangHoa;
         private DevExpress.XtraGrid.Columns.GridColumn colMaKho;

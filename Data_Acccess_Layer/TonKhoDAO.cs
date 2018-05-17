@@ -23,9 +23,10 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllTonKhoByMaKho(TonKhoO tk)
         {
-            return conn.executeSelectQuery("proGetTonKho_Kho_HangHoa_DonVi_NhomHang_IfMaKho",new SqlParameter("@MaKho", tk.MaKho),
-                new SqlParameter("@SoLuong", tk.SoLuong)
-                );
+            SqlParameter param  = new SqlParameter();
+            param.ParameterName = "@MaKho";
+            param.Value         = tk.MaKho;
+            return conn.executeSelectQuery("proGetTonKho_Kho_HangHoa_DonVi_NhomHang_IfMaKho",param);
         }
         public bool ThemTonKho(ref string err,TonKhoO tk)
         {

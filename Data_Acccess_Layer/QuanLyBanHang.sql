@@ -463,24 +463,38 @@ where Kho.MaNguoiQuanLy = NhanVien.MaNhanVien
 -- lay tat ca TonKho
 go
 
-create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang
-@MaKho varchar(15)
+-- lay lich su mua hang theo ngay
+create procedure proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia
+@NgayNay date,
+@NgayKia date
 as
 begin
-	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
-	From Kho,TonKho,HangHoa,DonVi,NhomHang
+	select MuaHang.MaPhieu,TenPhieu,NgayLapPhieu,NhaCungCap.MaNhaCungCap,TenNhaCungCap,TongTien
+	,PTramCK,Thue,TienThanhToan,SoHoaDonVAT,GhiChu,Kho.MaKho,TenKho
+	from MuaHang,NhaCungCap,Kho
+	where NgayLapPhieu>=@NgayNay and NgayLapPhieu<=@NgayKia
+		and MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
 end
 
 go
+create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang
+as
+begin
+	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,TenKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
+	From Kho,TonKho,HangHoa,DonVi,NhomHang
+	Where TonKho.MaHangHoa = HangHoa.MaHangHoa and TonKho.MaKho =Kho.MaKho and
+		HangHoa.MaDonVi = DonVi.MaDonVi and HangHoa.MaNhomHang = NhomHang.MaNhomHang
+end
 
 --lay bang kho = makho
 create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang_IfMaKho
 @MaKho varchar(15)
 as
 begin
-	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
+	select HangHoa.MaHangHoa,TenHangHoa,Kho.MaKho,TenKho,DonVi.MaDonVi,TenDonVi,SoLuong,NhomHang.MaNhomHang,TenNhomHang
 	From Kho,TonKho,HangHoa,DonVi,NhomHang
-	where @MaKho=Kho.MaKho
+	where @MaKho=Kho.MaKho and TonKho.MaHangHoa = HangHoa.MaHangHoa and TonKho.MaKho =Kho.MaKho and
+		HangHoa.MaDonVi = DonVi.MaDonVi and HangHoa.MaNhomHang = NhomHang.MaNhomHang
 end
 --Them don vi
 create procedure proThemDonVi

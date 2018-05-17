@@ -16,9 +16,13 @@ namespace Bussiness_Logic_Layer
         {
             tonKhoDAO = new TonKhoDAO();
         }
-        public DataTable getAllDonVi()
+        public DataTable getAllTonKho()
         {
             return tonKhoDAO.GetAllTonKho();          
+        }
+        public DataTable GetAllTonKhoByMaKhoBUS(TonKhoO tk)
+        {
+            return tonKhoDAO.GetAllTonKhoByMaKho(tk);
         }
         public bool ThemTonKhoBUS(ref string err, TonKhoO tk)
         {

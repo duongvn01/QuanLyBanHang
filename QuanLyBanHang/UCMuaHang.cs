@@ -379,11 +379,12 @@ namespace QuanLyBanHang
         {
             
             int thue = Convert.ToInt32(txtPhanTramThue.Text);
-            double tiengThueTuongDuong = (Convert.ToDouble(txtThanhTien.Text)/100)*thue;
-            txtTuongDuongTien.Text = tiengThueTuongDuong.ToString();
-
-            double tiengChuyenKhoan = Convert.ToDouble(txtPhanTramChuyenKhoan.Text)*tongTien/100;
-            txtTienThanhToan.Text = (tongTien - tiengChuyenKhoan + tiengThueTuongDuong).ToString();
+            tongTien = Convert.ToDouble(txtTongTien.Text);
+            double tienThueTuongDuong = (tongTien/100)*thue;
+            txtTuongDuongTien.Text = tienThueTuongDuong.ToString();
+            
+            double tienChuyenKhoan = Convert.ToDouble(txtPhanTramChuyenKhoan.Text)*tongTien/100;
+            txtTienThanhToan.Text = (tongTien - tienChuyenKhoan + tienThueTuongDuong).ToString();
         }
 
     }

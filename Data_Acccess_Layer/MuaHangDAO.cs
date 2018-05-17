@@ -21,7 +21,10 @@ namespace Data_Acccess_Layer
         {
             return conn.executeGetTable("proGetHangHoa_Kho_NhomHang_DonVi_NhaCC");
         }
-
+        public DataTable GetAllMuaHangByNgayNayNgayKia(DateTime ngayNay,DateTime ngayKia)
+        {
+            return conn.executeSelectQueryParamArray("proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia", ngayNay, ngayKia);
+        }
         public bool ThemMuaHang(ref string err, MuaHangO mh)
         {
             return conn.MyExecuteNonQuery("proThemMuaHang",
