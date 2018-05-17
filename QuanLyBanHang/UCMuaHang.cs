@@ -16,7 +16,7 @@ namespace QuanLyBanHang
 {
     public partial class UCMuaHang : UserControl
     {
-        //int themOrSua = 1;
+        int themOrSua = 1;
         double tongTien;
         MuaHangO MH;
         NhaCungCapO NCC;
@@ -43,6 +43,14 @@ namespace QuanLyBanHang
             initObjectBUS();
             initDataTable();
             //themOrSua = 1;
+            tongTien = 0;
+        }
+        public UCMuaHang(int themOrSua)
+        {
+            InitializeComponent();
+            initObjectBUS();
+            initDataTable();
+            this.themOrSua = themOrSua; ;
             tongTien = 0;
         }
 
@@ -109,9 +117,42 @@ namespace QuanLyBanHang
             dt.Columns.Add("DonGia", typeof(double));
             dt.Columns.Add("ThanhTien", typeof(double));
         }
+        public MuaHangO SendToMuaHang
+        {
+            get { return MH; }
+            set { MH = value; }
+
+        }
+        void LayMuaHangByMaPhieu(MuaHangO mh)
+        {
+            MH = muaHangBUS.getOneMuaHangByMaPhieu(mh);
+            //dua du lieu len textbox,lookupedit
+            txtMaPhieu.Text = MH.MaPhieu;
+            txtTenPhieu.Text = MH.TenPhieu;
+            deNgayLapPhieu.EditValue = MH.NgayLapPhieu;
+            txtSoHoaDonVAT.Text = MH.SoHoaDonVAT;
+            txtSoPhieuVietTay.Text = MH.SoPhieuVietTay;
+            lueKieuThanhToan.EditValue = MH.MaThanhToan;
+
+            lueNhaCungCap.EditValue = MH.MaNhaCungCap;
+            deThoiHanThanhToan.EditValue = MH.ThoiHanThanhToan;
+            lueHinhThucThanhToan.EditValue = MH.MaHinhThuc;
+            
+            lueNhanVien.EditValue = MH.MaNhanVien;
+            lueKho.EditValue = MH.MaKho;
+            txtGhiChu.Text = MH.GhiChu;
+        }
+        void LayChiTietPhieuMuaHangByMaPhieu(MuaHangO mh)
+        {
+            CTPMH = 
+        }
         private void UCMuaHang_Load(object sender, EventArgs e)
         {
             loadLookUpEdit();
+            if(themOrSua ==0)
+            {
+                LayMuaHangByMaPhieu(MH);
+            }
         }
 
         private void lueNhaCungCap_EditValueChanged(object sender, EventArgs e)

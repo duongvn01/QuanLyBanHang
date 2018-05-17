@@ -8,14 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress;
 using DevExpress.XtraEditors;
-
+using Object;
 namespace QuanLyBanHang
 {
     public partial class FormMain : DevExpress.XtraBars.TabForm
     {
+        MuaHangO MH;
         public FormMain()
         {
             InitializeComponent();
+            MH = new MuaHangO();          
         }
 
         private void barbtnKhuVuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -84,7 +86,7 @@ namespace QuanLyBanHang
         private void barbtnMuaHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCMuaHang mh = new UCMuaHang();
-            panel1.Location = new System.Drawing.Point(130, 190);
+            //panel1.Location = new System.Drawing.Point(130, 190);
             panel1.Controls.Clear();
             panel1.Controls.Add(mh);
         }
@@ -114,6 +116,20 @@ namespace QuanLyBanHang
             UCLichSuMuaHang lsmh = new UCLichSuMuaHang();
             panel1.Controls.Clear();
             panel1.Controls.Add(lsmh);
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            UCMuaHang mh = new UCMuaHang();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(mh);
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            UCMuaHang mh = new UCMuaHang(0);
+            panel1.Controls.Clear();
+            panel1.Controls.Add(mh);
         }
     }
 }

@@ -460,9 +460,34 @@ as
 select MaKho,TenKho,TenNhanVien as TenQuanLy,KyHieu,NguoiLienHe,Kho.DiaChi,Fax,Kho.SoDienThoai,Kho.Email,DienGiai,ConQuanLy
 from Kho,NhanVien
 where Kho.MaNguoiQuanLy = NhanVien.MaNhanVien
--- lay tat ca TonKho
+
 go
 
+-- lay lich su mua hang
+create procedure proGetMuaHang_NhaCC_Kho
+as
+begin
+	select MuaHang.MaPhieu,TenPhieu,NgayLapPhieu,NhaCungCap.MaNhaCungCap,TenNhaCungCap,TongTien
+	,PTramCK,Thue,TienThanhToan,SoHoaDonVAT,GhiChu,Kho.MaKho,TenKho
+	from MuaHang,NhaCungCap,Kho
+	where MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
+end
+
+go
+
+-- lay lich su mua hang bang MaPhieu
+create procedure proGetMuaHang_NhaCC_Kho_IfMaPhieu
+@MaPhieu varchar(15)
+as
+begin
+	select MuaHang.MaPhieu,TenPhieu,NgayLapPhieu,NhaCungCap.MaNhaCungCap,TenNhaCungCap,TongTien
+	,PTramCK,Thue,TienThanhToan,SoHoaDonVAT,GhiChu,Kho.MaKho,TenKho
+	from MuaHang,NhaCungCap,Kho
+	where @MaPhieu=MaPhieu and
+	MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
+end
+
+go
 -- lay lich su mua hang theo MaNhaCungCap
 create procedure proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap
 @MaNhaCungCap varchar(15)
@@ -488,6 +513,22 @@ begin
 end
 
 go
+
+--lay ChiTietPhieuMuaHang bang MaPhieu
+create procedure proGetChiTietPhieuMuaHang_HangHoa_DonVi_IfMaPhieu
+@MaPhieu varchar(15)
+as
+begin
+	select MaChiTietPhieu,ChiTietPhieuMuaHang.MaPhieu,ChiTietPhieuMuaHang.MaHangHoa,HangHoa.TenHangHoa,SoLuong,DonGia,ThanhTien
+	,DonVi.MaDonVi
+	from ChiTietPhieuMuaHang,HangHoa,DonVi
+	where ChiTietPhieuMuaHang.MaPhieu = @MaPhieu
+		and ChiTietPhieuMuaHang.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
+end
+
+
+go
+-- lay ton kho
 create procedure proGetTonKho_Kho_HangHoa_DonVi_NhomHang
 as
 begin

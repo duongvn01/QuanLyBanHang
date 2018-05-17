@@ -26,6 +26,10 @@ namespace QuanLyBanHang
             muaHangBUS = new MuaHangBUS();
             nhaCungCapBUS = new NhaCungCapBUS();
         }
+        void loadData()
+        {
+            gridControlLichSuMuaHang.DataSource = muaHangBUS.getAllMuaHang();
+        }
         void loadLookUpEdit()
         {
             lueNhaCungCap.Properties.DataSource = nhaCungCapBUS.getAllNhaCungCap();
@@ -44,6 +48,19 @@ namespace QuanLyBanHang
         {
             MH.MaNhaCungCap = lueNhaCungCap.EditValue.ToString();
             gridControlLichSuMuaHang.DataSource = muaHangBUS.getAllMuaHangByMaNhaCungCapBUS(MH);
+        }
+
+        private void UCLichSuMuaHang_Load(object sender, EventArgs e)
+        {
+            loadData();
+            loadLookUpEdit();
+        }
+
+        private void gridViewLichSuMuaHang_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            MH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
+            UCMuaHang ucmh = new UCMuaHang();
+            ucmh.SendToMuaHang = MH;
         }
     }
 }

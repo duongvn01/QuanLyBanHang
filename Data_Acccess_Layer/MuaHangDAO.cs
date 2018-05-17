@@ -19,7 +19,7 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllMuaHang()
         {
-            return conn.executeGetTable("proGetHangHoa_Kho_NhomHang_DonVi_NhaCC");
+            return conn.executeGetTable("proGetMuaHang_NhaCC_Kho");
         }
         public DataTable GetAllMuaHangByMaNhaCungCap(MuaHangO mh)
         {
@@ -27,6 +27,14 @@ namespace Data_Acccess_Layer
             param.ParameterName = "@MaNhaCungCap";
             param.Value = mh.MaNhaCungCap;
             return conn.executeSelectQuery("proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap", param);
+        }
+        
+        public DataTable GetAllMuaHangByMaPhieu(MuaHangO mh)
+        {
+            SqlParameter param = new SqlParameter();
+            param.ParameterName = "@MaPhieu";
+            param.Value = mh.MaPhieu;
+            return conn.executeSelectQuery("proGetMuaHang_NhaCC_Kho_IfMaPhieu", param);
         }
         public DataTable GetAllMuaHangByNgayNayNgayKia(DateTime ngayNay,DateTime ngayKia)
         {
@@ -92,9 +100,5 @@ namespace Data_Acccess_Layer
                 );
         }
 
-        public bool XoaMuaHang(ref string err, HangHoaO mh)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
