@@ -16,9 +16,11 @@ namespace QuanLyBanHang
 {
     public partial class UCMuaHang : UserControl
     {
+        string maPhieuTruyen = "";
         int themOrSua = 1;
         double tongTien;
         MuaHangO MH;
+        
         NhaCungCapO NCC;
         HangHoaO HH;
         DonViO DV;
@@ -35,6 +37,8 @@ namespace QuanLyBanHang
 
         KieuThanhToanBUS kieuThanhToanBUS;
         HinhThucThanhToanBUS hinhThucThanhToanBUS;
+
+        ChiTietPhieuMuaHangBUS chiTietPhieuMuaHangBUS;
 
         DataTable dt;
         public UCMuaHang()
@@ -69,6 +73,7 @@ namespace QuanLyBanHang
             hangHoaBUS = new HangHoaBUS();
             donViBUS = new DonViBUS();
             tonKhoBUS = new TonKhoBUS();
+            chiTietPhieuMuaHangBUS = new ChiTietPhieuMuaHangBUS();
 
             kieuThanhToanBUS = new KieuThanhToanBUS();
             hinhThucThanhToanBUS = new HinhThucThanhToanBUS();
@@ -117,11 +122,9 @@ namespace QuanLyBanHang
             dt.Columns.Add("DonGia", typeof(double));
             dt.Columns.Add("ThanhTien", typeof(double));
         }
-        public MuaHangO SendToMuaHang
+        public void SendToMuaHang(string chuoi)
         {
-            get { return MH; }
-            set { MH = value; }
-
+            this.maPhieuTruyen = chuoi;
         }
         void LayMuaHangByMaPhieu(MuaHangO mh)
         {
@@ -144,14 +147,17 @@ namespace QuanLyBanHang
         }
         void LayChiTietPhieuMuaHangByMaPhieu(MuaHangO mh)
         {
-            CTPMH = 
+            CTPMH.MaPhieu = mh.MaPhieu;
+            gridControlMuaHang.DataSource = chiTietPhieuMuaHangBUS.GetAllChiTietPhieuMuaHangByMaPhieuBUS(CTPMH);
         }
         private void UCMuaHang_Load(object sender, EventArgs e)
         {
             loadLookUpEdit();
             if(themOrSua ==0)
             {
+                MH.MaPhieu=maPhieuTruyen;
                 LayMuaHangByMaPhieu(MH);
+                LayChiTietPhieuMuaHangByMaPhieu(MH);
             }
         }
 
@@ -299,7 +305,7 @@ namespace QuanLyBanHang
 
         private void gridViewMuaHang_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            CTPMH.MaHangHoa = gridViewMuaHang.GetFocusedRowCellValue(colMaHangHoa).ToString();          
+            CTPMH.MaHangHoa = gridViewMuaHang.GetFocusedRowCellValue(colMaHangHoa).ToString();         
         }
 
         private void btnRemoveKhoiGridview_Click(object sender, EventArgs e)
@@ -362,7 +368,7 @@ namespace QuanLyBanHang
 
                 try
                 {
-                    bool f = muaHangBUS.ThemHangHoaBUS(ref err, MH);
+                    bool f = muaHangBUS.ThemMuaHangBUS(ref err, MH);
                     int dem = 0;         
                     if (f == true)
                     {

@@ -60,7 +60,7 @@ namespace QuanLyBanHang
         {
             MH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
             UCMuaHang ucmh = new UCMuaHang();
-            ucmh.SendToMuaHang = MH;
+            ucmh.SendToMuaHang(MH.MaPhieu);
         }
     }
 }

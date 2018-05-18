@@ -21,17 +21,17 @@ namespace Data_Acccess_Layer
         {
             return conn.executeGetTable("proGetMuaHang_NhaCC_Kho");
         }
-        public DataTable GetAllChiTietPhieuMuaHangByMaPhieu(MuaHangO mh)
+        public DataTable GetAllChiTietPhieuMuaHangByMaPhieu(ChiTietPhieuMuaHangO ctpmh)
         {
             SqlParameter param = new SqlParameter();
             param.ParameterName = "@MaPhieu";
-            param.Value = mh.MaPhieu;
+            param.Value = ctpmh.MaPhieu;
             return conn.executeSelectQuery("proGetChiTietPhieuMuaHang_HangHoa_DonVi_IfMaPhieu", param);
         }
 
         public bool ThemChiTietPhieuMuaHang(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
-            return conn.MyExecuteNonQuery("proChiTietPhieuMuaHang",
+            return conn.MyExecuteNonQuery("proThemChiTietPhieuMuaHang",
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@MaChiTietPhieu",ctpmh.MaChiTietPhieu),
                 new SqlParameter("@MaPhieu", ctpmh.MaPhieu),
@@ -43,13 +43,13 @@ namespace Data_Acccess_Layer
         }
         public bool XoaChiTietPhieuMuaHangByMaPhieu(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
-            return conn.MyExecuteNonQuery("proXoaChiTietPhieuMuaHangByMaPhieu",
+            return conn.MyExecuteNonQuery("proXoaChiTietPhieuMuaHangIfMaPhieu",
                 CommandType.StoredProcedure, ref err,
                  new SqlParameter("@MaPhieu", ctpmh.MaPhieu));
         }
         public bool XoaChiTietPhieuMuaHangByMaChiTietPhieu(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
-            return conn.MyExecuteNonQuery("proXoaChiTietPhieuMuaHangByMaChiTietPhieu",
+            return conn.MyExecuteNonQuery("proXoaChiTietPhieuMuaHangIfMaChiTietPhieu",
                 CommandType.StoredProcedure, ref err,
                  new SqlParameter("@MaChiTietPhieu", ctpmh.MaChiTietPhieu));
         }

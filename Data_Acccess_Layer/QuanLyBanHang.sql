@@ -322,7 +322,7 @@ begin
 end
 
 --them kho
-create procedure [dbo].[proThemKho]
+create procedure proThemKho
 	@MaKho varchar(15),
 	@TenKho nvarchar(50),
 	@MaNguoiQuanLy varchar(15),
@@ -649,6 +649,81 @@ end
 end
 
 >>>>>>> a8687d99ddb71e3488e90dece9b27b2a5d3891eb
+
+go
+
+create procedure proThemMuaHang
+	@MaPhieu varchar(15),
+	@TenPhieu nvarchar(30),
+	@NgayLapPhieu date,
+	@SoHoaDonVAT varchar(20),
+	@SoPhieuVietTay varchar(20),
+	@MaThanhToan varchar(15),
+	@MaHinhThuc varchar(15),
+	@MaNhaCungCap varchar(15),
+	@ThoiHanThanhToan date,
+	
+	@GhiChu nvarchar(50),
+
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	insert into MuaHang values(
+	@MaPhieu,
+	@TenPhieu,
+	@NgayLapPhieu,
+	@SoHoaDonVAT,
+	@SoPhieuVietTay,
+	@MaThanhToan,
+	@MaHinhThuc,
+	@MaNhaCungCap,
+	@ThoiHanThanhToan,
+	
+	@GhiChu,
+
+	@MaNhanVien,
+	@MaKho,
+
+	@TongTien,
+	@PTramCK,
+	@Thue,
+	@TuongDuongTien,
+	@TienThanhToan
+	)
+end
+
+
+
+go
+
+--them ChiTietPhieuMuaHang
+create procedure proThemChiTietPhieuMuaHang
+	@MaChiTietPhieu varchar(15),
+	@MaPhieu varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	insert into ChiTietPhieuMuaHang values(
+	@MaChiTietPhieu,
+	@MaPhieu,
+	@MaHangHoa,
+	@SoLuong,
+	@DonGia,
+	@ThanhTien
+	)
+end
+
+
 go
 --Them Bo Phan
 create procedure proThemBoPhan
@@ -886,6 +961,27 @@ end
 
 
 go
+--Sua ChiTietPhieuMuaHang
+create procedure proSuaChiTietPhieuMuaHang
+	@MaChiTietPhieu varchar(15),
+	@MaPhieu varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	update ChiTietPhieuMuaHang set
+	MaChiTietPhieu = @MaChiTietPhieu,
+	MaPhieu =  @MaPhieu,
+	MaHangHoa =  @MaHangHoa,
+	SoLuong = @SoLuong,
+	DonGia = @DonGia,
+	ThanhTien = @ThanhTien
+	where MaChiTietPhieu=@MaChiTietPhieu
+end
+
+go
 --Sua hang hoa
 <<<<<<< HEAD
 ALTER procedure [dbo].[proSuaHangHoa]
@@ -1066,6 +1162,26 @@ create procedure proXoaNhomHang
 as
 begin
 	delete from NhomHang where MaNhomHang=@MaNhomHang
+end
+
+
+
+go
+--Xoa ChiTietPhieuMuaHang bang MaPhieu
+create procedure proXoaChiTietPhieuMuaHangIfMaPhieu
+	@MaPhieu varchar(15)
+as
+begin
+	delete from ChiTietPhieuMuaHang where MaPhieu=@MaPhieu
+end
+
+go
+--Xoa ChiTietPhieuMuaHang bang MaChiTietPhieu
+create procedure proXoaChiTietPhieuMuaHangIfMaChiTietPhieu
+	@MaChiTietPhieu varchar(15)
+as
+begin
+	delete from ChiTietPhieuMuaHang where MaChiTietPhieu=@MaChiTietPhieu
 end
 
 go

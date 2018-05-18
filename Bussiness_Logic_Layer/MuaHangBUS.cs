@@ -57,15 +57,15 @@ namespace Bussiness_Logic_Layer
               
             return MH;
         }
-        public bool ThemHangHoaBUS(ref string err, MuaHangO mh)
+        public bool ThemMuaHangBUS(ref string err, MuaHangO mh)
         {
             return muaHangDAO.ThemMuaHang(ref err, mh);
         }
-        public bool CapNhatHangHoaBUS(ref string err, MuaHangO mh)
+        public bool CapNhatMuaHangBUS(ref string err, MuaHangO mh)
         {
             return muaHangDAO.CapNhatMuaHang(ref err, mh);
         }
-        public bool XoaHangHoaBUS(ref string err, HangHoaO mh)
+        public bool XoaMuaHangBUS(ref string err, MuaHangO mh)
         {
             return muaHangDAO.XoaMuaHang(ref err, mh);
         }

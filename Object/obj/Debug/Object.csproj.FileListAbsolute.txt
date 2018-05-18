@@ -7,4 +7,3 @@ D:\QLBH\QuanLyBanHang\Object\bin\Debug\Object.dll
 D:\QLBH\QuanLyBanHang\Object\bin\Debug\Object.pdb
 D:\QLBH\QuanLyBanHang\Object\obj\Debug\Object.dll
 D:\QLBH\QuanLyBanHang\Object\obj\Debug\Object.pdb
-D:\QLBH\QuanLyBanHang\Object\obj\Debug\Object.csprojResolveAssemblyReference.cache
