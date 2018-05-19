@@ -369,7 +369,7 @@ namespace QuanLyBanHang
                 try
                 {
                     bool f = muaHangBUS.ThemMuaHangBUS(ref err, MH);
-                    int dem = 0;         
+                    int demTonKho = 0,demChiTietPMH=0;
                     if (f == true)
                     {
                         foreach (DataRow r in dt.Rows)
@@ -378,9 +378,21 @@ namespace QuanLyBanHang
                             TK.MaKho = lueKho.EditValue.ToString();
                             TK.SoLuong = Convert.ToInt32(r[4]);
                             bool f1 = tonKhoBUS.ThemTonKhoBUS(ref err, TK);
+
+                            CTPMH.MaChiTietPhieu = "1";
+                            CTPMH.MaPhieu = txtMaPhieu.Text;
+                            CTPMH.MaHangHoa = r[0].ToString();
+                            CTPMH.SoLuong = Convert.ToInt32(r[4]);
+                            CTPMH.DonGia = Convert.ToInt32(r[5]);
+                            CTPMH.ThanhTien = Convert.ToInt32(r[6]);
+                            bool f2 = chiTietPhieuMuaHangBUS.ThemChiTietPhieuMuaHangBUS(ref err, CTPMH);
                             if (f1 == true)
                             {
-                                dem++;
+                                demTonKho++;
+                            }
+                            if(f2==true)
+                            {
+                                demChiTietPMH++;
                             }
                         }
                         MessageBox.Show("Them thanh cong");
@@ -389,9 +401,17 @@ namespace QuanLyBanHang
                     {
                         MessageBox.Show("Khong them duoc, Loi: " + err);
                     }
-                    if (dem == dt.Rows.Count)
+                    if (demTonKho == dt.Rows.Count)
                     {
-                        MessageBox.Show("Them thanh cong Ton kho: "+dem);
+                        MessageBox.Show("Them thanh cong Ton kho: "+demTonKho);
+                    }
+                    if(demChiTietPMH == dt.Rows.Count)
+                    {
+                        MessageBox.Show("Them thanh cong Chi tiet phieu mua hang: " + demChiTietPMH);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Khong them duoc, so luong them: " + demChiTietPMH);
                     }
                 }
                 catch (SqlException)

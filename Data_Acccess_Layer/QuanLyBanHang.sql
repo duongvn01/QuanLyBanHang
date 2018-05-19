@@ -148,7 +148,7 @@ create table NhanVien
 
 
 go
-drop table muahang
+
 create table MuaHang
 (
 	MaPhieu varchar(15)primary key,
@@ -174,6 +174,7 @@ create table MuaHang
 )
 go
 
+drop table ChiTietPhieuMuaHang
 create table  ChiTietPhieuMuaHang
 (
 	MaChiTietPhieu varchar(15) primary key,
@@ -1221,5 +1222,36 @@ BEGIN
 	SELECT @tong = count(MaKhuVuc) 
 	FROM KhuVuc
 	return @tong
+END
+
+--funtion
+select dbo.funAutoCreateIDMaChiTietPhieu()
+from ChiTietPhieuMuaHang
+drop function funAutoCreateIDMaChiTietPhieu
+CREATE FUNCTION funAutoCreateIDMaChiTietPhieu()
+RETURNS VARCHAR(15)
+AS
+BEGIN
+	DECLARE @ID VARCHAR(15)
+	DECLARE @maSo int = 1
+	DECLARE @soLuong int = (SELECT COUNT(MaChiTietPhieu) FROM ChiTietPhieuMuaHang)
+	
+	IF (@soLuong = 0)
+		SET @ID = 'CTP' + cast(@maSo as varchar(12))
+	ELSE
+		begin
+			set @ID = 'CTP' + cast(@maSo+1 as varchar(12))
+			while not EXISTS
+				(
+					SELECT MaChiTietPhieu
+					FROM ChiTietPhieuMuaHang
+					WHERE @ID = ChiTietPhieuMuaHang.MaChiTietPhieu
+				)
+			begin
+				set @maSo = @maSo + 1
+				set @ID = 'CTP' + cast(@maSo as varchar(12))			
+			end
+		end
+	RETURN @ID
 END
 
