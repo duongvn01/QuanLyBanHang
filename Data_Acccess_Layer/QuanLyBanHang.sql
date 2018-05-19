@@ -187,6 +187,42 @@ create table  ChiTietPhieuMuaHang
 	ThanhTien money
 )
 go
+
+create table BanHang
+(
+	MaPhieuBan varchar(15)primary key,
+	TenPhieu nvarchar(30),
+	NgayLapPhieu date,
+	MaThanhToan varchar(15),
+	MaHinhThuc varchar(15),
+	ThoiHanThanhToan date,
+
+	MaKhachHang varchar(15),
+	NgayGiaoHang date,
+
+	MaNhanVien varchar(15),
+	MaKho varchar(15),
+	GhiChu nvarchar(50),
+
+	TongTien money,
+	PTramCK int,
+	Thue int,
+	TuongDuongTien money,
+	TienThanhToan money
+)
+
+go
+
+create table ChiTietPhieuBanHang
+(
+	MaChiTietPhieuBan varchar(15) primary key,
+	MaPhieuBan varchar(15) not null,
+	MaHangHoa varchar(15) not null,
+	SoLuong int,
+	DonGia money,
+	ThanhTien money
+)
+go
 create table KieuThanhToan
 (
 	MaThanhToan varchar(15),
@@ -403,6 +439,54 @@ begin
 	@TienThanhToan
 	)
 end
+
+go
+create procedure proThemBanHang
+	@MaPhieuBan varchar(15),
+	@TenPhieu nvarchar(30),
+	@NgayLapPhieu date,
+	@MaThanhToan varchar(15),
+	@MaHinhThuc varchar(15),
+	@ThoiHanThanhToan date,
+
+	@MaKhachHang varchar(15),
+	@NgayGiaoHang date,
+
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+	@GhiChu nvarchar(50),
+
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	insert into BanHang values(
+	@MaPhieuBan,
+	@TenPhieu,
+	@NgayLapPhieu,
+	@MaThanhToan,
+	@MaHinhThuc,
+	@ThoiHanThanhToan,
+
+	@MaKhachHang,
+	@NgayGiaoHang,
+
+	@MaNhanVien,
+	@MaKho,
+	@GhiChu,
+
+	@TongTien,
+	@PTramCK,
+	@Thue,
+	@TuongDuongTien,
+	@TienThanhToan
+	)
+end
+
+
 go
 
 create procedure proThemTonKho
@@ -738,6 +822,26 @@ begin
 	)
 end
 
+go
+create procedure proThemChiTietPhieuBan
+	@MaChiTietPhieuBan varchar(15),
+	@MaPhieuBan varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	set @MaChiTietPhieuBan = dbo.funAutoCreateIDMaChiTietPhieuBan()
+	insert into ChiTietPhieuBanHang values(
+	@MaChiTietPhieuBan,
+	@MaPhieuBan,
+	@MaHangHoa,
+	@SoLuong,
+	@DonGia,
+	@ThanhTien
+	)
+end
 
 go
 --Them Bo Phan
@@ -1188,6 +1292,14 @@ begin
 end
 
 go
+create procedure proXoaBanHang
+@MaPhieuBan varchar(15)
+as
+begin
+	delete from BanHang where MaPhieuBan=@MaPhieuBan
+end
+
+go
 --Xoa ChiTietPhieuMuaHang bang MaPhieu
 create procedure proXoaChiTietPhieuMuaHangIfMaPhieu
 	@MaPhieu varchar(15)
@@ -1197,12 +1309,30 @@ begin
 end
 
 go
+--Xoa ChiTietPhieuBanHang bang MaPhieuBan
+create procedure proXoaChiTietPhieuBanHangIfMaPhieuBan
+	@MaPhieuBan varchar(15)
+as
+begin
+	delete from ChiTietPhieuBanHang where MaPhieuBan=@MaPhieuBan
+end
+
+go
 --Xoa ChiTietPhieuMuaHang bang MaChiTietPhieu
 create procedure proXoaChiTietPhieuMuaHangIfMaChiTietPhieu
 	@MaChiTietPhieu varchar(15)
 as
 begin
 	delete from ChiTietPhieuMuaHang where MaChiTietPhieu=@MaChiTietPhieu
+end
+
+go
+--Xoa ChiTietPhieuMuaHang bang MaChiTietPhieu
+create procedure proXoaChiTietPhieuBanIfMaChiTietPhieuBan
+	@MaChiTietPhieuBan varchar(15)
+as
+begin
+	delete from ChiTietPhieuBanHang where MaChiTietPhieuBan=@MaChiTietPhieuBan
 end
 
 go
@@ -1264,6 +1394,36 @@ BEGIN
 					SELECT MaChiTietPhieu
 					FROM ChiTietPhieuMuaHang
 					WHERE @ID = ChiTietPhieuMuaHang.MaChiTietPhieu
+				)
+			begin
+				set @maSo = @maSo + 1
+				set @ID = 'CTP' + cast(@maSo as varchar(12))			
+			end
+		end
+	RETURN @ID
+END
+
+
+go
+-- funtion tu dong tao machitietphieuban
+CREATE FUNCTION funAutoCreateIDMaChiTietPhieuBan()
+RETURNS VARCHAR(15)
+AS
+BEGIN
+	DECLARE @ID VARCHAR(15)
+	DECLARE @maSo int = 1
+	DECLARE @soLuong int = (SELECT COUNT(*) FROM ChiTietPhieuBanHang)
+	
+	IF (@soLuong = 0)
+		SET @ID = 'CTP' + cast(@maSo as varchar(12))
+	ELSE
+		begin
+			set @ID = 'CTP' + cast(@maSo+1 as varchar(12))
+			while not EXISTS
+				(
+					SELECT MaChiTietPhieuBan
+					FROM ChiTietPhieuBanHang
+					WHERE @ID = ChiTietPhieuBanHang.MaChiTietPhieuBan
 				)
 			begin
 				set @maSo = @maSo + 1

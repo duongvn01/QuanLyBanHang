@@ -117,7 +117,6 @@
             this.ribbonPage4});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl1.Size = new System.Drawing.Size(1236, 141);
-            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonItem1
             // 
@@ -269,6 +268,7 @@
             this.barbtnBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnBanHang.ImageOptions.Image")));
             this.barbtnBanHang.Name = "barbtnBanHang";
             this.barbtnBanHang.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barbtnBanHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnBanHang_ItemClick);
             // 
             // barbtnNhapTraHang
             // 

@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanHangO.cs" />
     <Compile Include="BoPhanO.cs" />
+    <Compile Include="ChiTietPhieuBanHangO.cs" />
     <Compile Include="ChiTietPhieuMuaHangO.cs" />
     <Compile Include="DonViO.cs" />
     <Compile Include="HangHoaO.cs" />

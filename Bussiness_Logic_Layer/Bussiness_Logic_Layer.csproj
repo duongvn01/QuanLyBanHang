@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanHangBUS.cs" />
     <Compile Include="BoPhanBUS.cs" />
+    <Compile Include="ChiTietPhieuBanHangBUS.cs" />
     <Compile Include="ChiTietPhieuMuaHangBUS.cs" />
     <Compile Include="DonViBUS.cs" />
     <Compile Include="HangHoaBUS.cs" />

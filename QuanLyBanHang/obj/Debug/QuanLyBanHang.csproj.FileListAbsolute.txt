@@ -66,3 +66,4 @@ D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Data_Acccess_Layer.dll
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Bussiness_Logic_Layer.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Object.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Data_Acccess_Layer.pdb
+D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCBanHang.resources
