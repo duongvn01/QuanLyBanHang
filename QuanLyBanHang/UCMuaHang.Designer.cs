@@ -203,6 +203,7 @@
             this.btnThemNhaCungCap.Size = new System.Drawing.Size(24, 23);
             this.btnThemNhaCungCap.TabIndex = 129;
             this.btnThemNhaCungCap.Text = "simpleButton1";
+            this.btnThemNhaCungCap.Click += new System.EventHandler(this.btnThemNhaCungCap_Click);
             // 
             // txtTenPhieu
             // 
@@ -217,6 +218,7 @@
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(216, 20);
             this.txtMaPhieu.TabIndex = 133;
+            this.txtMaPhieu.EditValueChanged += new System.EventHandler(this.txtMaPhieu_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -317,6 +319,7 @@
             this.btnThemNhanVien.Size = new System.Drawing.Size(24, 23);
             this.btnThemNhanVien.TabIndex = 129;
             this.btnThemNhanVien.Text = "simpleButton1";
+            this.btnThemNhanVien.Click += new System.EventHandler(this.btnThemNhanVien_Click);
             // 
             // labelControl20
             // 
@@ -348,6 +351,7 @@
             this.btnThemKho.Size = new System.Drawing.Size(24, 19);
             this.btnThemKho.TabIndex = 134;
             this.btnThemKho.Text = "simpleButton2";
+            this.btnThemKho.Click += new System.EventHandler(this.btnThemKho_Click);
             // 
             // labelControl21
             // 
@@ -468,6 +472,7 @@
             this.btnDong.Size = new System.Drawing.Size(59, 25);
             this.btnDong.TabIndex = 141;
             this.btnDong.Text = "Đóng";
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnThemHangHoa
             // 
@@ -477,6 +482,7 @@
             this.btnThemHangHoa.Size = new System.Drawing.Size(24, 23);
             this.btnThemHangHoa.TabIndex = 129;
             this.btnThemHangHoa.Text = "simpleButton1";
+            this.btnThemHangHoa.Click += new System.EventHandler(this.btnThemHangHoa_Click);
             // 
             // labelControl11
             // 

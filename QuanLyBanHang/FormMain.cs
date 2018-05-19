@@ -11,13 +11,19 @@ using DevExpress.XtraEditors;
 using Object;
 namespace QuanLyBanHang
 {
+    public delegate void PassData_CallTo(string textBoxData); 
     public partial class FormMain : DevExpress.XtraBars.TabForm
     {
         MuaHangO MH;
+        UCMuaHang ucmh;
+        UCLichSuMuaHang uclsmh;
         public FormMain()
         {
             InitializeComponent();
-            MH = new MuaHangO();          
+            MH = new MuaHangO();
+
+            ucmh = new UCMuaHang();
+            uclsmh = new UCLichSuMuaHang(new PassData_CallTo(ucmh.textBoxChange));
         }
 
         private void barbtnKhuVuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -85,51 +91,77 @@ namespace QuanLyBanHang
 
         private void barbtnMuaHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            UCMuaHang mh = new UCMuaHang();
-            //panel1.Location = new System.Drawing.Point(130, 190);
+            ucmh = new UCMuaHang();
+            uclsmh = new UCLichSuMuaHang(new PassData_CallTo(ucmh.textBoxChange));
+
             panel1.Controls.Clear();
-            panel1.Controls.Add(mh);
+            panel1.Controls.Add(ucmh);
+           
+            ucmh.Width = 1025;
+            ucmh.Height = 530;
+            btnLichSuMuaHang.Visible = true;
+            btnSua.Visible = true;
+
+            panel1.Controls.Add(uclsmh);
+            uclsmh.Width = 0;
+            uclsmh.Height = 0;
         }
 
         private void barbtnTonKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCTonKho tk = new UCTonKho();
-            panel1.Controls.Clear();
             panel1.Controls.Add(tk);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            //SimpleButton btnLichSuMuaHang = new SimpleButton();
-            /*panelChucNang.Controls.Add(btnLichSuMuaHang);
-            btnLichSuMuaHang.Text = "Lịch Sử Mua Hàng";
-            //btnLichSuMuaHang.ImageList = imageList1;
-            //btnLichSuMuaHang.ImageIndex = 0;
-            btnLichSuMuaHang.Size = btnLichSuMuaHang.CalcBestFit(btnLichSuMuaHang.CreateGraphics());
-            btnLichSuMuaHang.Location = new Point(1,10);
-            */
-            //panelChucNang.Visible = false;
+            panel1.Controls.Add(ucmh);
+            panel1.Controls.Add(uclsmh);
+            uclsmh.Location = new System.Drawing.Point(0, 0);
+            uclsmh.Location = new System.Drawing.Point(0, 0);
+
+            uclsmh.Width = 0;
+            uclsmh.Height = 0;
+            ucmh.Width = 0;
+            ucmh.Height = 0;
         }
 
         private void btnLichSuMuaHang_Click(object sender, EventArgs e)
         {
-            UCLichSuMuaHang lsmh = new UCLichSuMuaHang();
-            panel1.Controls.Clear();
-            panel1.Controls.Add(lsmh);
+
+            uclsmh.Width = 1000;
+            uclsmh.Height = 450;
+
+            ucmh.Width = 0;
+            ucmh.Height = 0;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {
-            UCMuaHang mh = new UCMuaHang();
+        {         
             panel1.Controls.Clear();
-            panel1.Controls.Add(mh);
+            panel1.Controls.Add(ucmh);
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
-            UCMuaHang mh = new UCMuaHang(0);
             panel1.Controls.Clear();
-            panel1.Controls.Add(mh);
+
+            panel1.Controls.Add(uclsmh);
+            panel1.Controls.Add(ucmh);
+            uclsmh.Location = new System.Drawing.Point(0, 0);
+            uclsmh.Width = 0;
+            uclsmh.Height = 0;
+
+            ucmh.Location = new System.Drawing.Point(0, 0);
+            ucmh.Width = 1025;
+            ucmh.Height = 530;
+
+
+
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

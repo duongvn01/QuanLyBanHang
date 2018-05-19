@@ -11,16 +11,16 @@ using System.Data.SqlClient;
 using Bussiness_Logic_Layer;
 using Object;
 
-
 namespace QuanLyBanHang
 {
     public partial class UCMuaHang : UserControl
     {
-        string maPhieuTruyen = "";
+
+        string ma = "";
         int themOrSua = 1;
         double tongTien;
         MuaHangO MH;
-        
+
         NhaCungCapO NCC;
         HangHoaO HH;
         DonViO DV;
@@ -46,7 +46,7 @@ namespace QuanLyBanHang
             InitializeComponent();
             initObjectBUS();
             initDataTable();
-            //themOrSua = 1;
+            themOrSua = 1;
             tongTien = 0;
         }
         public UCMuaHang(int themOrSua)
@@ -54,10 +54,19 @@ namespace QuanLyBanHang
             InitializeComponent();
             initObjectBUS();
             initDataTable();
-            this.themOrSua = themOrSua; ;
+            this.themOrSua = themOrSua;
             tongTien = 0;
-        }
 
+        }
+        public void setThemOrSuaBang1()
+        {
+            this.themOrSua = 1;
+        }
+        public void textBoxChange(string input) //change the display of the textBox
+        {
+            ma = input;
+            txtMaPhieu.Text = input;
+        }
         void initObjectBUS()
         {
             MH = new MuaHangO();
@@ -122,10 +131,6 @@ namespace QuanLyBanHang
             dt.Columns.Add("DonGia", typeof(double));
             dt.Columns.Add("ThanhTien", typeof(double));
         }
-        public void SendToMuaHang(string chuoi)
-        {
-            this.maPhieuTruyen = chuoi;
-        }
         void LayMuaHangByMaPhieu(MuaHangO mh)
         {
             MH = muaHangBUS.getOneMuaHangByMaPhieu(mh);
@@ -140,10 +145,16 @@ namespace QuanLyBanHang
             lueNhaCungCap.EditValue = MH.MaNhaCungCap;
             deThoiHanThanhToan.EditValue = MH.ThoiHanThanhToan;
             lueHinhThucThanhToan.EditValue = MH.MaHinhThuc;
-            
+
             lueNhanVien.EditValue = MH.MaNhanVien;
             lueKho.EditValue = MH.MaKho;
             txtGhiChu.Text = MH.GhiChu;
+
+            txtTongTien.Text = MH.TongTien.ToString();
+            txtPhanTramChuyenKhoan.Text = MH.PTramCK.ToString();
+            txtPhanTramThue.Text = MH.Thue.ToString();
+            txtTuongDuongTien.Text = MH.TuongDuongTien.ToString();
+            txtTienThanhToan.Text = MH.TienThanhToan.ToString();
         }
         void LayChiTietPhieuMuaHangByMaPhieu(MuaHangO mh)
         {
@@ -153,11 +164,15 @@ namespace QuanLyBanHang
         private void UCMuaHang_Load(object sender, EventArgs e)
         {
             loadLookUpEdit();
-            if(themOrSua ==0)
+
+            if (ma != "")
             {
-                MH.MaPhieu=maPhieuTruyen;
+                //MH.MaPhieu=maPhieuTruyen;
+                MH.MaPhieu = ma;
+                txtMaPhieu.Text = ma;
                 LayMuaHangByMaPhieu(MH);
                 LayChiTietPhieuMuaHangByMaPhieu(MH);
+
             }
         }
 
@@ -192,8 +207,8 @@ namespace QuanLyBanHang
 
         private void btnThemVaoGridview_Click(object sender, EventArgs e)
         {
-            string maHangHoa= lueHangHoa.EditValue.ToString();
-            if(dt!=null)
+            string maHangHoa = lueHangHoa.EditValue.ToString();
+            if (dt != null)
             {
                 if (KiemTraTrung(maHangHoa))
                 {
@@ -201,19 +216,19 @@ namespace QuanLyBanHang
                 }
                 else
                 {
-                    bool f = ThemMoiVaoDatatable();                  
+                    bool f = ThemMoiVaoDatatable();
                 }
-            
+
             }
-           
+
             gridControlMuaHang.DataSource = dt;
-            txtTongTien.Text =TinhTongTien().ToString();
+            txtTongTien.Text = TinhTongTien().ToString();
         }
         double TinhTongTien()
         {
-            double tong=0;
+            double tong = 0;
             foreach (DataRow r in dt.Rows) // Duyệt từng dòng (DataRow) trong DataTable
-            {                
+            {
                 tong = tong + Convert.ToDouble(r[6]);
             }
             return tong;
@@ -261,7 +276,7 @@ namespace QuanLyBanHang
             {
                 return false;
             }
-            
+
         }
         bool RemoveKhoiDataTable(string ma)
         {
@@ -272,7 +287,7 @@ namespace QuanLyBanHang
                     if (ma == r[0].ToString())
                     {
                         dt.Rows.Remove(r);
-                        
+
                         return true;
                     }
 
@@ -305,7 +320,7 @@ namespace QuanLyBanHang
 
         private void gridViewMuaHang_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            CTPMH.MaHangHoa = gridViewMuaHang.GetFocusedRowCellValue(colMaHangHoa).ToString();         
+            CTPMH.MaHangHoa = gridViewMuaHang.GetFocusedRowCellValue(colMaHangHoa).ToString();
         }
 
         private void btnRemoveKhoiGridview_Click(object sender, EventArgs e)
@@ -316,30 +331,16 @@ namespace QuanLyBanHang
             if (result == DialogResult.OK)
             {
                 bool f = RemoveKhoiDataTable(CTPMH.MaHangHoa);
-            }                      
-                
+            }
+
         }
 
         private void btnTimHangHoa_Click(object sender, EventArgs e)
         {
-            
+
         }
-        /*TonKhoO LayTonKhoTuDataTable()
-        {
-            TonKhoO tk = new TonKhoO();
-            foreach (DataRow r in dt.Rows)
-            {
-                string ma = r[0].ToString();
-                {
-                    int soluong = Convert.ToInt32(r[4]);
-                    r[4] = Convert.ToInt32(txtSoLuong.Text) + soluong;
-                    r[6] = Convert.ToDouble(txtDonGia.Text) * Convert.ToDouble(r[4]);                    
-                }
-            }
-                
-        }
-        */
-        
+
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string err = "";
@@ -369,7 +370,7 @@ namespace QuanLyBanHang
                 try
                 {
                     bool f = muaHangBUS.ThemMuaHangBUS(ref err, MH);
-                    int demTonKho = 0,demChiTietPMH=0;
+                    int demTonKho = 0, demChiTietPMH = 0;
                     if (f == true)
                     {
                         foreach (DataRow r in dt.Rows)
@@ -390,7 +391,7 @@ namespace QuanLyBanHang
                             {
                                 demTonKho++;
                             }
-                            if(f2==true)
+                            if (f2 == true)
                             {
                                 demChiTietPMH++;
                             }
@@ -403,9 +404,9 @@ namespace QuanLyBanHang
                     }
                     if (demTonKho == dt.Rows.Count)
                     {
-                        MessageBox.Show("Them thanh cong Ton kho: "+demTonKho);
+                        MessageBox.Show("Them thanh cong Ton kho: " + demTonKho);
                     }
-                    if(demChiTietPMH == dt.Rows.Count)
+                    if (demChiTietPMH == dt.Rows.Count)
                     {
                         MessageBox.Show("Them thanh cong Chi tiet phieu mua hang: " + demChiTietPMH);
                     }
@@ -444,13 +445,13 @@ namespace QuanLyBanHang
 
         private void txtPhanTramThue_EditValueChanged(object sender, EventArgs e)
         {
-            
+
             int thue = Convert.ToInt32(txtPhanTramThue.Text);
             tongTien = Convert.ToDouble(txtTongTien.Text);
-            double tienThueTuongDuong = (tongTien/100)*thue;
+            double tienThueTuongDuong = (tongTien / 100) * thue;
             txtTuongDuongTien.Text = tienThueTuongDuong.ToString();
-            
-            double tienChuyenKhoan = Convert.ToDouble(txtPhanTramChuyenKhoan.Text)*tongTien/100;
+
+            double tienChuyenKhoan = Convert.ToDouble(txtPhanTramChuyenKhoan.Text) * tongTien / 100;
             txtTienThanhToan.Text = (tongTien - tienChuyenKhoan + tienThueTuongDuong).ToString();
         }
 
@@ -459,6 +460,47 @@ namespace QuanLyBanHang
             /*UCLichSuMuaHang lsmh = new UCLichSuMuaHang();
             FormMain fm = new FormMain();
             fm.Show();*/
+        }
+
+        private void btnThemHangHoa_Click(object sender, EventArgs e)
+        {
+            FormHangHoa hh = new FormHangHoa();
+            hh.Show();
+        }
+
+        private void btnThemNhaCungCap_Click(object sender, EventArgs e)
+        {
+            FormNhaCungCap ncc = new FormNhaCungCap();
+            ncc.Show();
+        }
+
+        private void btnThemNhanVien_Click(object sender, EventArgs e)
+        {
+            FormNhanVien nv = new FormNhanVien();
+            nv.Show();
+        }
+
+        private void btnThemKho_Click(object sender, EventArgs e)
+        {
+            FormKhoHang kh = new FormKhoHang();
+            kh.Show();
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaPhieu_EditValueChanged(object sender, EventArgs e)
+        {
+            if (ma != "")
+            {
+                MH.MaPhieu = ma;
+                txtMaPhieu.Text = ma;
+                LayMuaHangByMaPhieu(MH);
+                LayChiTietPhieuMuaHangByMaPhieu(MH);
+            }
+
         }
 
     }

@@ -50,6 +50,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lueNhaCungCap = new DevExpress.XtraEditors.LookUpEdit();
+            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLichSuMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichSuMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayBatDau.Properties.CalendarTimeProperties)).BeginInit();
@@ -269,10 +270,23 @@
             this.lueNhaCungCap.TabIndex = 12;
             this.lueNhaCungCap.EditValueChanged += new System.EventHandler(this.lueNhaCungCap_EditValueChanged);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
+            this.btnXoa.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnXoa.Location = new System.Drawing.Point(342, 4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(38, 40);
+            this.btnXoa.TabIndex = 14;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // UCLichSuMuaHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.lueNhaCungCap);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -318,5 +332,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LookUpEdit lueNhaCungCap;
+        private DevExpress.XtraEditors.SimpleButton btnXoa;
     }
 }

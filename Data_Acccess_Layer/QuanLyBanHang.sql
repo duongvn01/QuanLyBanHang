@@ -16,7 +16,6 @@ go
 create table KhachHang
 (
 	SiOrLe int,--1. dai ly, 2. khach le
-
 	MaKhachHang varchar(15) primary key,
 	MaKhuVuc varchar(10) not null,
 	TenKhachHang nvarchar(50) not null,
@@ -482,7 +481,7 @@ create procedure proGetMuaHang_NhaCC_Kho_IfMaPhieu
 as
 begin
 	select MuaHang.MaPhieu,TenPhieu,NgayLapPhieu,NhaCungCap.MaNhaCungCap,TenNhaCungCap,TongTien
-	,PTramCK,Thue,TienThanhToan,SoHoaDonVAT,GhiChu,Kho.MaKho,TenKho
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,SoHoaDonVAT,SoPhieuVietTay,MaThanhToan,MaHinhThuc,ThoiHanThanhToan,GhiChu,MaNhanVien,Kho.MaKho,TenKho
 	from MuaHang,NhaCungCap,Kho
 	where @MaPhieu=MaPhieu and
 	MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
@@ -705,7 +704,7 @@ end
 go
 
 --them ChiTietPhieuMuaHang
-create procedure proThemChiTietPhieuMuaHang
+create procedure [dbo].[proThemChiTietPhieuMuaHang]
 	@MaChiTietPhieu varchar(15),
 	@MaPhieu varchar(15),
 	@MaHangHoa varchar(15),
@@ -714,6 +713,7 @@ create procedure proThemChiTietPhieuMuaHang
 	@ThanhTien money
 as
 begin
+	set @MaChiTietPhieu = dbo.funAutoCreateIDMaChiTietPhieu()
 	insert into ChiTietPhieuMuaHang values(
 	@MaChiTietPhieu,
 	@MaPhieu,
@@ -1165,7 +1165,14 @@ begin
 	delete from NhomHang where MaNhomHang=@MaNhomHang
 end
 
-
+go
+-- xoa muahang
+create procedure proXoaMuaHang
+@MaPhieu varchar(15)
+as
+begin
+	delete from MuaHang where MaPhieu=@MaPhieu
+end
 
 go
 --Xoa ChiTietPhieuMuaHang bang MaPhieu
@@ -1224,17 +1231,15 @@ BEGIN
 	return @tong
 END
 
---funtion
-select dbo.funAutoCreateIDMaChiTietPhieu()
-from ChiTietPhieuMuaHang
-drop function funAutoCreateIDMaChiTietPhieu
+go
+--funtion tu dong tao machitietphieu
 CREATE FUNCTION funAutoCreateIDMaChiTietPhieu()
 RETURNS VARCHAR(15)
 AS
 BEGIN
 	DECLARE @ID VARCHAR(15)
 	DECLARE @maSo int = 1
-	DECLARE @soLuong int = (SELECT COUNT(MaChiTietPhieu) FROM ChiTietPhieuMuaHang)
+	DECLARE @soLuong int = (SELECT COUNT(*) FROM ChiTietPhieuMuaHang)
 	
 	IF (@soLuong = 0)
 		SET @ID = 'CTP' + cast(@maSo as varchar(12))
@@ -1254,4 +1259,3 @@ BEGIN
 		end
 	RETURN @ID
 END
-

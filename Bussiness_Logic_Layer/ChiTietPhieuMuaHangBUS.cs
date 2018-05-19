@@ -36,5 +36,9 @@ namespace Bussiness_Logic_Layer
         {
             return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaChiTietPhieu(ref err, ctpmh);
         }
+        public bool XoaChiTietPhieuMuaHangByMaPhieuBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
+        {
+            return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaPhieu(ref err, ctpmh);
+        }
     }
 }

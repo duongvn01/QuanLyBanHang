@@ -10,21 +10,31 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Bussiness_Logic_Layer;
 using Object;
+public delegate void delSendToMuaHangObject(MuaHangO mh);
 
 namespace QuanLyBanHang
 {
     public partial class UCLichSuMuaHang : UserControl
     {
+        PassData_CallTo displayData_There;
+
         MuaHangO MH;
+        ChiTietPhieuMuaHangO CTPMH;
+
         MuaHangBUS muaHangBUS;
         NhaCungCapBUS nhaCungCapBUS;
-
-        public UCLichSuMuaHang()
+        ChiTietPhieuMuaHangBUS chiTietPhieuMuaHangBUS;
+        public UCLichSuMuaHang(PassData_CallTo displayData_There)
         {
             InitializeComponent();
             MH = new MuaHangO();
+            CTPMH = new ChiTietPhieuMuaHangO();
+
             muaHangBUS = new MuaHangBUS();
             nhaCungCapBUS = new NhaCungCapBUS();
+            chiTietPhieuMuaHangBUS = new ChiTietPhieuMuaHangBUS();
+
+            this.displayData_There = displayData_There;
         }
         void loadData()
         {
@@ -59,8 +69,51 @@ namespace QuanLyBanHang
         private void gridViewLichSuMuaHang_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             MH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
-            UCMuaHang ucmh = new UCMuaHang();
-            ucmh.SendToMuaHang(MH.MaPhieu);
+            CTPMH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
+
+            if (displayData_There != null) //checks to make sure not null
+            {
+                displayData_There(MH.MaPhieu); //pass the data over to the other UserControl          
+            }
+           
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn xóa không?",
+                "Question",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                string err = "";
+                try
+                {
+                    bool f = muaHangBUS.XoaMuaHangBUS(ref err, MH);
+                    bool f1 = chiTietPhieuMuaHangBUS.XoaChiTietPhieuMuaHangByMaPhieuBUS(ref err, CTPMH);
+                    if (f == true)
+                    {
+                        MessageBox.Show("Xoa thanh cong muahang");
+                        loadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Khong Xoa duoc mua hang. Loi: " + err);
+                    }
+                    if (f1 == true)
+                    {
+                        MessageBox.Show("Xoa thanh cong chitietphieumuahang");
+                        loadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Khong Xoa duoc chitietphieumuahang. Loi: " + err);
+                    }
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Khong Xoa duoc. Loi: " + err);
+                }
+            }           
         }
     }
 }
