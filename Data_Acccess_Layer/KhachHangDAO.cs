@@ -48,7 +48,8 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@NoHienTai", kh.NoHienTai),
                 new SqlParameter("@ChietKhau", kh.ChietKhau),
                 new SqlParameter("@NguoiLienHe", kh.NguoiLienHe),
-                new SqlParameter("@ThongTinKhac", kh.ThongTinKhac)
+                new SqlParameter("@ThongTinKhac", kh.ThongTinKhac),
+                new SqlParameter("@ConQuanLy", kh.ConQuanLy)
                 );
         }
         public bool XoaKhachHang(ref string err, KhachHangO kh)
@@ -81,8 +82,8 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@NoHienTai", kh.NoHienTai),
                 new SqlParameter("@ChietKhau", kh.ChietKhau),
                 new SqlParameter("@NguoiLienHe", kh.NguoiLienHe),
-                new SqlParameter("@ThongTinKhac", kh.ThongTinKhac)
-          
+                new SqlParameter("@ThongTinKhac", kh.ThongTinKhac),
+                new SqlParameter("@ConQuanLy", kh.ConQuanLy)
                 );
         }
     }

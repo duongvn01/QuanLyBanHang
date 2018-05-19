@@ -91,8 +91,7 @@ namespace QuanLyBanHang
             }
             else
             {
-                if (chkConQuanLy.Checked == false)
-                    NV.ConQuanLy = false;
+                NV.ConQuanLy = false;
             }
             if (themOrSua == 1)
             {
@@ -155,7 +154,7 @@ namespace QuanLyBanHang
                 }
                 else
                 {
-                    chkConQuanLy.Enabled = false;
+                    chkConQuanLy.Checked = false;
                 }
 
                 txtMaNhanVien.Enabled = false;

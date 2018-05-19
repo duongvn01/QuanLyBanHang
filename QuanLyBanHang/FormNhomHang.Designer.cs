@@ -46,6 +46,7 @@
             // 
             // chkConQuanLy
             // 
+            this.chkConQuanLy.EditValue = true;
             this.chkConQuanLy.Location = new System.Drawing.Point(11, 124);
             this.chkConQuanLy.Name = "chkConQuanLy";
             this.chkConQuanLy.Properties.Caption = "Còn Quản Lý";

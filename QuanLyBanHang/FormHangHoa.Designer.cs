@@ -195,6 +195,7 @@
             // 
             // chkConQuanLy
             // 
+            this.chkConQuanLy.EditValue = true;
             this.chkConQuanLy.Location = new System.Drawing.Point(422, 13);
             this.chkConQuanLy.Name = "chkConQuanLy";
             this.chkConQuanLy.Properties.Caption = "Còn Quản Lý";
@@ -379,7 +380,7 @@
             // 
             // btnThemNhomHang
             // 
-            this.btnThemNhomHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnThemNhomHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemNhomHang.ImageOptions.Image")));
             this.btnThemNhomHang.Location = new System.Drawing.Point(510, 121);
             this.btnThemNhomHang.Name = "btnThemNhomHang";
             this.btnThemNhomHang.Size = new System.Drawing.Size(23, 20);

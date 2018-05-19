@@ -36,7 +36,8 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@SoDiDong", nv.SoDiDong),
                 new SqlParameter("@Email", nv.Email),
                 new SqlParameter("@MaBoPhan", nv.MaBoPhan),
-                new SqlParameter("@MaNguoiQuanLy", nv.MaNguoiQuanLy)   
+                new SqlParameter("@MaNguoiQuanLy", nv.MaNguoiQuanLy),
+                new SqlParameter("@ConQuanLy", nv.ConQuanLy)
                 );
         }
         public bool XoaNhanVien(ref string err, NhanVienO nv)
@@ -57,7 +58,8 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@SoDiDong", nv.SoDiDong),
                 new SqlParameter("@Email", nv.Email),
                 new SqlParameter("@MaBoPhan", nv.MaBoPhan),
-                new SqlParameter("@MaNguoiQuanLy", nv.MaNguoiQuanLy)
+                new SqlParameter("@MaNguoiQuanLy", nv.MaNguoiQuanLy),
+                new SqlParameter("@ConQuanLy", nv.ConQuanLy)
                 );
         }
     }

@@ -36,19 +36,19 @@
             this.colTenQuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKyHieu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNguoiLienHe = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFax = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoDienThoai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDienGiai = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colConQuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ConQuanLy = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.colMaNguoiQuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btnNapLai = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
-            this.colDiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFax = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDienGiai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMaNguoiQuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlKhoHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKhoHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConQuanLy)).BeginInit();
@@ -136,6 +136,24 @@
             this.colNguoiLienHe.VisibleIndex = 4;
             this.colNguoiLienHe.Width = 134;
             // 
+            // colDiaChi
+            // 
+            this.colDiaChi.Caption = "Địa Chỉ";
+            this.colDiaChi.FieldName = "DiaChi";
+            this.colDiaChi.Name = "colDiaChi";
+            this.colDiaChi.Visible = true;
+            this.colDiaChi.VisibleIndex = 7;
+            this.colDiaChi.Width = 82;
+            // 
+            // colFax
+            // 
+            this.colFax.Caption = "Fax";
+            this.colFax.FieldName = "Fax";
+            this.colFax.Name = "colFax";
+            this.colFax.Visible = true;
+            this.colFax.VisibleIndex = 8;
+            this.colFax.Width = 63;
+            // 
             // colSoDienThoai
             // 
             this.colSoDienThoai.Caption = "Số Điện Thoại";
@@ -154,6 +172,15 @@
             this.colEmail.VisibleIndex = 6;
             this.colEmail.Width = 89;
             // 
+            // colDienGiai
+            // 
+            this.colDienGiai.Caption = "Diễn Giải";
+            this.colDienGiai.FieldName = "DienGiai";
+            this.colDienGiai.Name = "colDienGiai";
+            this.colDienGiai.Visible = true;
+            this.colDienGiai.VisibleIndex = 9;
+            this.colDienGiai.Width = 80;
+            // 
             // colConQuanLy
             // 
             this.colConQuanLy.Caption = "Còn Quản Lý";
@@ -169,6 +196,12 @@
             // 
             this.ConQuanLy.AutoHeight = false;
             this.ConQuanLy.Name = "ConQuanLy";
+            // 
+            // colMaNguoiQuanLy
+            // 
+            this.colMaNguoiQuanLy.Caption = "Mã Người Quản Lý";
+            this.colMaNguoiQuanLy.FieldName = "MaNguoiQuanLy";
+            this.colMaNguoiQuanLy.Name = "colMaNguoiQuanLy";
             // 
             // repositoryItemCheckEdit2
             // 
@@ -223,39 +256,6 @@
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // colDiaChi
-            // 
-            this.colDiaChi.Caption = "Địa Chỉ";
-            this.colDiaChi.FieldName = "DiaChi";
-            this.colDiaChi.Name = "colDiaChi";
-            this.colDiaChi.Visible = true;
-            this.colDiaChi.VisibleIndex = 7;
-            this.colDiaChi.Width = 82;
-            // 
-            // colFax
-            // 
-            this.colFax.Caption = "Fax";
-            this.colFax.FieldName = "Fax";
-            this.colFax.Name = "colFax";
-            this.colFax.Visible = true;
-            this.colFax.VisibleIndex = 8;
-            this.colFax.Width = 63;
-            // 
-            // colDienGiai
-            // 
-            this.colDienGiai.Caption = "Diễn Giải";
-            this.colDienGiai.FieldName = "DienGiai";
-            this.colDienGiai.Name = "colDienGiai";
-            this.colDienGiai.Visible = true;
-            this.colDienGiai.VisibleIndex = 9;
-            this.colDienGiai.Width = 80;
-            // 
-            // colMaNguoiQuanLy
-            // 
-            this.colMaNguoiQuanLy.Caption = "Mã Người Quản Lý";
-            this.colMaNguoiQuanLy.FieldName = "MaNguoiQuanLy";
-            this.colMaNguoiQuanLy.Name = "colMaNguoiQuanLy";
             // 
             // UCKhoHang
             // 

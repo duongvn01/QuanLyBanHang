@@ -45,13 +45,13 @@
             this.colTenNganHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colConQuanLy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.colMaKhuVuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ConQuanLy = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btnNapLai = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
-            this.colMaKhuVuc = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -211,7 +211,7 @@
             // colConQuanLy
             // 
             this.colConQuanLy.Caption = "Còn Quản Lý";
-            this.colConQuanLy.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colConQuanLy.ColumnEdit = this.ConQuanLy;
             this.colConQuanLy.FieldName = "ConQuanLy";
             this.colConQuanLy.Name = "colConQuanLy";
             this.colConQuanLy.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
@@ -223,6 +223,13 @@
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // colMaKhuVuc
+            // 
+            this.colMaKhuVuc.Caption = "Ma Khu Vực";
+            this.colMaKhuVuc.FieldName = "MaKhuVuc";
+            this.colMaKhuVuc.Name = "colMaKhuVuc";
+            this.colMaKhuVuc.Width = 20;
             // 
             // ConQuanLy
             // 
@@ -282,13 +289,6 @@
             this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // colMaKhuVuc
-            // 
-            this.colMaKhuVuc.Caption = "Ma Khu Vực";
-            this.colMaKhuVuc.FieldName = "MaKhuVuc";
-            this.colMaKhuVuc.Name = "colMaKhuVuc";
-            this.colMaKhuVuc.Width = 20;
             // 
             // UCKhachHang
             // 

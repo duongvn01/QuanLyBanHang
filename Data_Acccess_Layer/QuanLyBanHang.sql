@@ -13,7 +13,7 @@ create table KhuVuc
 	ConQuanLy bit
 )
 go
-create table KhachHang
+alter table KhachHang
 (
 	SiOrLe int,--1. dai ly, 2. khach le
 	MaKhachHang varchar(15) primary key,
@@ -34,10 +34,12 @@ create table KhachHang
 	ChietKhau float,
 	NguoiLienHe nvarchar(50),
 	
-	ThongTinKhac nvarchar(100)
+	ThongTinKhac nvarchar(100),
+	ConQuanLy bit
 )
 
 go
+drop table NhaCungCap
 create table NhaCungCap
 (
 	MaNhaCungCap varchar(15) primary key,
@@ -60,7 +62,7 @@ create table NhaCungCap
 	ChucVu nvarchar(50),
 	
 	ThongTinKhac nvarchar(100),
-	ConQuanLy int
+	ConQuanLy bit
 )
 go
 create table Kho
@@ -125,7 +127,7 @@ create table BoPhan
 	MaBoPhan varchar(10) primary key,
 	TenBoPhan nvarchar(50) not null,
 	GhiChu nvarchar(50),
-	ConQuanLy int
+	ConQuanLy bit
 )
 go
 
@@ -142,7 +144,8 @@ create table NhanVien
 
 	--DienGiai nvarchar(50),
 	MaBoPhan varchar(10) not null,
-	MaNguoiQuanLy varchar(15)
+	MaNguoiQuanLy varchar(15),
+	ConQuanLy bit
 )
 
 
@@ -520,12 +523,23 @@ create procedure proGetChiTietPhieuMuaHang_HangHoa_DonVi_IfMaPhieu
 as
 begin
 	select MaChiTietPhieu,ChiTietPhieuMuaHang.MaPhieu,ChiTietPhieuMuaHang.MaHangHoa,HangHoa.TenHangHoa,SoLuong,DonGia,ThanhTien
-	,DonVi.MaDonVi
+	,DonVi.MaDonVi,TenDonVi
 	from ChiTietPhieuMuaHang,HangHoa,DonVi
 	where ChiTietPhieuMuaHang.MaPhieu = @MaPhieu
 		and ChiTietPhieuMuaHang.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
 end
 
+go
+
+--lay hanghoa
+create procedure proGetAllHangHoa_NhomHang_DonVi_Kho_NhaCungCap
+as
+select MaHangHoa,TenHangHoa,HangHoa.MaNhomHang,TenNhomHang,HangHoa.MaDonVi,TenDonVi,HangHoa.MaKho,TenKho,MaVachNSX
+	,XuatXu,Thue,TonKhoToiThieu,TonHienTai,HangHoa.MaNhaCungCap,TenNhaCungCap,GiaMua,GiaBanSi,GiaBanLe
+	,HangHoaOrDichVu,HangHoa.ConQuanLy
+from HangHoa,NhomHang,DonVi,Kho,NhaCungCap
+where HangHoa.MaNhomHang = NhomHang.MaNhomHang and HangHoa.MaDonVi = DonVi.MaDonVi and HangHoa.MaKho = Kho.MaKho
+	and HangHoa.MaNhaCungCap = NhaCungCap.MaNhaCungCap
 
 go
 -- lay ton kho
@@ -753,7 +767,6 @@ create procedure proThemNhanVien
 	@SoDienThoai varchar(12),
 	@SoDiDong varchar(12),
 	@Email varchar(30),
-
 	@MaBoPhan varchar(10),
 	@MaNguoiQuanLy varchar(15),
 	@ConQuanLy bit
@@ -767,7 +780,6 @@ begin
 	@SoDienThoai,
 	@SoDiDong,
 	@Email,
-
 	@MaBoPhan,
 	@MaNguoiQuanLy,
 	@ConQuanLy
@@ -1090,7 +1102,8 @@ create procedure proSuaNhanVien
 	@SoDiDong varchar(12),
 	@Email varchar(30),
 	@MaBoPhan varchar(10),
-	@MaNguoiQuanLy varchar(15)
+	@MaNguoiQuanLy varchar(15),
+	@ConQuanLy bit
 as
 begin
 	update NhanVien set
@@ -1102,10 +1115,10 @@ begin
 	SoDiDong=@SoDiDong,
 	Email=@Email,
 	MaBoPhan=@MaBoPhan,
-	MaNguoiQuanLy=@MaNguoiQuanLy
+	MaNguoiQuanLy=@MaNguoiQuanLy,
+	ConQuanLy=@ConQuanLy
 	where MaNhanVien=@MaNhanVien
 end
-
 
 go
 -------------------procedure xoa----------------------------------------------------------------------------------------------

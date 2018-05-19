@@ -30,7 +30,7 @@ D:\CodePM\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCDonViTinh.resour
 D:\CodePM\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FormNhomHang.resources
 D:\CodePM\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCNhomHang.resources
 D:\CodePM\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FormHangHoa.resources
-D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.pdb
+D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.exe
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csprojResolveAssemblyReference.cache
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FormBoPhan.resources
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.FormDonViTinh.resources
@@ -57,6 +57,7 @@ D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCNhomHang.resources
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.UCTonKho.resources
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.csproj.GenerateResource.Cache
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.exe.licenses
+D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.exe
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\QuanLyBanHang.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Bussiness_Logic_Layer.dll
@@ -65,4 +66,3 @@ D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Data_Acccess_Layer.dll
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Bussiness_Logic_Layer.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Object.pdb
 D:\QLBH\QuanLyBanHang\QuanLyBanHang\bin\Debug\Data_Acccess_Layer.pdb
-D:\QLBH\QuanLyBanHang\QuanLyBanHang\obj\Debug\QuanLyBanHang.exe
