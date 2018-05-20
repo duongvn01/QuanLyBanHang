@@ -28,7 +28,7 @@ namespace Bussiness_Logic_Layer
         {
             return banHangDAO.GetAllBanHangByNgayNayNgayKia(ngayNay, ngayKia);
         }
-        public BanHangO getOneMuaHangByMaPhieu(BanHangO bh)
+        public BanHangO getOneBanHangByMaPhieuBan(BanHangO bh)
         {
             DataTable dt = new DataTable();
             BanHangO BH = new BanHangO();

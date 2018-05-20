@@ -171,6 +171,12 @@
     <Compile Include="UCKhuVuc.Designer.cs">
       <DependentUpon>UCKhuVuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCLichSuBanHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLichSuBanHang.Designer.cs">
+      <DependentUpon>UCLichSuBanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCLichSuMuaHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCKhuVuc.resx">
       <DependentUpon>UCKhuVuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCLichSuBanHang.resx">
+      <DependentUpon>UCLichSuBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCLichSuMuaHang.resx">
       <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>

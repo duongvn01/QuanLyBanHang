@@ -17,13 +17,21 @@ namespace QuanLyBanHang
         MuaHangO MH;
         UCMuaHang ucmh;
         UCLichSuMuaHang uclsmh;
+
+        BanHangO BH;
+        UCBanHang ucbh;
+        UCLichSuBanHang uclsbh;
         public FormMain()
         {
             InitializeComponent();
             MH = new MuaHangO();
-
             ucmh = new UCMuaHang();
             uclsmh = new UCLichSuMuaHang(new PassData_CallTo(ucmh.textBoxChange));
+
+
+            BH = new BanHangO();
+            ucbh = new UCBanHang();
+            uclsbh = new UCLichSuBanHang(new PassData_CallTo(ucmh.textBoxChange));
         }
 
         private void barbtnKhuVuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -105,11 +113,13 @@ namespace QuanLyBanHang
             panel1.Controls.Add(uclsmh);
             uclsmh.Width = 0;
             uclsmh.Height = 0;
+
         }
 
         private void barbtnTonKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCTonKho tk = new UCTonKho();
+            panel1.Controls.Clear();
             panel1.Controls.Add(tk);
         }
 
@@ -161,7 +171,44 @@ namespace QuanLyBanHang
 
         private void barbtnBanHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ucbh = new UCBanHang();
+            uclsbh = new UCLichSuBanHang(new PassData_CallTo(ucbh.textBoxChange));
 
+            panel1.Controls.Clear();
+            panel1.Controls.Add(ucbh);
+
+            ucbh.Width = 1025;
+            ucbh.Height = 530;
+            btnLichSuMuaHang.Visible = true;
+            btnSua.Visible = true;
+
+            panel1.Controls.Add(uclsmh);
+            uclsmh.Width = 0;
+            uclsmh.Height = 0;
+        }
+
+        private void btnKLichSuBanHang_Click(object sender, EventArgs e)
+        {
+            uclsbh.Width = 1000;
+            uclsbh.Height = 450;
+
+            ucbh.Width = 0;
+            ucbh.Height = 0;
+        }
+
+        private void btnSuaBanHang_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            panel1.Controls.Add(uclsbh);
+            panel1.Controls.Add(ucbh);
+            uclsbh.Location = new System.Drawing.Point(0, 0);
+            uclsbh.Width = 0;
+            uclsbh.Height = 0;
+
+            ucbh.Location = new System.Drawing.Point(0, 0);
+            ucbh.Width = 1025;
+            ucbh.Height = 530;
         }
     }
 }

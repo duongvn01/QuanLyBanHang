@@ -378,7 +378,7 @@ namespace QuanLyBanHang
                             TK.MaHangHoa = r[0].ToString();
                             TK.MaKho = lueKho.EditValue.ToString();
                             TK.SoLuong = Convert.ToInt32(r[4]);
-                            bool f1 = tonKhoBUS.ThemTonKhoBUS(ref err, TK);
+                            bool f1 = tonKhoBUS.XuatTonKhoBUS(ref err, TK);
 
                             CTPMH.MaChiTietPhieu = "1";
                             CTPMH.MaPhieu = txtMaPhieu.Text;

@@ -26,12 +26,12 @@ namespace Data_Acccess_Layer
             SqlParameter param = new SqlParameter();
             param.ParameterName = "@MaPhieuBan";
             param.Value = ctpbh.MaPhieuBan;
-            return conn.executeSelectQuery("proGetChiTietPhieuMuaHang_HangHoa_DonVi_IfMaPhieu", param);//
+            return conn.executeSelectQuery("proGetChiTietPhieuBanHang_HangHoa_DonVi_IfMaPhieu", param);
         }
 
         public bool ThemChiTietPhieuBanHang(ref string err, ChiTietPhieuBanHangO ctpbh)
         {
-            return conn.MyExecuteNonQuery("proThemChiTietPhieuBanHang",//
+            return conn.MyExecuteNonQuery("proThemChiTietPhieuBan",
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@MaChiTietPhieuBan", ctpbh.MaChiTietPhieuBan),
                 new SqlParameter("@MaPhieuBan", ctpbh.MaPhieuBan),
@@ -49,7 +49,7 @@ namespace Data_Acccess_Layer
         }
         public bool XoaChiTietPhieuBanHangByMaChiTietPhieuBan(ref string err, ChiTietPhieuBanHangO ctpbh)
         {
-            return conn.MyExecuteNonQuery("proXoaChiTietPhieuBanHangIfMaChiTietPhieuBan",
+            return conn.MyExecuteNonQuery("proXoaChiTietPhieuBanIfMaChiTietPhieuBan",
                 CommandType.StoredProcedure, ref err,
                  new SqlParameter("@MaChiTietPhieuBan", ctpbh.MaChiTietPhieuBan));
         }

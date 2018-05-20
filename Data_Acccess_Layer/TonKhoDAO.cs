@@ -37,6 +37,15 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@SoLuong", tk.SoLuong)
                 );
         }
+        public bool XuatTonKho(ref string err, TonKhoO tk)
+        {
+            return conn.MyExecuteNonQuery("proXuatTonKho",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@MaHangHoa", tk.MaHangHoa),
+                new SqlParameter("@MaKho", tk.MaKho),
+                new SqlParameter("@SoLuong", tk.SoLuong)
+                );
+        }
         public bool XoaTonKho(ref string err, TonKhoO tk)
         {
             return conn.MyExecuteNonQuery("proXoaTonKho",

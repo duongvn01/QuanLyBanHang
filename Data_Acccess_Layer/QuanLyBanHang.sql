@@ -439,13 +439,13 @@ begin
 	@TienThanhToan
 	)
 end
-
+EXECUTE proXuatTonKho 'HH01','K003',1
 go
 create procedure proThemBanHang
 	@MaPhieuBan varchar(15),
 	@TenPhieu nvarchar(30),
 	@NgayLapPhieu date,
-	@MaThanhToan varchar(15),
+	@MaKieuThanhToan varchar(15),
 	@MaHinhThuc varchar(15),
 	@ThoiHanThanhToan date,
 
@@ -467,7 +467,7 @@ begin
 	@MaPhieuBan,
 	@TenPhieu,
 	@NgayLapPhieu,
-	@MaThanhToan,
+	@MaKieuThanhToan,
 	@MaHinhThuc,
 	@ThoiHanThanhToan,
 
@@ -488,7 +488,7 @@ end
 
 
 go
-
+--them ton kho
 create procedure proThemTonKho
 	@MaHangHoa varchar(15),
 	@MaKho varchar(15),
@@ -504,15 +504,25 @@ begin
 	update TonKho set
 	SoLuong = SoLuong + @SoLuong
 end
-else
-begin
-insert into TonKho values
+
+--Xuat tonkho
+create procedure proXuatTonKho
+	@MaHangHoa varchar(15),
+	@MaKho varchar(15),
+	@SoLuong int
+as
+IF EXISTS
 (
-	@MaHangHoa,
-	@MaKho,
-	@SoLuong
+	SELECT MaHangHoa
+	FROM TonKho
+	WHERE @MaHangHoa=MaHangHoa and @MaKho=MaKho
 )
+begin
+	update TonKho set
+	SoLuong = SoLuong - @SoLuong
 end
+
+
 create procedure proSuaTonKho
 	@MaHangHoa varchar(15),
 	@MaKho varchar(15),
@@ -574,6 +584,18 @@ begin
 	MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
 end
 
+--lay lich su mua hang bang MaPhieuBan
+create procedure proGetBanHang_KhachHang_Kho_IfMaPhieuBan
+@MaPhieuBan varchar(15)
+as
+begin
+	select BanHang.MaPhieuBan,TenPhieu,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,MaThanhToan,MaHinhThuc,ThoiHanThanhToan,NgayGiaoHang,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from BanHang,KhachHang,Kho
+	where @MaPhieuBan=MaPhieuBan and
+	BanHang.MaKhachHang = KhachHang.MaKhachHang and BanHang.MaKho = Kho.MaKho 	
+end
+
 go
 -- lay lich su mua hang theo MaNhaCungCap
 create procedure proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap
@@ -586,7 +608,22 @@ begin
 	where NhaCungCap.MaNhaCungCap = @MaNhaCungCap
 		and MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
 end
--- lay lich su mua hang theo ngay
+-- lay lich su ban hang theo ngay
+create procedure proGetBanHang_KhachHang_Kho_IfNgayNay_NgayKia
+@NgayNay date,
+@NgayKia date
+as
+begin
+	select BanHang.MaPhieuBan,TenPhieu,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,MaThanhToan,MaHinhThuc,ThoiHanThanhToan,NgayGiaoHang,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from BanHang,KhachHang,Kho
+	where NgayLapPhieu>=@NgayNay and NgayLapPhieu<=@NgayKia
+		and BanHang.MaKhachHang = KhachHang.MaKhachHang and BanHang.MaKho = Kho.MaKho
+end
+
+
+
+go
 create procedure proGetMuaHang_NhaCC_Kho_IfNgayNay_NgayKia
 @NgayNay date,
 @NgayKia date
@@ -598,7 +635,6 @@ begin
 	where NgayLapPhieu>=@NgayNay and NgayLapPhieu<=@NgayKia
 		and MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
 end
-
 go
 
 --lay ChiTietPhieuMuaHang bang MaPhieu
@@ -613,6 +649,19 @@ begin
 		and ChiTietPhieuMuaHang.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
 end
 
+go
+
+--lay ChiTietPhieuBanHang bang MaPhieuBan
+create procedure proGetChiTietPhieuBanHang_HangHoa_DonVi_IfMaPhieu
+@MaPhieuBan varchar(15)
+as
+begin
+	select MaChiTietPhieuBan,ChiTietPhieuBanHang.MaPhieuBan,ChiTietPhieuBanHang.MaHangHoa,HangHoa.TenHangHoa,SoLuong,DonGia,ThanhTien
+	,DonVi.MaDonVi,TenDonVi
+	from ChiTietPhieuBanHang,HangHoa,DonVi
+	where ChiTietPhieuBanHang.MaPhieuBan = @MaPhieuBan
+		and ChiTietPhieuBanHang.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
+end
 go
 
 --lay hanghoa
@@ -842,6 +891,7 @@ begin
 	@ThanhTien
 	)
 end
+select dbo.funAutoCreateIDMaChiTietPhieuBan()
 
 go
 --Them Bo Phan
@@ -1096,6 +1146,27 @@ begin
 	DonGia = @DonGia,
 	ThanhTien = @ThanhTien
 	where MaChiTietPhieu=@MaChiTietPhieu
+end
+
+
+go
+create procedure proSuaChiTietPhieuBanHang
+	@MaChiTietPhieuBan varchar(15),
+	@MaPhieuBan varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	update ChiTietPhieuBanHang set
+	MaChiTietPhieuBan = @MaChiTietPhieuBan,
+	MaPhieuBan =  @MaPhieuBan,
+	MaHangHoa =  @MaHangHoa,
+	SoLuong = @SoLuong,
+	DonGia = @DonGia,
+	ThanhTien = @ThanhTien
+	where MaChiTietPhieuBan=@MaChiTietPhieuBan
 end
 
 go

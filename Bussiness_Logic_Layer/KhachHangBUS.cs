@@ -12,14 +12,29 @@ namespace Bussiness_Logic_Layer
     public class KhachHangBUS
     {
         KhachHangDAO khachHangDAO;
+        KhachHangO KH;
         public KhachHangBUS()
         {
             khachHangDAO = new KhachHangDAO();
+            KH = new KhachHangO();
         }
         public DataTable getAllKhachHang()
         {
             return khachHangDAO.GetAllKhachHang();
           
+        }
+        public KhachHangO getOneKhachHang(KhachHangO kh)
+        {
+            DataTable dt = new DataTable();
+            dt = khachHangDAO.GetAllKhachHang();
+            DataRow[] result = dt.Select("MaKhachHang= '" + kh.MaKhachHang + "'");
+            DataRow row = result[0];
+            KH.MaKhachHang = row["MaKhachHang"].ToString();
+            KH.TenKhachHang = row["TenKhachHang"].ToString();
+            KH.SoDienThoai = row["SoDienThoai"].ToString();
+            KH.DiaChi = row["DiaChi"].ToString();
+
+            return KH;
         }
         public bool ThemKhachHangBUS(ref string err,KhachHangO kh)
         {

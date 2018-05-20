@@ -21,20 +21,21 @@ namespace Data_Acccess_Layer
         {
             return conn.executeGetTable("proGetMuaHang_NhaCC_Kho");
         }
+        /*
         public DataTable GetAllBanHangByMaKhachHang(BanHangO bh)
         {
             SqlParameter param = new SqlParameter();
             param.ParameterName = "@MaKhachHang";
             param.Value = bh.MaKhachHang;
-            return conn.executeSelectQuery("proGetMuaHang_NhaCC_Kho_IfMaNhaCungCap", param);/////
+            return conn.executeSelectQuery("proGetBanHang_NhaCC_Kho_IfMaKH", param);/////
         }
-        
+        */
         public DataTable GetAllBanHangByMaPhieuBan(BanHangO bh)
         {
             SqlParameter param = new SqlParameter();
             param.ParameterName = "@MaPhieuBan";
             param.Value = bh.MaPhieuBan;
-            return conn.executeSelectQuery("proGetMuaHang_NhaCC_Kho_IfMaPhieu", param);////
+            return conn.executeSelectQuery("proGetBanHang_KhachHang_Kho_IfMaPhieuBan", param);
         }
         public DataTable GetAllBanHangByNgayNayNgayKia(DateTime ngayNay,DateTime ngayKia)
         {
@@ -52,7 +53,7 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@MaPhieuBan", bh.MaPhieuBan),
                 new SqlParameter("@TenPhieu", bh.TenPhieu),
                 new SqlParameter("@NgayLapPhieu", bh.NgayLapPhieu),
-                new SqlParameter("@MaKieuTT", bh.MaKieuTT),
+                new SqlParameter("@MaKieuThanhToan", bh.MaKieuTT),
                 new SqlParameter("@MaHinhThuc", bh.MaHinhThucTT),
                 new SqlParameter("@ThoiHanThanhToan", bh.ThoiHanThanhToan),
 
@@ -83,7 +84,7 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@MaPhieuBan", bh.MaPhieuBan),
                 new SqlParameter("@TenPhieu", bh.TenPhieu),
                 new SqlParameter("@NgayLapPhieu", bh.NgayLapPhieu),
-                new SqlParameter("@MaKieuTT", bh.MaKieuTT),
+                new SqlParameter("@MaKieuThanhToan", bh.MaKieuTT),
                 new SqlParameter("@MaHinhThuc", bh.MaHinhThucTT),
                 new SqlParameter("@ThoiHanThanhToan", bh.ThoiHanThanhToan),
 

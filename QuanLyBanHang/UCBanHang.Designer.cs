@@ -37,8 +37,8 @@
             this.txtTongTien = new DevExpress.XtraEditors.CalcEdit();
             this.txtMaHangHoa = new DevExpress.XtraEditors.TextEdit();
             this.btnTimHangHoa = new DevExpress.XtraEditors.SimpleButton();
-            this.gridControlMuaHang = new DevExpress.XtraGrid.GridControl();
-            this.gridViewMuaHang = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlBanHang = new DevExpress.XtraGrid.GridControl();
+            this.gridViewBanHang = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMaHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenHangHoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -100,8 +100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThanhToan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHangHoa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlMuaHang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewMuaHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlBanHang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewBanHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThanhTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGia.Properties)).BeginInit();
@@ -134,6 +134,7 @@
             this.txtPhanTramThue.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtPhanTramThue.Size = new System.Drawing.Size(62, 20);
             this.txtPhanTramThue.TabIndex = 206;
+            this.txtPhanTramThue.EditValueChanged += new System.EventHandler(this.txtPhanTramThue_EditValueChanged);
             // 
             // txtPhanTramChuyenKhoan
             // 
@@ -203,19 +204,19 @@
             this.btnTimHangHoa.TabIndex = 200;
             this.btnTimHangHoa.Text = "Tìm";
             // 
-            // gridControlMuaHang
+            // gridControlBanHang
             // 
-            this.gridControlMuaHang.Location = new System.Drawing.Point(258, 199);
-            this.gridControlMuaHang.MainView = this.gridViewMuaHang;
-            this.gridControlMuaHang.Name = "gridControlMuaHang";
-            this.gridControlMuaHang.Size = new System.Drawing.Size(765, 242);
-            this.gridControlMuaHang.TabIndex = 199;
-            this.gridControlMuaHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewMuaHang});
+            this.gridControlBanHang.Location = new System.Drawing.Point(258, 199);
+            this.gridControlBanHang.MainView = this.gridViewBanHang;
+            this.gridControlBanHang.Name = "gridControlBanHang";
+            this.gridControlBanHang.Size = new System.Drawing.Size(765, 242);
+            this.gridControlBanHang.TabIndex = 199;
+            this.gridControlBanHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewBanHang});
             // 
-            // gridViewMuaHang
+            // gridViewBanHang
             // 
-            this.gridViewMuaHang.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewBanHang.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMaHangHoa,
             this.colTenHangHoa,
             this.colTenDonVi,
@@ -223,9 +224,10 @@
             this.colDonGia,
             this.colThanhTien,
             this.colMaDonVi});
-            this.gridViewMuaHang.GridControl = this.gridControlMuaHang;
-            this.gridViewMuaHang.Name = "gridViewMuaHang";
-            this.gridViewMuaHang.OptionsFind.AlwaysVisible = true;
+            this.gridViewBanHang.GridControl = this.gridControlBanHang;
+            this.gridViewBanHang.Name = "gridViewBanHang";
+            this.gridViewBanHang.OptionsFind.AlwaysVisible = true;
+            this.gridViewBanHang.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewBanHang_RowCellClick);
             // 
             // colMaHangHoa
             // 
@@ -289,6 +291,7 @@
             this.btnRemoveKhoiGridview.Name = "btnRemoveKhoiGridview";
             this.btnRemoveKhoiGridview.Size = new System.Drawing.Size(61, 23);
             this.btnRemoveKhoiGridview.TabIndex = 198;
+            this.btnRemoveKhoiGridview.Click += new System.EventHandler(this.btnRemoveKhoiGridview_Click);
             // 
             // txtThanhTien
             // 
@@ -314,6 +317,7 @@
             this.txtSoLuong.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtSoLuong.Size = new System.Drawing.Size(164, 20);
             this.txtSoLuong.TabIndex = 195;
+            this.txtSoLuong.EditValueChanged += new System.EventHandler(this.txtSoLuong_EditValueChanged);
             // 
             // btnDong
             // 
@@ -347,6 +351,7 @@
             this.btnLuu.Size = new System.Drawing.Size(65, 26);
             this.btnLuu.TabIndex = 192;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThemVaoGridview
             // 
@@ -358,6 +363,7 @@
             this.btnThemVaoGridview.Name = "btnThemVaoGridview";
             this.btnThemVaoGridview.Size = new System.Drawing.Size(61, 23);
             this.btnThemVaoGridview.TabIndex = 190;
+            this.btnThemVaoGridview.Click += new System.EventHandler(this.btnThemVaoGridview_Click);
             // 
             // txtDonGia
             // 
@@ -368,6 +374,7 @@
             this.txtDonGia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtDonGia.Size = new System.Drawing.Size(164, 20);
             this.txtDonGia.TabIndex = 197;
+            this.txtDonGia.EditValueChanged += new System.EventHandler(this.txtDonGia_EditValueChanged);
             // 
             // btnThem
             // 
@@ -380,6 +387,7 @@
             this.btnThem.Size = new System.Drawing.Size(79, 23);
             this.btnThem.TabIndex = 191;
             this.btnThem.Text = "Tạo Mới";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // deThoiHanThanhToan
             // 
@@ -413,6 +421,7 @@
             this.btnThemKho.Size = new System.Drawing.Size(24, 19);
             this.btnThemKho.TabIndex = 187;
             this.btnThemKho.Text = "simpleButton2";
+            this.btnThemKho.Click += new System.EventHandler(this.btnThemKho_Click);
             // 
             // labelControl13
             // 
@@ -522,6 +531,7 @@
             this.txtMaPhieuBan.Name = "txtMaPhieuBan";
             this.txtMaPhieuBan.Size = new System.Drawing.Size(216, 20);
             this.txtMaPhieuBan.TabIndex = 186;
+            this.txtMaPhieuBan.EditValueChanged += new System.EventHandler(this.txtMaPhieuBan_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -556,6 +566,7 @@
             this.btnThemNhanVien.Size = new System.Drawing.Size(24, 23);
             this.btnThemNhanVien.TabIndex = 165;
             this.btnThemNhanVien.Text = "simpleButton1";
+            this.btnThemNhanVien.Click += new System.EventHandler(this.btnThemNhanVien_Click);
             // 
             // btnThemNhaCungCap
             // 
@@ -633,6 +644,7 @@
             this.lueHangHoa.Properties.NullText = "";
             this.lueHangHoa.Size = new System.Drawing.Size(209, 20);
             this.lueHangHoa.TabIndex = 161;
+            this.lueHangHoa.EditValueChanged += new System.EventHandler(this.lueHangHoa_EditValueChanged);
             // 
             // lueKhachHang
             // 
@@ -642,11 +654,12 @@
             this.lueKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueKhachHang.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNhaCungCap", "Tên Nhà Cung Cấp"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaNhaCungCap", "Mã Nhà Cung Cấp")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhachHang", "Tên Khách Hàng"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhachHang", "Mã Khách Hàng")});
             this.lueKhachHang.Properties.NullText = "";
             this.lueKhachHang.Size = new System.Drawing.Size(252, 20);
             this.lueKhachHang.TabIndex = 162;
+            this.lueKhachHang.EditValueChanged += new System.EventHandler(this.lueKhachHang_EditValueChanged);
             // 
             // labelControl21
             // 
@@ -756,7 +769,7 @@
             this.Controls.Add(this.txtTongTien);
             this.Controls.Add(this.txtMaHangHoa);
             this.Controls.Add(this.btnTimHangHoa);
-            this.Controls.Add(this.gridControlMuaHang);
+            this.Controls.Add(this.gridControlBanHang);
             this.Controls.Add(this.btnRemoveKhoiGridview);
             this.Controls.Add(this.txtThanhTien);
             this.Controls.Add(this.txtSoLuong);
@@ -808,14 +821,15 @@
             this.Controls.Add(this.txtSoDienThoai);
             this.Name = "UCBanHang";
             this.Size = new System.Drawing.Size(1066, 505);
+            this.Load += new System.EventHandler(this.UCBanHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramThue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuongDuongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThanhToan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHangHoa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlMuaHang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewMuaHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlBanHang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewBanHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThanhTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonGia.Properties)).EndInit();
@@ -852,8 +866,8 @@
         private DevExpress.XtraEditors.CalcEdit txtTongTien;
         private DevExpress.XtraEditors.TextEdit txtMaHangHoa;
         private DevExpress.XtraEditors.SimpleButton btnTimHangHoa;
-        private DevExpress.XtraGrid.GridControl gridControlMuaHang;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewMuaHang;
+        private DevExpress.XtraGrid.GridControl gridControlBanHang;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewBanHang;
         private DevExpress.XtraGrid.Columns.GridColumn colMaHangHoa;
         private DevExpress.XtraGrid.Columns.GridColumn colTenHangHoa;
         private DevExpress.XtraGrid.Columns.GridColumn colTenDonVi;

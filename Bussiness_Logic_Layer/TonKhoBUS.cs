@@ -26,7 +26,11 @@ namespace Bussiness_Logic_Layer
         }
         public bool ThemTonKhoBUS(ref string err, TonKhoO tk)
         {
-            return tonKhoDAO.ThemTonKho(ref err, tk);
+            return tonKhoDAO.XuatTonKho(ref err, tk);
+        }
+        public bool XuatTonKhoBUS(ref string err, TonKhoO tk)
+        {
+            return tonKhoDAO.XuatTonKho(ref err, tk);
         }
         public bool CapNhatTonKhoBUS(ref string err, TonKhoO tk)
         {
