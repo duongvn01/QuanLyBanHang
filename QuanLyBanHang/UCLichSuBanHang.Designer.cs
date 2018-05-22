@@ -119,7 +119,7 @@
             // colMaPhieuBan
             // 
             this.colMaPhieuBan.Caption = "Mã Phiếu Bán";
-            this.colMaPhieuBan.FieldName = "MaPhieu";
+            this.colMaPhieuBan.FieldName = "MaPhieuBan";
             this.colMaPhieuBan.Name = "colMaPhieuBan";
             this.colMaPhieuBan.OptionsColumn.AllowEdit = false;
             this.colMaPhieuBan.Visible = true;

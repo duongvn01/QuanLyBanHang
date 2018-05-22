@@ -19,7 +19,7 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllBanHang()
         {
-            return conn.executeGetTable("proGetMuaHang_NhaCC_Kho");
+            return conn.executeGetTable("proGetBanHang_KhachHang_Kho");
         }
         /*
         public DataTable GetAllBanHangByMaKhachHang(BanHangO bh)

@@ -107,8 +107,8 @@ namespace QuanLyBanHang
            
             ucmh.Width = 1025;
             ucmh.Height = 530;
-            btnLichSuMuaHang.Visible = true;
-            btnSua.Visible = true;
+            btnLichSuBanHang.Visible = true;
+            btnSuaBanHang.Visible = true;
 
             panel1.Controls.Add(uclsmh);
             uclsmh.Width = 0;
@@ -134,6 +134,16 @@ namespace QuanLyBanHang
             uclsmh.Height = 0;
             ucmh.Width = 0;
             ucmh.Height = 0;
+
+            panel1.Controls.Add(uclsbh);
+            panel1.Controls.Add(ucbh);
+            uclsbh.Location = new System.Drawing.Point(0, 0);
+            ucbh.Location = new System.Drawing.Point(0, 0);
+            uclsbh.Width = 0;         
+            uclsbh.Height = 0;
+            uclsmh.Width = 0;
+            uclsmh.Height = 0;
+            
         }
 
         private void btnLichSuMuaHang_Click(object sender, EventArgs e)
@@ -165,8 +175,6 @@ namespace QuanLyBanHang
             ucmh.Width = 1025;
             ucmh.Height = 530;
 
-
-
         }
 
         private void barbtnBanHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -179,23 +187,13 @@ namespace QuanLyBanHang
 
             ucbh.Width = 1025;
             ucbh.Height = 530;
-            btnLichSuMuaHang.Visible = true;
-            btnSua.Visible = true;
+            btnLichSuBanHang.Visible = true;
+            btnSuaBanHang.Visible = true;
 
-            panel1.Controls.Add(uclsmh);
-            uclsmh.Width = 0;
-            uclsmh.Height = 0;
+            panel1.Controls.Add(uclsbh);
+            uclsbh.Width = 0;
+            uclsbh.Height = 0;
         }
-
-        private void btnKLichSuBanHang_Click(object sender, EventArgs e)
-        {
-            uclsbh.Width = 1000;
-            uclsbh.Height = 450;
-
-            ucbh.Width = 0;
-            ucbh.Height = 0;
-        }
-
         private void btnSuaBanHang_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -209,6 +207,16 @@ namespace QuanLyBanHang
             ucbh.Location = new System.Drawing.Point(0, 0);
             ucbh.Width = 1025;
             ucbh.Height = 530;
+
+        }
+
+        private void btnLichSuBanHang_Click(object sender, EventArgs e)
+        {
+            uclsbh.Width = 1000;
+            uclsbh.Height = 450;
+
+            ucbh.Width = 0;
+            ucbh.Height = 0;
         }
     }
 }

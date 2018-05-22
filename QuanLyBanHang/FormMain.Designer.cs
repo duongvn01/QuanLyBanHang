@@ -71,10 +71,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabFormControl1 = new DevExpress.XtraBars.TabFormControl();
             this.panelChucNang = new System.Windows.Forms.Panel();
-            this.btnSua = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLichSuMuaHang = new DevExpress.XtraEditors.SimpleButton();
-            this.btnKLichSuBanHang = new DevExpress.XtraEditors.SimpleButton();
             this.btnSuaBanHang = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSua = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLichSuBanHang = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLichSuMuaHang = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             this.panelChucNang.SuspendLayout();
@@ -437,12 +437,25 @@
             // 
             this.panelChucNang.Controls.Add(this.btnSuaBanHang);
             this.panelChucNang.Controls.Add(this.btnSua);
-            this.panelChucNang.Controls.Add(this.btnKLichSuBanHang);
+            this.panelChucNang.Controls.Add(this.btnLichSuBanHang);
             this.panelChucNang.Controls.Add(this.btnLichSuMuaHang);
             this.panelChucNang.Location = new System.Drawing.Point(3, 197);
             this.panelChucNang.Name = "panelChucNang";
             this.panelChucNang.Size = new System.Drawing.Size(1236, 28);
             this.panelChucNang.TabIndex = 4;
+            // 
+            // btnSuaBanHang
+            // 
+            this.btnSuaBanHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSuaBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaBanHang.ImageOptions.Image")));
+            this.btnSuaBanHang.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnSuaBanHang.Location = new System.Drawing.Point(381, 2);
+            this.btnSuaBanHang.Name = "btnSuaBanHang";
+            this.btnSuaBanHang.Size = new System.Drawing.Size(152, 24);
+            this.btnSuaBanHang.TabIndex = 10;
+            this.btnSuaBanHang.Text = "Sửa Chữa Bán Hàng";
+            this.btnSuaBanHang.Visible = false;
+            this.btnSuaBanHang.Click += new System.EventHandler(this.btnSuaBanHang_Click);
             // 
             // btnSua
             // 
@@ -457,6 +470,18 @@
             this.btnSua.Visible = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // btnLichSuBanHang
+            // 
+            this.btnLichSuBanHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnLichSuBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKLichSuBanHang.ImageOptions.Image")));
+            this.btnLichSuBanHang.Location = new System.Drawing.Point(240, 2);
+            this.btnLichSuBanHang.Name = "btnLichSuBanHang";
+            this.btnLichSuBanHang.Size = new System.Drawing.Size(121, 25);
+            this.btnLichSuBanHang.TabIndex = 0;
+            this.btnLichSuBanHang.Text = "Lịch Sử Bán Hàng";
+            this.btnLichSuBanHang.Visible = false;
+            this.btnLichSuBanHang.Click += new System.EventHandler(this.btnLichSuBanHang_Click);
+            // 
             // btnLichSuMuaHang
             // 
             this.btnLichSuMuaHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
@@ -468,31 +493,6 @@
             this.btnLichSuMuaHang.Text = "Lịch Sử Mua Hàng";
             this.btnLichSuMuaHang.Visible = false;
             this.btnLichSuMuaHang.Click += new System.EventHandler(this.btnLichSuMuaHang_Click);
-            // 
-            // btnKLichSuBanHang
-            // 
-            this.btnKLichSuBanHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnKLichSuBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image1")));
-            this.btnKLichSuBanHang.Location = new System.Drawing.Point(240, 2);
-            this.btnKLichSuBanHang.Name = "btnKLichSuBanHang";
-            this.btnKLichSuBanHang.Size = new System.Drawing.Size(121, 25);
-            this.btnKLichSuBanHang.TabIndex = 0;
-            this.btnKLichSuBanHang.Text = "Lịch Sử Bán Hàng";
-            this.btnKLichSuBanHang.Visible = false;
-            this.btnKLichSuBanHang.Click += new System.EventHandler(this.btnKLichSuBanHang_Click);
-            // 
-            // btnSuaBanHang
-            // 
-            this.btnSuaBanHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSuaBanHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnSuaBanHang.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnSuaBanHang.Location = new System.Drawing.Point(381, 2);
-            this.btnSuaBanHang.Name = "btnSuaBanHang";
-            this.btnSuaBanHang.Size = new System.Drawing.Size(152, 24);
-            this.btnSuaBanHang.TabIndex = 10;
-            this.btnSuaBanHang.Text = "Sửa Chữa Bán Hàng";
-            this.btnSuaBanHang.Visible = false;
-            this.btnSuaBanHang.Click += new System.EventHandler(this.btnSuaBanHang_Click);
             // 
             // FormMain
             // 
@@ -561,7 +561,7 @@
         private System.Windows.Forms.Panel panelChucNang;
         private DevExpress.XtraEditors.SimpleButton btnLichSuMuaHang;
         private DevExpress.XtraEditors.SimpleButton btnSua;
-        private DevExpress.XtraEditors.SimpleButton btnKLichSuBanHang;
+        private DevExpress.XtraEditors.SimpleButton btnLichSuBanHang;
         private DevExpress.XtraEditors.SimpleButton btnSuaBanHang;
     }
 }
