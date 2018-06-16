@@ -10,31 +10,31 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Bussiness_Logic_Layer;
 using Object;
-public delegate void delSendToBanHangObject(BanHangO bh);
 
 namespace QuanLyBanHang
 {
     public partial class UCLichSuBanHang : UserControl
     {
-       
-        PassData_CallTo displayData_There;
-
+        UCBanHang ucbh = new UCBanHang();
         BanHangO BH;
         ChiTietPhieuBanHangO CTPBH;
-
+        TonKhoO TK;
         BanHangBUS banHangBUS;
         KhachHangBUS khachHangBUS;
         ChiTietPhieuBanHangBUS chiTietPhieuBanHangBUS;
-        public UCLichSuBanHang(PassData_CallTo displayData_There)
+        TonKhoBUS tonKhoBUS;
+        public UCLichSuBanHang()
         {
             InitializeComponent();
+
             BH = new BanHangO();
             CTPBH = new ChiTietPhieuBanHangO();
+            TK = new TonKhoO();
 
             banHangBUS = new BanHangBUS();
             khachHangBUS = new KhachHangBUS();
             chiTietPhieuBanHangBUS = new ChiTietPhieuBanHangBUS();
-            this.displayData_There = displayData_There;
+            tonKhoBUS = new TonKhoBUS();
         }
         void loadData()
         {
@@ -57,12 +57,8 @@ namespace QuanLyBanHang
         {
             BH.MaPhieuBan = gridViewLichSuBanHang.GetFocusedRowCellValue(colMaPhieuBan).ToString();
             CTPBH.MaPhieuBan = gridViewLichSuBanHang.GetFocusedRowCellValue(colMaPhieuBan).ToString();
-            if (displayData_There != null) //checks to make sure not null
-            {
-                displayData_There(BH.MaPhieuBan); //pass the data over to the other UserControl          
-            }
+            BH.MaKho = gridViewLichSuBanHang.GetFocusedRowCellValue(colMaKho).ToString();
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có muốn xóa không?",
@@ -74,24 +70,49 @@ namespace QuanLyBanHang
                 try
                 {
                     bool f = banHangBUS.XoaBanHangBUS(ref err, BH);
-                    bool f1 = chiTietPhieuBanHangBUS.XoaChiTietPhieuBanHangByMaPhieuBUS(ref err, CTPBH);
+                    bool f1 = false;
+                    int demThemTK = 0;
                     if (f == true)
                     {
-                        MessageBox.Show("Xoa thanh cong ban hang");
+                        DataTable dtChiTietPMH = new DataTable();
+                        dtChiTietPMH = chiTietPhieuBanHangBUS.GetAllChiTietPhieuBanHangByMaPhieuBanBUS(CTPBH);
+                        f1 = chiTietPhieuBanHangBUS.XoaChiTietPhieuBanHangByMaPhieuBanBUS(ref err, CTPBH);
+                        MessageBox.Show("Xoa thanh cong muahang");
+                        if (f1 == true)
+                        {
+                            foreach (DataRow r in dtChiTietPMH.Rows)
+                            {
+                                TK.MaHangHoa = r[2].ToString();
+                                TK.MaKho = BH.MaKho;
+                                TK.SoLuong = Convert.ToInt32(r[3]);
+                                bool f2 = tonKhoBUS.ThemTonKhoBUS(ref err,TK);
+                                if (f2 == true)
+                                {
+                                    demThemTK++;
+                                }
+                            }
+
+                            MessageBox.Show("Xoa thanh cong chitietbanhang, ma phieu ban:" + CTPBH.MaPhieuBan);
+                        }
+
+                        if (demThemTK == dtChiTietPMH.Rows.Count)
+                        {
+                            MessageBox.Show("them thanh cong ton kho,Soluong" + demThemTK);
+                        }
                         loadData();
                     }
                     else
                     {
-                        MessageBox.Show("Khong Xoa duoc ban hang. Loi: " + err);
+                        MessageBox.Show("Khong Xoa duoc mua hang. Loi: " + err);
                     }
                     if (f1 == true)
                     {
-                        MessageBox.Show("Xoa thanh cong chitietphieubanhang");
+                        MessageBox.Show("Xoa thanh cong chitietphieumuahang");
                         loadData();
                     }
                     else
                     {
-                        MessageBox.Show("Khong Xoa duoc chitietphieubanhang. Loi: " + err);
+                        MessageBox.Show("Khong Xoa duoc chitietphieumuahang. Loi: " + err);
                     }
                 }
                 catch (SqlException)
@@ -99,6 +120,16 @@ namespace QuanLyBanHang
                     MessageBox.Show("Khong Xoa duoc. Loi: " + err);
                 }
             }           
+
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            ucbh.TruyenBanHang_MaPhieuBan(BH);
+            ucbh.SetThemOrSua(0);
+            Control ctrPanel1 = btnSua.Parent.Parent;
+            ctrPanel1.Controls.Clear();
+            ctrPanel1.Controls.Add(ucbh);
         }
         
         

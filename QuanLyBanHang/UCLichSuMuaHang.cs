@@ -10,31 +10,32 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Bussiness_Logic_Layer;
 using Object;
-public delegate void delSendToMuaHangObject(MuaHangO mh);
 
 namespace QuanLyBanHang
 {
     public partial class UCLichSuMuaHang : UserControl
     {
-        PassData_CallTo displayData_There;
-
+        UCMuaHang ucmh;
         MuaHangO MH;
         ChiTietPhieuMuaHangO CTPMH;
+        TonKhoO TK;
 
         MuaHangBUS muaHangBUS;
         NhaCungCapBUS nhaCungCapBUS;
         ChiTietPhieuMuaHangBUS chiTietPhieuMuaHangBUS;
-        public UCLichSuMuaHang(PassData_CallTo displayData_There)
+        TonKhoBUS tonKhoBUS;
+        public UCLichSuMuaHang()
         {
             InitializeComponent();
+            ucmh = new UCMuaHang();
             MH = new MuaHangO();
             CTPMH = new ChiTietPhieuMuaHangO();
+            TK = new TonKhoO();
 
             muaHangBUS = new MuaHangBUS();
             nhaCungCapBUS = new NhaCungCapBUS();
             chiTietPhieuMuaHangBUS = new ChiTietPhieuMuaHangBUS();
-
-            this.displayData_There = displayData_There;
+            tonKhoBUS = new TonKhoBUS();
         }
         void loadData()
         {
@@ -70,12 +71,7 @@ namespace QuanLyBanHang
         {
             MH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
             CTPMH.MaPhieu = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaPhieu).ToString();
-
-            if (displayData_There != null) //checks to make sure not null
-            {
-                displayData_There(MH.MaPhieu); //pass the data over to the other UserControl          
-            }
-           
+            MH.MaKho = gridViewLichSuMuaHang.GetFocusedRowCellValue(colMaKho).ToString();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -89,24 +85,42 @@ namespace QuanLyBanHang
                 try
                 {
                     bool f = muaHangBUS.XoaMuaHangBUS(ref err, MH);
-                    bool f1 = chiTietPhieuMuaHangBUS.XoaChiTietPhieuMuaHangByMaPhieuBUS(ref err, CTPMH);
+                    bool f1 = false;
+                    int demXoaTK=0;
                     if (f == true)
                     {
+                        DataTable dtChiTietPMH = new DataTable();
+                        dtChiTietPMH = chiTietPhieuMuaHangBUS.GetAllChiTietPhieuMuaHangByMaPhieuBUS(CTPMH);
+                        f1 = chiTietPhieuMuaHangBUS.XoaChiTietPhieuMuaHangByMaPhieuBUS(ref err, CTPMH);
                         MessageBox.Show("Xoa thanh cong muahang");
+                        if(f1==true)
+                        {
+                            MessageBox.Show("Xoa thanh cong chitietphieumuahang");
+                            loadData();
+                            foreach (DataRow r in dtChiTietPMH.Rows)
+                            {
+                                TK.MaHangHoa = r[2].ToString();
+                                TK.MaKho = MH.MaKho;
+                                TK.SoLuong = Convert.ToInt32(r[3]);
+                                bool f2 = tonKhoBUS.XuatTonKhoBUS(ref err, TK);
+                                if(f2==true)
+                                {
+                                    demXoaTK ++;
+                                }
+                            }
+
+                            MessageBox.Show("Xoa thanh cong chitietmuahang, ma phieu:"+CTPMH.MaPhieu);
+                        }
+                        
+                        if(demXoaTK==dtChiTietPMH.Rows.Count)
+                        {
+                            MessageBox.Show("Xuat thanh cong ton kho,Soluong"+demXoaTK);
+                        }
                         loadData();
                     }
                     else
                     {
                         MessageBox.Show("Khong Xoa duoc mua hang. Loi: " + err);
-                    }
-                    if (f1 == true)
-                    {
-                        MessageBox.Show("Xoa thanh cong chitietphieumuahang");
-                        loadData();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Khong Xoa duoc chitietphieumuahang. Loi: " + err);
                     }
                 }
                 catch (SqlException)
@@ -114,6 +128,15 @@ namespace QuanLyBanHang
                     MessageBox.Show("Khong Xoa duoc. Loi: " + err);
                 }
             }           
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            ucmh.TruyenMuaHang_MaPhieu(MH);
+            ucmh.SetThemOrSua(0);
+            Control ctrPanel1 = btnSua.Parent.Parent;
+            ctrPanel1.Controls.Clear();
+            ctrPanel1.Controls.Add(ucmh);
         }
     }
 }

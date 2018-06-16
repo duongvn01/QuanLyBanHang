@@ -41,8 +41,11 @@
   <ItemGroup>
     <Compile Include="BanHangBUS.cs" />
     <Compile Include="BoPhanBUS.cs" />
+    <Compile Include="ChiTietChuyenKhoBUS.cs" />
     <Compile Include="ChiTietPhieuBanHangBUS.cs" />
     <Compile Include="ChiTietPhieuMuaHangBUS.cs" />
+    <Compile Include="ChiTietPhieuTraHangBUS.cs" />
+    <Compile Include="ChuyenKhoBUS.cs" />
     <Compile Include="DonViBUS.cs" />
     <Compile Include="HangHoaBUS.cs" />
     <Compile Include="HinhThucThanhToanBUS.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="NhomHangBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TonKhoBUS.cs" />
+    <Compile Include="TraHangBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data_Acccess_Layer\Data_Acccess_Layer.csproj">

@@ -53,11 +53,30 @@ namespace Data_Acccess_Layer
                 CommandType.StoredProcedure, ref err,
                  new SqlParameter("@MaChiTietPhieu", ctpmh.MaChiTietPhieu));
         }
+        public bool XoaChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref string err, ChiTietPhieuMuaHangO ctpmh)
+        {
+            return conn.MyExecuteNonQuery("proXoaChiTietPhieuMuaHangByMaPhieuMaHangHoa",
+                CommandType.StoredProcedure, ref err,
+                 new SqlParameter("@MaPhieu", ctpmh.MaPhieu),
+                 new SqlParameter("@MaHangHoa",ctpmh.MaHangHoa)
+                 );
+        }
         public bool CapNhatChiTietPhieuMuaHang(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
             return conn.MyExecuteNonQuery("proSuaChiTietPhieuMuaHang",
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@MaChiTietPhieu", ctpmh.MaChiTietPhieu),
+                new SqlParameter("@MaPhieu", ctpmh.MaPhieu),
+                new SqlParameter("@MaHangHoa", ctpmh.MaHangHoa),
+                new SqlParameter("@SoLuong", ctpmh.SoLuong),
+                new SqlParameter("@DonGia", ctpmh.DonGia),
+                new SqlParameter("@ThanhTien", ctpmh.ThanhTien)
+                );
+        }
+        public bool CapNhatChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref string err, ChiTietPhieuMuaHangO ctpmh)
+        {
+            return conn.MyExecuteNonQuery("proSuaChiTietPhieuMuaHangByMaPhieu_MaHangHoa",
+                CommandType.StoredProcedure, ref err,
                 new SqlParameter("@MaPhieu", ctpmh.MaPhieu),
                 new SqlParameter("@MaHangHoa", ctpmh.MaHangHoa),
                 new SqlParameter("@SoLuong", ctpmh.SoLuong),

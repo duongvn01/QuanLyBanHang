@@ -41,8 +41,11 @@
   <ItemGroup>
     <Compile Include="BanHangO.cs" />
     <Compile Include="BoPhanO.cs" />
+    <Compile Include="ChiTietChuyenKhoO.cs" />
     <Compile Include="ChiTietPhieuBanHangO.cs" />
     <Compile Include="ChiTietPhieuMuaHangO.cs" />
+    <Compile Include="ChiTietTraHangO.cs" />
+    <Compile Include="ChuyenKhoO.cs" />
     <Compile Include="DonViO.cs" />
     <Compile Include="HangHoaO.cs" />
     <Compile Include="KhachHangO.cs" />
@@ -54,6 +57,7 @@
     <Compile Include="NhomHangO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TonKhoO.cs" />
+    <Compile Include="TraHangO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

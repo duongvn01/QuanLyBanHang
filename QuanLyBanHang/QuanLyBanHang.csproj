@@ -129,6 +129,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCABC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCABC.Designer.cs">
+      <DependentUpon>UCABC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCBanHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,12 @@
     </Compile>
     <Compile Include="UCBoPhan.Designer.cs">
       <DependentUpon>UCBoPhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCChuyenKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChuyenKho.Designer.cs">
+      <DependentUpon>UCChuyenKho.cs</DependentUpon>
     </Compile>
     <Compile Include="UCDonViTinh.cs">
       <SubType>UserControl</SubType>
@@ -177,11 +189,23 @@
     <Compile Include="UCLichSuBanHang.Designer.cs">
       <DependentUpon>UCLichSuBanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCLichSuChuyenKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLichSuChuyenKho.Designer.cs">
+      <DependentUpon>UCLichSuChuyenKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCLichSuMuaHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCLichSuMuaHang.Designer.cs">
       <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCLichSuTraHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLichSuTraHang.Designer.cs">
+      <DependentUpon>UCLichSuTraHang.cs</DependentUpon>
     </Compile>
     <Compile Include="UCMuaHang.cs">
       <SubType>UserControl</SubType>
@@ -212,6 +236,18 @@
     </Compile>
     <Compile Include="UCTonKho.Designer.cs">
       <DependentUpon>UCTonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTraHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTraHang.Designer.cs">
+      <DependentUpon>UCTraHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTraHang2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTraHang2.Designer.cs">
+      <DependentUpon>UCTraHang2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormBoPhan.resx">
       <DependentUpon>FormBoPhan.cs</DependentUpon>
@@ -254,11 +290,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCABC.resx">
+      <DependentUpon>UCABC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCBanHang.resx">
       <DependentUpon>UCBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCBoPhan.resx">
       <DependentUpon>UCBoPhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChuyenKho.resx">
+      <DependentUpon>UCChuyenKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCDonViTinh.resx">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
@@ -278,8 +320,14 @@
     <EmbeddedResource Include="UCLichSuBanHang.resx">
       <DependentUpon>UCLichSuBanHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCLichSuChuyenKho.resx">
+      <DependentUpon>UCLichSuChuyenKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCLichSuMuaHang.resx">
       <DependentUpon>UCLichSuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCLichSuTraHang.resx">
+      <DependentUpon>UCLichSuTraHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCMuaHang.resx">
       <DependentUpon>UCMuaHang.cs</DependentUpon>
@@ -295,6 +343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCTonKho.resx">
       <DependentUpon>UCTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTraHang.resx">
+      <DependentUpon>UCTraHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTraHang2.resx">
+      <DependentUpon>UCTraHang2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -67,12 +67,26 @@ namespace QuanLyBanHang
             NCC.Website = txtWebsite.Text;
             NCC.TaiKhoan = txtTaiKhoan.Text;
             NCC.NganHang = txtNganHang.Text;
-            NCC.GioiHanNo = Convert.ToInt32(txtGioiHanNo.Text);
-            NCC.NoHienTai = Convert.ToInt32(txtNoHienTai.Text);
-            NCC.ChietKhau = Convert.ToInt32(txtChietKhau.Text);
+    
             NCC.NguoiLienHe = txtNguoiLienHe.Text;
             NCC.ChucVu = txtChucVu.Text;
             NCC.ThongTinKhac = txtThongTinKhac.Text;
+
+                NCC.MaKhuVuc = lueKhuVuc.EditValue.ToString();            
+
+
+            if (txtGioiHanNo.Text != "")
+            {
+                NCC.GioiHanNo = Convert.ToInt32(txtGioiHanNo.Text);
+            }
+            if (txtChietKhau.Text != "")
+            {
+                NCC.ChietKhau = Convert.ToInt32(txtChietKhau.Text);
+            }
+            if (txtNoHienTai.Text != "")
+            {
+                NCC.NoHienTai = Convert.ToInt32(txtNoHienTai.Text);
+            }         
 
             if (chkConQuanLy.Checked == true)
             {
@@ -83,45 +97,54 @@ namespace QuanLyBanHang
                 if (chkConQuanLy.Checked == false)
                     NCC.ConQuanLy = false;
             }
-            if (themOrSua == 1)
+            if (NCC.MaKhuVuc == ""||NCC.TenNhaCungCap == "")
             {
-
-                try
-                {
-                    bool f = nhaCungCapBUS.ThemNhaCungCapBUS(ref err, NCC);
-                    if (f == true)
-                    {
-                        MessageBox.Show("Them thanh cong");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Khong them duoc, Loi: " + err);
-                    }
-                }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Không thêm được. Lỗi: " + err);
-                }
-
+                MessageBox.Show("Hãy điền đầy đủ những thông tin bắt buộc");
             }
             else
             {
 
-                try
+
+                if (themOrSua == 1)
                 {
-                    bool f = nhaCungCapBUS.CapNhatNhaCungCapBUS(ref err, NCC);
-                    if (f == true)
+
+                    try
                     {
-                        MessageBox.Show("Sửa thành công");
+                        bool f = nhaCungCapBUS.ThemNhaCungCapBUS(ref err, NCC);
+                        if (f == true)
+                        {
+                            MessageBox.Show("Them thanh cong");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Khong them duoc, Loi: " + err);
+                        }
                     }
-                    else
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Không thêm được. Lỗi: " + err);
+                    }
+
+                }
+                else
+                {
+
+                    try
+                    {
+                        bool f = nhaCungCapBUS.CapNhatNhaCungCapBUS(ref err, NCC);
+                        if (f == true)
+                        {
+                            MessageBox.Show("Sửa thành công");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không sửa được. Lỗi: " + err);
+                        }
+                    }
+                    catch (SqlException)
                     {
                         MessageBox.Show("Không sửa được. Lỗi: " + err);
                     }
-                }
-                catch (SqlException)
-                {
-                    MessageBox.Show("Không sửa được. Lỗi: " + err);
                 }
             }
         }

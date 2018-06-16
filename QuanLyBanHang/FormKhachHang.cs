@@ -70,9 +70,26 @@ namespace QuanLyBanHang
             KH.Website = txtWebsite.Text;
             KH.TaiKhoan = txtTaiKhoan.Text;
             KH.NganHang = txtNganHang.Text;
-            KH.GioiHanNo = Convert.ToInt32(txtGioiHanNo.Text);
-            KH.NoHienTai = Convert.ToInt32(txtNoHienTai.Text);
-            KH.ChietKhau = Convert.ToInt32(txtChietKhau.Text);
+            try
+            {
+                KH.MaKhuVuc = lueKhuVuc.EditValue.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Điền thông tin cho khu vực");
+            }
+            if(txtGioiHanNo.Text!="")
+            {
+                KH.GioiHanNo = Convert.ToInt32(txtGioiHanNo.Text);
+            }
+            if(txtChietKhau.Text!="")
+            {
+                KH.ChietKhau = Convert.ToInt32(txtChietKhau.Text);
+            }
+            if(txtNoHienTai.Text!="")
+            {
+                KH.NoHienTai = Convert.ToInt32(txtNoHienTai.Text);
+            }         
             KH.NguoiLienHe = txtNguoiLienHe.Text;
             KH.ThongTinKhac = txtThongTinKhac.Text;
 

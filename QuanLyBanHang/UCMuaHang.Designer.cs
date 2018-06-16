@@ -86,16 +86,17 @@
             this.colMaDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnTimHangHoa = new DevExpress.XtraEditors.SimpleButton();
             this.txtMaHangHoa = new DevExpress.XtraEditors.TextEdit();
-            this.txtPhanTramChuyenKhoan = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.lueHangHoa = new DevExpress.XtraEditors.LookUpEdit();
+            this.btnLichSu = new DevExpress.XtraEditors.SimpleButton();
+            this.txtTongTien = new DevExpress.XtraEditors.CalcEdit();
             this.txtTienThanhToan = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.txtTuongDuongTien = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.txtPhanTramThue = new DevExpress.XtraEditors.CalcEdit();
-            this.txtTongTien = new DevExpress.XtraEditors.CalcEdit();
-            this.lueHangHoa = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPhanTramChuyenKhoan = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNhaCungCap.Properties)).BeginInit();
@@ -119,12 +120,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMuaHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHangHoa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueHangHoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThanhToan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuongDuongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramThue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueHangHoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSoDienThoai
@@ -218,7 +219,6 @@
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(216, 20);
             this.txtMaPhieu.TabIndex = 133;
-            this.txtMaPhieu.EditValueChanged += new System.EventHandler(this.txtMaPhieu_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -467,7 +467,7 @@
             this.btnDong.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
             this.btnDong.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnDong.Location = new System.Drawing.Point(239, 2);
+            this.btnDong.Location = new System.Drawing.Point(378, 1);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(59, 25);
             this.btnDong.TabIndex = 141;
@@ -511,7 +511,7 @@
             // txtSoLuong
             // 
             this.txtSoLuong.EditValue = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -526,6 +526,11 @@
             // 
             // txtDonGia
             // 
+            this.txtDonGia.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.txtDonGia.Location = new System.Drawing.Point(81, 330);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -537,6 +542,11 @@
             // 
             // txtThanhTien
             // 
+            this.txtThanhTien.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.txtThanhTien.Location = new System.Drawing.Point(81, 358);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -675,89 +685,6 @@
             this.txtMaHangHoa.Size = new System.Drawing.Size(239, 20);
             this.txtMaHangHoa.TabIndex = 146;
             // 
-            // txtPhanTramChuyenKhoan
-            // 
-            this.txtPhanTramChuyenKhoan.Location = new System.Drawing.Point(323, 475);
-            this.txtPhanTramChuyenKhoan.Name = "txtPhanTramChuyenKhoan";
-            this.txtPhanTramChuyenKhoan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtPhanTramChuyenKhoan.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtPhanTramChuyenKhoan.Size = new System.Drawing.Size(62, 20);
-            this.txtPhanTramChuyenKhoan.TabIndex = 147;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(247, 478);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(70, 13);
-            this.labelControl18.TabIndex = 130;
-            this.labelControl18.Text = "Chuyển Khoản";
-            // 
-            // labelControl19
-            // 
-            this.labelControl19.Location = new System.Drawing.Point(779, 478);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(80, 13);
-            this.labelControl19.TabIndex = 130;
-            this.labelControl19.Text = "Tiền Thanh Toán";
-            // 
-            // txtTienThanhToan
-            // 
-            this.txtTienThanhToan.Location = new System.Drawing.Point(865, 475);
-            this.txtTienThanhToan.Name = "txtTienThanhToan";
-            this.txtTienThanhToan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTienThanhToan.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtTienThanhToan.Size = new System.Drawing.Size(147, 20);
-            this.txtTienThanhToan.TabIndex = 147;
-            // 
-            // labelControl22
-            // 
-            this.labelControl22.Location = new System.Drawing.Point(533, 479);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(67, 13);
-            this.labelControl22.TabIndex = 130;
-            this.labelControl22.Text = "Tương Đương";
-            // 
-            // txtTuongDuongTien
-            // 
-            this.txtTuongDuongTien.Location = new System.Drawing.Point(606, 476);
-            this.txtTuongDuongTien.Name = "txtTuongDuongTien";
-            this.txtTuongDuongTien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTuongDuongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtTuongDuongTien.Size = new System.Drawing.Size(126, 20);
-            this.txtTuongDuongTien.TabIndex = 147;
-            // 
-            // labelControl23
-            // 
-            this.labelControl23.Location = new System.Drawing.Point(437, 478);
-            this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(24, 13);
-            this.labelControl23.TabIndex = 130;
-            this.labelControl23.Text = "Thuế";
-            // 
-            // txtPhanTramThue
-            // 
-            this.txtPhanTramThue.Location = new System.Drawing.Point(467, 475);
-            this.txtPhanTramThue.Name = "txtPhanTramThue";
-            this.txtPhanTramThue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtPhanTramThue.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtPhanTramThue.Size = new System.Drawing.Size(62, 20);
-            this.txtPhanTramThue.TabIndex = 147;
-            this.txtPhanTramThue.EditValueChanged += new System.EventHandler(this.txtPhanTramThue_EditValueChanged);
-            // 
-            // txtTongTien
-            // 
-            this.txtTongTien.Location = new System.Drawing.Point(910, 444);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.txtTongTien.Size = new System.Drawing.Size(107, 20);
-            this.txtTongTien.TabIndex = 147;
-            // 
             // lueHangHoa
             // 
             this.lueHangHoa.EditValue = "";
@@ -772,6 +699,127 @@
             this.lueHangHoa.Size = new System.Drawing.Size(209, 20);
             this.lueHangHoa.TabIndex = 126;
             this.lueHangHoa.EditValueChanged += new System.EventHandler(this.lueHangHoa_EditValueChanged);
+            // 
+            // btnLichSu
+            // 
+            this.btnLichSu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnLichSu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLichSu.ImageOptions.Image")));
+            this.btnLichSu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnLichSu.Location = new System.Drawing.Point(236, 3);
+            this.btnLichSu.Name = "btnLichSu";
+            this.btnLichSu.Size = new System.Drawing.Size(136, 23);
+            this.btnLichSu.TabIndex = 140;
+            this.btnLichSu.Text = "Lịch Sử Mua Hàng";
+            this.btnLichSu.Click += new System.EventHandler(this.btnLichSu_Click);
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTongTien.Location = new System.Drawing.Point(910, 444);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtTongTien.Size = new System.Drawing.Size(107, 20);
+            this.txtTongTien.TabIndex = 147;
+            // 
+            // txtTienThanhToan
+            // 
+            this.txtTienThanhToan.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTienThanhToan.Location = new System.Drawing.Point(865, 475);
+            this.txtTienThanhToan.Name = "txtTienThanhToan";
+            this.txtTienThanhToan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTienThanhToan.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtTienThanhToan.Size = new System.Drawing.Size(147, 20);
+            this.txtTienThanhToan.TabIndex = 147;
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(779, 478);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(80, 13);
+            this.labelControl19.TabIndex = 130;
+            this.labelControl19.Text = "Tiền Thanh Toán";
+            // 
+            // txtTuongDuongTien
+            // 
+            this.txtTuongDuongTien.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTuongDuongTien.Location = new System.Drawing.Point(606, 476);
+            this.txtTuongDuongTien.Name = "txtTuongDuongTien";
+            this.txtTuongDuongTien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTuongDuongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtTuongDuongTien.Size = new System.Drawing.Size(126, 20);
+            this.txtTuongDuongTien.TabIndex = 147;
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Location = new System.Drawing.Point(533, 479);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(67, 13);
+            this.labelControl22.TabIndex = 130;
+            this.labelControl22.Text = "Tương Đương";
+            // 
+            // labelControl23
+            // 
+            this.labelControl23.Location = new System.Drawing.Point(437, 478);
+            this.labelControl23.Name = "labelControl23";
+            this.labelControl23.Size = new System.Drawing.Size(24, 13);
+            this.labelControl23.TabIndex = 130;
+            this.labelControl23.Text = "Thuế";
+            // 
+            // txtPhanTramThue
+            // 
+            this.txtPhanTramThue.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtPhanTramThue.Location = new System.Drawing.Point(467, 475);
+            this.txtPhanTramThue.Name = "txtPhanTramThue";
+            this.txtPhanTramThue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtPhanTramThue.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtPhanTramThue.Size = new System.Drawing.Size(62, 20);
+            this.txtPhanTramThue.TabIndex = 147;
+            this.txtPhanTramThue.EditValueChanged += new System.EventHandler(this.txtPhanTramThue_EditValueChanged);
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(247, 478);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(70, 13);
+            this.labelControl18.TabIndex = 130;
+            this.labelControl18.Text = "Chuyển Khoản";
+            // 
+            // txtPhanTramChuyenKhoan
+            // 
+            this.txtPhanTramChuyenKhoan.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtPhanTramChuyenKhoan.Location = new System.Drawing.Point(323, 475);
+            this.txtPhanTramChuyenKhoan.Name = "txtPhanTramChuyenKhoan";
+            this.txtPhanTramChuyenKhoan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtPhanTramChuyenKhoan.Properties.DisplayFormat.FormatString = "-1";
+            this.txtPhanTramChuyenKhoan.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtPhanTramChuyenKhoan.Size = new System.Drawing.Size(62, 20);
+            this.txtPhanTramChuyenKhoan.TabIndex = 147;
             // 
             // UCMuaHang
             // 
@@ -790,6 +838,7 @@
             this.Controls.Add(this.txtDonGia);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.btnDong);
+            this.Controls.Add(this.btnLichSu);
             this.Controls.Add(this.btnNapLai);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnThemVaoGridview);
@@ -862,12 +911,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlMuaHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMuaHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHangHoa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueHangHoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThanhToan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuongDuongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramThue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueHangHoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -932,15 +981,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn colThanhTien;
         private DevExpress.XtraEditors.SimpleButton btnTimHangHoa;
         private DevExpress.XtraEditors.TextEdit txtMaHangHoa;
-        private DevExpress.XtraEditors.CalcEdit txtPhanTramChuyenKhoan;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LookUpEdit lueHangHoa;
+        private DevExpress.XtraEditors.SimpleButton btnLichSu;
+        private DevExpress.XtraEditors.CalcEdit txtTongTien;
         private DevExpress.XtraEditors.CalcEdit txtTienThanhToan;
-        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.CalcEdit txtTuongDuongTien;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.CalcEdit txtPhanTramThue;
-        private DevExpress.XtraEditors.CalcEdit txtTongTien;
-        private DevExpress.XtraEditors.LookUpEdit lueHangHoa;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.CalcEdit txtPhanTramChuyenKhoan;
     }
 }

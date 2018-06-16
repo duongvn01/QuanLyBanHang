@@ -41,8 +41,11 @@
   <ItemGroup>
     <Compile Include="BanHangDAO.cs" />
     <Compile Include="BoPhanDAO.cs" />
+    <Compile Include="ChiTietChuyenKhoDAO.cs" />
     <Compile Include="ChiTietPhieuBanHangDAO.cs" />
     <Compile Include="ChiTietPhieuMuaHangDAO.cs" />
+    <Compile Include="ChiTietPhieuTraHangDAO.cs" />
+    <Compile Include="ChuyenKhoDAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DonViDAO.cs" />
     <Compile Include="HangHoaDAO.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="NhomHangDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TonKhoDAO.cs" />
+    <Compile Include="TraHangDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Object\Object.csproj">

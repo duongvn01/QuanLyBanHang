@@ -94,6 +94,7 @@
             this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
             this.deNgayGiaoHang = new DevExpress.XtraEditors.DateEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.btnLichSu = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramThue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhanTramChuyenKhoan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuongDuongTien.Properties)).BeginInit();
@@ -324,7 +325,7 @@
             this.btnDong.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
             this.btnDong.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnDong.Location = new System.Drawing.Point(245, 5);
+            this.btnDong.Location = new System.Drawing.Point(363, 5);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(59, 25);
             this.btnDong.TabIndex = 194;
@@ -531,7 +532,6 @@
             this.txtMaPhieuBan.Name = "txtMaPhieuBan";
             this.txtMaPhieuBan.Size = new System.Drawing.Size(216, 20);
             this.txtMaPhieuBan.TabIndex = 186;
-            this.txtMaPhieuBan.EditValueChanged += new System.EventHandler(this.txtMaPhieuBan_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -758,10 +758,23 @@
             this.labelControl10.TabIndex = 155;
             this.labelControl10.Text = "Ngày Giao Hàng";
             // 
+            // btnLichSu
+            // 
+            this.btnLichSu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnLichSu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLichSu.ImageOptions.Image")));
+            this.btnLichSu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnLichSu.Location = new System.Drawing.Point(242, 5);
+            this.btnLichSu.Name = "btnLichSu";
+            this.btnLichSu.Size = new System.Drawing.Size(120, 23);
+            this.btnLichSu.TabIndex = 207;
+            this.btnLichSu.Text = "Lịch Sử Bán Hàng";
+            this.btnLichSu.Click += new System.EventHandler(this.btnLichSu_Click);
+            // 
             // UCBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnLichSu);
             this.Controls.Add(this.txtPhanTramThue);
             this.Controls.Add(this.txtPhanTramChuyenKhoan);
             this.Controls.Add(this.txtTuongDuongTien);
@@ -923,5 +936,6 @@
         private DevExpress.XtraEditors.TextEdit txtSoDienThoai;
         private DevExpress.XtraEditors.DateEdit deNgayGiaoHang;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.SimpleButton btnLichSu;
     }
 }

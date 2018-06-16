@@ -19,7 +19,7 @@ namespace Data_Acccess_Layer
         }
         public DataTable GetAllChiTietPhieuBanHang()
         {
-            return conn.executeGetTable("proGetBanHang_NhaCC_Kho");//
+            return conn.executeGetTable("proGetBanHang_NhaCC_Kho");
         }
         public DataTable GetAllChiTietPhieuBanHangByMaPhieuBan(ChiTietPhieuBanHangO ctpbh)
         {
@@ -28,7 +28,6 @@ namespace Data_Acccess_Layer
             param.Value = ctpbh.MaPhieuBan;
             return conn.executeSelectQuery("proGetChiTietPhieuBanHang_HangHoa_DonVi_IfMaPhieu", param);
         }
-
         public bool ThemChiTietPhieuBanHang(ref string err, ChiTietPhieuBanHangO ctpbh)
         {
             return conn.MyExecuteNonQuery("proThemChiTietPhieuBan",
@@ -46,6 +45,14 @@ namespace Data_Acccess_Layer
             return conn.MyExecuteNonQuery("proXoaChiTietPhieuBanHangIfMaPhieuBan",
                 CommandType.StoredProcedure, ref err,
                  new SqlParameter("@MaPhieuBan", ctpbh.MaPhieuBan));
+        }
+        public bool XoaChiTietPhieuBanHangByMaPhieuBanMaHangHoa(ref string err, ChiTietPhieuBanHangO ctpbh)
+        {
+            return conn.MyExecuteNonQuery("proXoaChiTietPhieuBanHangByMaPhieuBanMaHangHoa",
+                CommandType.StoredProcedure, ref err,
+                 new SqlParameter("@MaPhieuBan", ctpbh.MaPhieuBan),
+                 new SqlParameter("@MaHangHoa", ctpbh.MaHangHoa)
+                 );
         }
         public bool XoaChiTietPhieuBanHangByMaChiTietPhieuBan(ref string err, ChiTietPhieuBanHangO ctpbh)
         {

@@ -76,7 +76,14 @@ namespace QuanLyBanHang
             string err = "";
             K.MaKho = txtMaKho.Text;
             K.TenKho = txtTenKho.Text;
-            K.MaNguoiQuanLy = lueQuanLy.EditValue.ToString();
+            try
+            {
+                K.MaNguoiQuanLy = lueQuanLy.EditValue.ToString();
+            }
+            catch
+            {
+
+            }
             K.KyHieu = txtKyHieu.Text;
             K.NguoiLienHe = txtNguoiLienHe.Text;
             K.DiaChi = txtDiaChi.Text;

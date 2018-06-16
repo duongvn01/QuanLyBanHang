@@ -26,7 +26,7 @@ namespace Bussiness_Logic_Layer
         }
         public bool ThemTonKhoBUS(ref string err, TonKhoO tk)
         {
-            return tonKhoDAO.XuatTonKho(ref err, tk);
+            return tonKhoDAO.ThemTonKho(ref err, tk);
         }
         public bool XuatTonKhoBUS(ref string err, TonKhoO tk)
         {
@@ -34,7 +34,15 @@ namespace Bussiness_Logic_Layer
         }
         public bool CapNhatTonKhoBUS(ref string err, TonKhoO tk)
         {
-            return tonKhoDAO.CapNhatTonKho(ref err, tk);
+            return tonKhoDAO.TruSoLuongTonKho(ref err, tk);
+        }
+        public bool CongSoLuongTonKhoBUS(ref string err, TonKhoO tk)
+        {
+            return tonKhoDAO.CongSoLuongTonKho(ref err, tk);
+        }
+        public bool TruSoLuongTonKho(ref string err, TonKhoO tk)
+        {
+            return tonKhoDAO.TruSoLuongTonKho(ref err, tk);
         }
         public bool XoaTonKhoBUS(ref string err, TonKhoO tk)
         {

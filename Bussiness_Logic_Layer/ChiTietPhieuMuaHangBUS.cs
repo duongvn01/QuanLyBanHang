@@ -30,15 +30,23 @@ namespace Bussiness_Logic_Layer
         }
         public bool CapNhatChiTietPhieuMuaHangBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
-            return chiTietPhieuMuaHangDAO.CapNhatChiTietPhieuMuaHang(ref err, ctpmh);
+            return chiTietPhieuMuaHangDAO.CapNhatChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref err, ctpmh);
+        }
+        public bool CapNhatChiTietPhieuMuaHangByMaPhieuMaHangHoaBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
+        {
+            return chiTietPhieuMuaHangDAO.CapNhatChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref err, ctpmh);
         }
         public bool XoaChiTietPhieuMuaHangByMaChiTietPhieuBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
-            return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaChiTietPhieu(ref err, ctpmh);
+            return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref err, ctpmh);
         }
         public bool XoaChiTietPhieuMuaHangByMaPhieuBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
         {
             return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaPhieu(ref err, ctpmh);
+        }
+        public bool XoaChiTietPhieuMuaHangByMaPhieuMaHangHoaBUS(ref string err, ChiTietPhieuMuaHangO ctpmh)
+        {
+            return chiTietPhieuMuaHangDAO.XoaChiTietPhieuMuaHangByMaPhieuMaHangHoa(ref err, ctpmh);
         }
     }
 }

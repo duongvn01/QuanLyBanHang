@@ -49,6 +49,7 @@
             this.gridControlLichSuBanHang = new DevExpress.XtraGrid.GridControl();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnXem = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayKetThuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deNgayBatDau.Properties.CalendarTimeProperties)).BeginInit();
@@ -114,6 +115,7 @@
             this.colTenKho});
             this.gridViewLichSuBanHang.GridControl = this.gridControlLichSuBanHang;
             this.gridViewLichSuBanHang.Name = "gridViewLichSuBanHang";
+            this.gridViewLichSuBanHang.OptionsFind.AlwaysVisible = true;
             this.gridViewLichSuBanHang.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewLichSuBanHang_RowCellClick);
             // 
             // colMaPhieuBan
@@ -122,6 +124,7 @@
             this.colMaPhieuBan.FieldName = "MaPhieuBan";
             this.colMaPhieuBan.Name = "colMaPhieuBan";
             this.colMaPhieuBan.OptionsColumn.AllowEdit = false;
+            this.colMaPhieuBan.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.colMaPhieuBan.Visible = true;
             this.colMaPhieuBan.VisibleIndex = 0;
             // 
@@ -222,7 +225,7 @@
             // 
             // gridControlLichSuBanHang
             // 
-            this.gridControlLichSuBanHang.Location = new System.Drawing.Point(3, 87);
+            this.gridControlLichSuBanHang.Location = new System.Drawing.Point(3, 49);
             this.gridControlLichSuBanHang.MainView = this.gridViewLichSuBanHang;
             this.gridControlLichSuBanHang.Name = "gridControlLichSuBanHang";
             this.gridControlLichSuBanHang.Size = new System.Drawing.Size(998, 341);
@@ -234,10 +237,10 @@
             // 
             this.btnXoa.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnXoa.Location = new System.Drawing.Point(345, 3);
+            this.btnXoa.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnXoa.Location = new System.Drawing.Point(451, 12);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(38, 40);
+            this.btnXoa.Size = new System.Drawing.Size(78, 24);
             this.btnXoa.TabIndex = 22;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -255,10 +258,23 @@
             this.btnXem.Text = "Xem";
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
+            // btnSua
+            // 
+            this.btnSua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
+            this.btnSua.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnSua.Location = new System.Drawing.Point(355, 12);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(90, 24);
+            this.btnSua.TabIndex = 23;
+            this.btnSua.Text = "Sửa Chữa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // UCLichSuBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -302,5 +318,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMaPhieuBan;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewLichSuBanHang;
         private DevExpress.XtraGrid.GridControl gridControlLichSuBanHang;
+        private DevExpress.XtraEditors.SimpleButton btnSua;
     }
 }

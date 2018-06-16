@@ -11,27 +11,11 @@ using DevExpress.XtraEditors;
 using Object;
 namespace QuanLyBanHang
 {
-    public delegate void PassData_CallTo(string textBoxData); 
     public partial class FormMain : DevExpress.XtraBars.TabForm
     {
-        MuaHangO MH;
-        UCMuaHang ucmh;
-        UCLichSuMuaHang uclsmh;
-
-        BanHangO BH;
-        UCBanHang ucbh;
-        UCLichSuBanHang uclsbh;
         public FormMain()
         {
             InitializeComponent();
-            MH = new MuaHangO();
-            ucmh = new UCMuaHang();
-            uclsmh = new UCLichSuMuaHang(new PassData_CallTo(ucmh.textBoxChange));
-
-
-            BH = new BanHangO();
-            ucbh = new UCBanHang();
-            uclsbh = new UCLichSuBanHang(new PassData_CallTo(ucmh.textBoxChange));
         }
 
         private void barbtnKhuVuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -99,21 +83,9 @@ namespace QuanLyBanHang
 
         private void barbtnMuaHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ucmh = new UCMuaHang();
-            uclsmh = new UCLichSuMuaHang(new PassData_CallTo(ucmh.textBoxChange));
-
+            UCMuaHang ucmh = new UCMuaHang();
             panel1.Controls.Clear();
             panel1.Controls.Add(ucmh);
-           
-            ucmh.Width = 1025;
-            ucmh.Height = 530;
-            btnLichSuBanHang.Visible = true;
-            btnSuaBanHang.Visible = true;
-
-            panel1.Controls.Add(uclsmh);
-            uclsmh.Width = 0;
-            uclsmh.Height = 0;
-
         }
 
         private void barbtnTonKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -125,98 +97,29 @@ namespace QuanLyBanHang
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            panel1.Controls.Add(ucmh);
-            panel1.Controls.Add(uclsmh);
-            uclsmh.Location = new System.Drawing.Point(0, 0);
-            uclsmh.Location = new System.Drawing.Point(0, 0);
-
-            uclsmh.Width = 0;
-            uclsmh.Height = 0;
-            ucmh.Width = 0;
-            ucmh.Height = 0;
-
-            panel1.Controls.Add(uclsbh);
-            panel1.Controls.Add(ucbh);
-            uclsbh.Location = new System.Drawing.Point(0, 0);
-            ucbh.Location = new System.Drawing.Point(0, 0);
-            uclsbh.Width = 0;         
-            uclsbh.Height = 0;
-            uclsmh.Width = 0;
-            uclsmh.Height = 0;
-            
+          
         }
-
-        private void btnLichSuMuaHang_Click(object sender, EventArgs e)
-        {
-
-            uclsmh.Width = 1000;
-            uclsmh.Height = 450;
-
-            ucmh.Width = 0;
-            ucmh.Height = 0;
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {         
-            panel1.Controls.Clear();
-            panel1.Controls.Add(ucmh);
-        }
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear();
-
-            panel1.Controls.Add(uclsmh);
-            panel1.Controls.Add(ucmh);
-            uclsmh.Location = new System.Drawing.Point(0, 0);
-            uclsmh.Width = 0;
-            uclsmh.Height = 0;
-
-            ucmh.Location = new System.Drawing.Point(0, 0);
-            ucmh.Width = 1025;
-            ucmh.Height = 530;
-
-        }
-
+     
         private void barbtnBanHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ucbh = new UCBanHang();
-            uclsbh = new UCLichSuBanHang(new PassData_CallTo(ucbh.textBoxChange));
-
+            UCBanHang ucbh = new UCBanHang();
             panel1.Controls.Clear();
             panel1.Controls.Add(ucbh);
 
-            ucbh.Width = 1025;
-            ucbh.Height = 530;
-            btnLichSuBanHang.Visible = true;
-            btnSuaBanHang.Visible = true;
-
-            panel1.Controls.Add(uclsbh);
-            uclsbh.Width = 0;
-            uclsbh.Height = 0;
         }
-        private void btnSuaBanHang_Click(object sender, EventArgs e)
+
+        private void barbtnChuyenKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            UCChuyenKho ucck = new UCChuyenKho();
             panel1.Controls.Clear();
-
-            panel1.Controls.Add(uclsbh);
-            panel1.Controls.Add(ucbh);
-            uclsbh.Location = new System.Drawing.Point(0, 0);
-            uclsbh.Width = 0;
-            uclsbh.Height = 0;
-
-            ucbh.Location = new System.Drawing.Point(0, 0);
-            ucbh.Width = 1025;
-            ucbh.Height = 530;
-
+            panel1.Controls.Add(ucck);
         }
 
-        private void btnLichSuBanHang_Click(object sender, EventArgs e)
+        private void barbtnNhapTraHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            uclsbh.Width = 1000;
-            uclsbh.Height = 450;
-
-            ucbh.Width = 0;
-            ucbh.Height = 0;
+            UCTraHang2 ucth = new UCTraHang2();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(ucth);
         }
     }
 }

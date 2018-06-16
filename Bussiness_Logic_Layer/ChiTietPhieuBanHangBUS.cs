@@ -38,9 +38,13 @@ namespace Bussiness_Logic_Layer
         {
             return chiTietPhieuBanHangDAO.XoaChiTietPhieuBanHangByMaChiTietPhieuBan(ref err, ctpbh);
         }
-        public bool XoaChiTietPhieuBanHangByMaPhieuBUS(ref string err, ChiTietPhieuBanHangO ctpbh)
+        public bool XoaChiTietPhieuBanHangByMaPhieuBanBUS(ref string err, ChiTietPhieuBanHangO ctpbh)
         {
-            return chiTietPhieuBanHangDAO.XoaChiTietPhieuBanHangByMaPhieuBan(ref err, ctpbh);
+            return chiTietPhieuBanHangDAO.XoaChiTietPhieuBanHangByMaPhieuBan(ref err,ctpbh);
+        }
+        public bool XoaChiTietPhieuBanHangByMaPhieuBanMaHangHoaBUS(ref string err, ChiTietPhieuBanHangO ctpbh)
+        {
+            return chiTietPhieuBanHangDAO.XoaChiTietPhieuBanHangByMaPhieuBanMaHangHoa(ref err, ctpbh);
         }
     }
 }

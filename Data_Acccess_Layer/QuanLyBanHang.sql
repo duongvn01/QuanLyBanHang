@@ -13,7 +13,7 @@ create table KhuVuc
 	ConQuanLy bit
 )
 go
-alter table KhachHang
+create table KhachHang
 (
 	SiOrLe int,--1. dai ly, 2. khach le
 	MaKhachHang varchar(15) primary key,
@@ -245,7 +245,207 @@ create table TonKho
 	MaDonVi varchar(15),
 	SoLuong int,
 )
----------------------------Stored Procedures------------------------------------------------------------------------
+
+go
+create table ChuyenKho
+(
+	MaPhieuChuyen varchar(15),
+	NgayLapPhieu date,
+	GhiChu nvarchar(50),
+	MaKhoChuyen varchar(15),
+	MaKhoNhan varchar(15),
+	MaNguoiChuyen varchar(15),
+	MaNguoiNhan varchar(15)
+)
+
+go
+create table ChiTietChuyenKho
+(
+	MaChiTietPhieuChuyen varchar(15) primary key,
+	MaPhieuChuyen varchar(15),
+	MaHangHoa varchar(15),
+	SoLuong int,
+	DonGia money,
+	ThanhTien money
+)
+
+go
+
+create table TraHang
+(
+	MaPhieuTra varchar(15) primary key,
+	NgayLapPhieu date,
+	GhiChu nvarchar(50),
+	MaKhachHang varchar(15),
+	MaNhanVien varchar(15),
+	MaKho varchar(15),
+	TongTien money,
+	PTramCK int,
+	Thue int,
+	TuongDuongTien money,
+	TienThanhToan money
+)
+create table ChiTietTraHang
+(	
+	MaChiTietPhieuTra varchar(15) primary key,
+	MaPhieuTra varchar(15),
+	MaHangHoa varchar(15),
+	SoLuong int,
+	DonGia money,
+	ThanhTien money
+)
+
+create procedure proGetTraHang_KhachHang_Kho
+as
+begin
+	select TraHang.MaPhieuTra,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from TraHang,KhachHang,Kho
+	where TraHang.MaKhachHang=KhachHang.MaKhachHang and TraHang.MaKho=Kho.MaKho
+end
+
+--
+create procedure proGetTraHang_KhachHang_Kho_IfMaPhieuTra
+@MaPhieuTra varchar(15)
+as
+begin
+	select TraHang.MaPhieuTra,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from TraHang,KhachHang,Kho
+	where MaPhieuTra=@MaPhieuTra and
+	TraHang.MaKhachHang=KhachHang.MaKhachHang and TraHang.MaKho=Kho.MaKho
+end
+
+
+create procedure proGetTraHang_KhachHang_Kho_IfNgayNay_NgayKia
+@NgayNay date,
+@NgayKia date
+as
+begin
+	select TraHang.MaPhieuTra,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from TraHang,KhachHang,Kho
+	where NgayLapPhieu>=@NgayNay and NgayLapPhieu<=@NgayKia and
+	TraHang.MaKhachHang=KhachHang.MaKhachHang and TraHang.MaKho=Kho.MaKho
+end
+
+
+create procedure proThemTraHang
+	@MaPhieuTra varchar(15),
+	@NgayLapPhieu date,
+	@GhiChu nvarchar(50),
+	@MaKhachHang varchar(15),
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	insert into TraHang values(
+	@MaPhieuTra,
+	@NgayLapPhieu,
+	@GhiChu,
+	@MaKhachHang,
+	@MaNhanVien,
+	@MaKho,
+	@TongTien,
+	@PTramCK,
+	@Thue,
+	@TuongDuongTien,
+	@TienThanhToan
+	)
+end
+create procedure proSuaTraHang
+	@MaPhieuTra varchar(15),
+	@NgayLapPhieu date,
+	@GhiChu nvarchar(50),
+	@MaKhachHang varchar(15),
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	update TraHang set
+	NgayLapPhieu=@NgayLapPhieu,
+	GhiChu=@GhiChu,
+	MaKhachHang=@MaKhachHang,
+	MaNhanVien=@MaNhanVien,
+	MaKho=@MaKho,
+	TongTien=@TongTien,
+	PTramCK=@PTramCK,
+	Thue=@Thue,
+	TuongDuongTien=@TuongDuongTien,
+	TienThanhToan=@TienThanhToan
+	where MaPhieuTra=@MaPhieuTra
+end
+
+create procedure proXoaTraHang
+@MaPhieuTra varchar(15)
+as
+begin
+	delete from TraHang where MaPhieuTra=@MaPhieuTra
+end
+
+-- lay all chi tiet tra hang
+create procedure proGetChiTietTraHang_HangHoa_DonVi
+as
+begin
+	select MaChiTietPhieuTra,ChiTietTraHang.MaPhieuTra,ChiTietTraHang.MaHangHoa,SoLuong,DonGia,ThanhTien
+	,DonVi.MaDonVi,TenDonVi,HangHoa.TenHangHoa
+	from ChiTietTraHang,HangHoa,DonVi
+	where ChiTietTraHang.MaHangHoa=HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
+end
+--chi tiet tra hang
+create procedure proGetChiTietTraHang_HangHoa_DonVi_IfMaPhieuTra
+@MaPhieuTra varchar(10)
+as
+begin
+	select MaChiTietPhieuTra,ChiTietTraHang.MaPhieuTra,ChiTietTraHang.MaHangHoa,SoLuong,DonGia,ThanhTien
+	,DonVi.MaDonVi,TenDonVi,HangHoa.TenHangHoa
+	from ChiTietTraHang,HangHoa,DonVi
+	where ChiTietTraHang.MaPhieuTra=@MaPhieuTra
+		and ChiTietTraHang.MaHangHoa=HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
+end
+--sua chi tiet
+create procedure proSuaChiTietTraHangByMaPhieuTra_MaHangHoa
+	@MaPhieuTra varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	update ChiTietTraHang set
+	SoLuong = @SoLuong,
+	DonGia = @DonGia,
+	ThanhTien = @ThanhTien
+	where MaPhieuTra=@MaPhieuTra and MaHangHoa=@MaHangHoa
+end
+
+--xoa chitietTra hang bang maphieutra
+create procedure proXoaChiTietTraHangIfMaPhieuTra
+	@MaPhieuTra varchar(15)
+as
+begin
+	delete from ChiTietTraHang where MaPhieuTra=@MaPhieuTra
+end
+--xoa chi tiet tra hang ban MaPhieu
+create procedure proXoaChiTietTraHangIfMaPhieuTraMaHangHoa
+	@MaPhieuTra varchar(15),
+	@MaHangHoa varchar(15)
+as
+begin
+	delete from ChiTietTraHang where MaPhieuTra=@MaPhieuTra and MaHangHoa=@MaHangHoa
+end
+-------------------
+--------Stored Procedures------------------------------------------------------------------------
 --Them Khu Vuc
 
 create procedure proThemKhuVuc
@@ -439,7 +639,6 @@ begin
 	@TienThanhToan
 	)
 end
-EXECUTE proXuatTonKho 'HH01','K003',1
 go
 create procedure proThemBanHang
 	@MaPhieuBan varchar(15),
@@ -486,6 +685,131 @@ begin
 	)
 end
 
+go
+
+--them chuyen kho
+create procedure proThemChuyenKho
+	@MaPhieuChuyen varchar(15),
+	@NgayLapPhieu date,
+	@GhiChu nvarchar(50),
+	@MaKhoChuyen varchar(15),
+	@MaKhoNhan varchar(15),
+	@MaNguoiChuyen varchar(15),
+	@MaNguoiNhan varchar(15)
+as
+begin
+	insert into ChuyenKho values(
+	@MaPhieuChuyen,
+	@NgayLapPhieu,
+	@GhiChu,
+	@MaKhoChuyen,
+	@MaKhoNhan,
+	@MaNguoiChuyen,
+	@MaNguoiNhan
+	)
+end
+
+
+go
+
+--lay allChuyenKho kho nhan vien
+create procedure proGetChuyenKho_Kho_NhanVien
+as
+begin
+	select MaPhieuChuyen,NgayLapPhieu,GhiChu,KhoChuyen.TenKho as TenKhoChuyen,KhoNhan.TenKho as TenKhoNhan
+	,NguoiChuyen.TenNhanVien as TenNguoiChuyen,NguoiNhan.TenNhanVien as TenNguoiNhan --Ten
+	,KhoChuyen.MaKho as MaKhoChuyen,KhoNhan.MaKho as MaKhoNhan --Ma
+	,NguoiChuyen.MaNhanVien as MaNguoiChuyen,NguoiNhan.MaNhanVien as MaNguoiNhan --Ma
+	from ChuyenKho,Kho as KhoChuyen,Kho as KhoNhan,NhanVien as NguoiChuyen,NhanVien as NguoiNhan
+	where ChuyenKho.MaKhoChuyen = KhoChuyen.MaKho and ChuyenKho.MaKhoNhan = KhoNhan.MaKho
+		and ChuyenKho.MaNguoiChuyen=NguoiChuyen.MaNhanVien and ChuyenKho.MaNguoiNhan = NguoiNhan.MaNhanVien
+end
+
+go
+--lay allChuyenKho_kho_NhanVien by MaPhieuChuyen
+create procedure proGetChuyenKho_Kho_NhanVien_IfMaPhieuChuyen
+@MaPhieuChuyen varchar(15)
+as
+begin
+	select MaPhieuChuyen,NgayLapPhieu,GhiChu,KhoChuyen.TenKho as TenKhoChuyen,KhoNhan.TenKho as TenKhoNhan
+	,NguoiChuyen.TenNhanVien as TenNguoiChuyen,NguoiNhan.TenNhanVien as TenNguoiNhan --Ten
+	,KhoChuyen.MaKho as MaKhoChuyen,KhoNhan.MaKho as MaKhoNhan --Ma
+	,NguoiChuyen.MaNhanVien as MaNguoiChuyen,NguoiNhan.MaNhanVien as MaNguoiNhan --Ma
+	from ChuyenKho,Kho as KhoChuyen,Kho as KhoNhan,NhanVien as NguoiChuyen,NhanVien as NguoiNhan
+	where MaPhieuChuyen=@MaPhieuChuyen
+		and ChuyenKho.MaKhoChuyen = KhoChuyen.MaKho and ChuyenKho.MaKhoNhan = KhoNhan.MaKho
+		and ChuyenKho.MaNguoiChuyen=NguoiChuyen.MaNhanVien and ChuyenKho.MaNguoiNhan = NguoiNhan.MaNhanVien
+end
+
+--lay allChuyenKho by Ngay nay, ngay kia
+create procedure proGetChuyenKho_Kho_NhanVien_IfNgayNay_NgayKia
+@NgayNay date,
+@NgayKia date
+as
+begin
+	select MaPhieuChuyen,NgayLapPhieu,GhiChu,KhoChuyen.TenKho as TenKhoChuyen,KhoNhan.TenKho as TenKhoNhan
+	,NguoiChuyen.TenNhanVien as TenNguoiChuyen,NguoiNhan.TenNhanVien as TenNguoiNhan --Ten
+	,KhoChuyen.MaKho as MaKhoChuyen,KhoNhan.MaKho as MaKhoNhan --Ma
+	,NguoiChuyen.MaNhanVien as MaNguoiChuyen,NguoiNhan.MaNhanVien as MaNguoiNhan --Ma
+	from ChuyenKho,Kho as KhoChuyen,Kho as KhoNhan,NhanVien as NguoiChuyen,NhanVien as NguoiNhan
+	where NgayLapPhieu>=@NgayNay and NgayLapPhieu<=@NgayKia
+		and ChuyenKho.MaKhoChuyen = KhoChuyen.MaKho and ChuyenKho.MaKhoNhan = KhoNhan.MaKho
+		and ChuyenKho.MaNguoiChuyen=NguoiChuyen.MaNhanVien and ChuyenKho.MaNguoiNhan = NguoiNhan.MaNhanVien
+end
+--sua chuyen kho
+create procedure proSuaChuyenKho
+begin
+	MaPhieuChuyen=@MaPhieuChuyen,
+	NgayLapPhieu=@NgayLapPhieu,
+	GhiChu=@GhiChu,
+	MaKhoChuyen=@MaKhoChuyen,
+	MaKhoNhan=@MaKhoNhan,
+	MaNguoiChuyen=@MaNguoiChuyen,
+	MaNguoiNhan=@MaNguoiNhan 
+end
+--them chi tiet chuyen kho
+create procedure proThemChiTietPhieuChuyen
+	@MaChiTietPhieuChuyen varchar(15),
+	@MaPhieuChuyen varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	set @MaChiTietPhieuChuyen = dbo.funAutoCreateIDMaChiTietPhieuChuyen()
+	insert into ChiTietChuyenKho values(
+	@MaChiTietPhieuChuyen,
+	@MaPhieuChuyen,
+	@MaHangHoa,
+	@SoLuong,
+	@DonGia,
+	@ThanhTien
+	)
+end
+
+--
+go
+
+create procedure proThemChiTietPhieuTra
+	@MaChiTietPhieuTra varchar(15),
+	@MaPhieuTra varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	set @MaChiTietPhieuTra = dbo.funAutoCreateIDMaChiTietPhieuTra()
+	insert into ChiTietTraHang values(
+	@MaChiTietPhieuTra,
+	@MaPhieuTra,
+	@MaHangHoa,
+	@SoLuong,
+	@DonGia,
+	@ThanhTien
+	)
+end
 
 go
 --them ton kho
@@ -503,8 +827,67 @@ IF EXISTS
 begin
 	update TonKho set
 	SoLuong = SoLuong + @SoLuong
+	where @MaHangHoa=MaHangHoa and @MaKho=MaKho
+end
+else
+begin
+insert into TonKho values
+(
+	@MaHangHoa,
+	@MaKho,
+	@SoLuong
+)
 end
 
+--cong so luong ton kho(Sua ton kho)
+create procedure proCongSoLuongTonKho
+	@MaHangHoa varchar(15),
+	@MaKho varchar(15),
+	@SoLuong int
+as
+begin
+	update TonKho set
+	SoLuong = SoLuong + @SoLuong
+	where @MaHangHoa=MaHangHoa and @MaKho=MaKho
+end
+
+--trigger
+Create Trigger tr_SoCTHD On CTHD For Insert 
+As
+ If (Select Count(a.SoHD)
+     From CTHD a Inner Join INSERTED b On a.SoHD = b.SoHD) > 10
+ Begin
+   Print 'So CTHD Khong the > 10'
+   RollBack Tran
+ End
+
+ create trigger trThemTonKho on ChiTietPhieuMuaHang for Insert
+ as
+ begin
+	Declare @MaHangHoa varchar(15)
+	Declare @SoLuong int
+	set @SoLuong = (select ChiTietPhieuMuaHang.SoLuong,MaChiTietPhieu
+					From ChiTietPhieuMuaHang,TonKho
+					where ChiTietPhieuMuaHang.MaHangHoa = TonKho.MaHangHoa
+					)
+	if EXISTS(select
+				From TonKho
+				where TonKho.MaHangHoa = ChiTietPhieuMuaHang.MaHangHoa and TonKho.MaKho 
+			)
+	insert into TonKho(SoLuong) values(@SoLuong)
+ end
+
+--tru so luong ton kho(Sua ton kho)
+create procedure proTruSoLuongTonKho
+	@MaHangHoa varchar(15),
+	@MaKho varchar(15),
+	@SoLuong int
+as
+begin
+	update TonKho set
+	SoLuong = SoLuong - @SoLuong
+	where @MaHangHoa=MaHangHoa and @MaKho=MaKho
+end
 --Xuat tonkho
 create procedure proXuatTonKho
 	@MaHangHoa varchar(15),
@@ -520,9 +903,105 @@ IF EXISTS
 begin
 	update TonKho set
 	SoLuong = SoLuong - @SoLuong
+	where @MaHangHoa=MaHangHoa and @MaKho=MaKho
 end
 
+go
+--sua mua hang
+create procedure proSuaMuaHang
+	@MaPhieu varchar(15),
+	@TenPhieu nvarchar(30),
+	@NgayLapPhieu date,
+	@SoHoaDonVAT varchar(20),
+	@SoPhieuVietTay varchar(20),
+	@MaThanhToan varchar(15),
+	@MaHinhThuc varchar(15),
+	@MaNhaCungCap varchar(15),
+	@ThoiHanThanhToan date,
+	
+	@GhiChu nvarchar(50),
 
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	update MuaHang set
+	MaPhieu= @MaPhieu,
+	TenPhieu = @TenPhieu,
+	NgayLapPhieu = @NgayLapPhieu,
+	SoHoaDonVAT = @SoHoaDonVAT,
+	SoPhieuVietTay=@SoPhieuVietTay,
+	MaThanhToan=@MaThanhToan,
+	MaHinhThuc=@MaHinhThuc,
+	MaNhaCungCap=@MaNhaCungCap,
+	ThoiHanThanhToan=@ThoiHanThanhToan,
+	
+	GhiChu=@GhiChu,
+
+	MaNhanVien=@MaNhanVien,
+	MaKho=@MaKho,
+
+	TongTien=@TongTien,
+	PTramCK=@PTramCK,
+	Thue=@Thue,
+	TuongDuongTien=@TuongDuongTien,
+	TienThanhToan=@TienThanhToan
+	where MaPhieu=@MaPhieu
+end
+
+go
+create procedure proSuaBanHang
+	@MaPhieuBan varchar(15),
+	@TenPhieu nvarchar(30),
+	@NgayLapPhieu date,
+	@MaThanhToan varchar(15),
+	@MaHinhThuc varchar(15),
+	@ThoiHanThanhToan date,
+
+	@MaKhachHang varchar(15),
+	@NgayGiaoHang date,
+
+	@MaNhanVien varchar(15),
+	@MaKho varchar(15),
+	@GhiChu nvarchar(50),
+
+	@TongTien money,
+	@PTramCK int,
+	@Thue int,
+	@TuongDuongTien money,
+	@TienThanhToan money
+as
+begin
+	update BanHang set
+	MaPhieuBan=@MaPhieuBan,
+	TenPhieu=@TenPhieu,
+	NgayLapPhieu=@NgayLapPhieu,
+	MaThanhToan=@MaThanhToan,
+	MaHinhThuc=@MaHinhThuc,
+	ThoiHanThanhToan=@ThoiHanThanhToan,
+
+	MaKhachHang=@MaKhachHang,
+	NgayGiaoHang=@NgayGiaoHang,
+
+	MaNhanVien=@MaNhanVien,
+	MaKho=@MaKho,
+	GhiChu=@GhiChu,
+
+	TongTien=@TongTien,
+	PTramCK=@PTramCK,
+	Thue=@Thue,
+	TuongDuongTien=@TuongDuongTien,
+	TienThanhToan=@TienThanhToan
+	where MaPhieuBan=@MaPhieuBan
+end
+
+go
 create procedure proSuaTonKho
 	@MaHangHoa varchar(15),
 	@MaKho varchar(15),
@@ -584,6 +1063,16 @@ begin
 	MuaHang.MaNhaCungCap = NhaCungCap.MaNhaCungCap and MuaHang.MaKho = Kho.MaKho
 end
 
+
+-- lay tat ca banhang
+create procedure proGetBanHang_KhachHang_Kho
+as
+begin
+	select BanHang.MaPhieuBan,TenPhieu,NgayLapPhieu,KhachHang.MaKhachHang,TenKhachHang,TongTien
+	,PTramCK,Thue,TuongDuongTien,TienThanhToan,MaThanhToan,MaHinhThuc,ThoiHanThanhToan,NgayGiaoHang,GhiChu,MaNhanVien,Kho.MaKho,TenKho
+	from BanHang,KhachHang,Kho
+	where BanHang.MaKhachHang = KhachHang.MaKhachHang and BanHang.MaKho = Kho.MaKho 	
+end
 --lay lich su mua hang bang MaPhieuBan
 create procedure proGetBanHang_KhachHang_Kho_IfMaPhieuBan
 @MaPhieuBan varchar(15)
@@ -642,7 +1131,7 @@ create procedure proGetChiTietPhieuMuaHang_HangHoa_DonVi_IfMaPhieu
 @MaPhieu varchar(15)
 as
 begin
-	select MaChiTietPhieu,ChiTietPhieuMuaHang.MaPhieu,ChiTietPhieuMuaHang.MaHangHoa,HangHoa.TenHangHoa,SoLuong,DonGia,ThanhTien
+	select MaChiTietPhieu,ChiTietPhieuMuaHang.MaPhieu,ChiTietPhieuMuaHang.MaHangHoa,SoLuong,DonGia,ThanhTien,HangHoa.TenHangHoa
 	,DonVi.MaDonVi,TenDonVi
 	from ChiTietPhieuMuaHang,HangHoa,DonVi
 	where ChiTietPhieuMuaHang.MaPhieu = @MaPhieu
@@ -656,8 +1145,8 @@ create procedure proGetChiTietPhieuBanHang_HangHoa_DonVi_IfMaPhieu
 @MaPhieuBan varchar(15)
 as
 begin
-	select MaChiTietPhieuBan,ChiTietPhieuBanHang.MaPhieuBan,ChiTietPhieuBanHang.MaHangHoa,HangHoa.TenHangHoa,SoLuong,DonGia,ThanhTien
-	,DonVi.MaDonVi,TenDonVi
+	select MaChiTietPhieuBan,ChiTietPhieuBanHang.MaPhieuBan,ChiTietPhieuBanHang.MaHangHoa,SoLuong,DonGia,ThanhTien
+	,DonVi.MaDonVi,TenDonVi,HangHoa.TenHangHoa
 	from ChiTietPhieuBanHang,HangHoa,DonVi
 	where ChiTietPhieuBanHang.MaPhieuBan = @MaPhieuBan
 		and ChiTietPhieuBanHang.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
@@ -694,6 +1183,18 @@ begin
 	From Kho,TonKho,HangHoa,DonVi,NhomHang
 	where @MaKho=Kho.MaKho and TonKho.MaHangHoa = HangHoa.MaHangHoa and TonKho.MaKho =Kho.MaKho and
 		HangHoa.MaDonVi = DonVi.MaDonVi and HangHoa.MaNhomHang = NhomHang.MaNhomHang
+end
+
+--
+create procedure proGetChiTietChuyenKho_HangHoa_DonVi_IfMaPhieuChuyen
+	@MaPhieuChuyen varchar(15)
+as
+begin
+	select MaChiTietPhieuChuyen,MaPhieuChuyen,ChiTietChuyenKho.MaHangHoa,SoLuong,DonGia,ThanhTien
+	,TenHangHoa,DonVi.MaDonVi,TenDonVi
+	from ChiTietChuyenKho,HangHoa,DonVi
+	where ChiTietChuyenKho.MaPhieuChuyen = @MaPhieuChuyen
+		and ChiTietChuyenKho.MaHangHoa = HangHoa.MaHangHoa and HangHoa.MaDonVi = DonVi.MaDonVi
 end
 --Them don vi
 create procedure proThemDonVi
@@ -891,7 +1392,6 @@ begin
 	@ThanhTien
 	)
 end
-select dbo.funAutoCreateIDMaChiTietPhieuBan()
 
 go
 --Them Bo Phan
@@ -1148,7 +1648,25 @@ begin
 	where MaChiTietPhieu=@MaChiTietPhieu
 end
 
-
+go
+drop procedure proSuaChiTietPhieuMuaHangByMaPhieu_MaHangHoa
+create procedure proSuaChiTietPhieuMuaHangByMaPhieu_MaHangHoa
+	@MaPhieu varchar(15),
+	@MaHangHoa varchar(15),
+	@SoLuong int,
+	@DonGia money,
+	@ThanhTien money
+as
+begin
+	update ChiTietPhieuMuaHang set
+	--MaChiTietPhieu = @MaChiTietPhieu,
+	MaPhieu =  @MaPhieu,
+	MaHangHoa =  @MaHangHoa,
+	SoLuong = @SoLuong,
+	DonGia = @DonGia,
+	ThanhTien = @ThanhTien
+	where MaPhieu=@MaPhieu and MaHangHoa=@MaHangHoa
+end
 go
 create procedure proSuaChiTietPhieuBanHang
 	@MaChiTietPhieuBan varchar(15),
@@ -1380,6 +1898,50 @@ begin
 end
 
 go
+--Xoa ChiTietChuyenKho bang MaPhieuChuyen
+create procedure proXoaChiTietChuyenKhoIfMaPhieuChuyen
+	@MaPhieuChuyen varchar(15)
+as
+begin
+	delete from ChiTietChuyenKho where MaPhieuChuyen=@MaPhieuChuyen
+end
+
+
+go
+--Xoa ChiTietChuyenKho bang MaPhieuChuyenMaHangHoa
+create procedure proXoaChiTietChuyenKhoIfMaPhieuChuyenMaHangHoa
+	@MaPhieuChuyen varchar(15),
+	@MaHangHoa varchar(15)
+as
+begin
+	delete from ChiTietChuyenKho where MaPhieuChuyen=@MaPhieuChuyen and MaHangHoa=@MaHangHoa
+end
+go
+create procedure proXoaChiTietPhieuMuaHangByMaPhieuMaHangHoa
+	@MaPhieu varchar(15),
+	@MaHangHoa varchar(15)
+as
+begin
+	delete from ChiTietPhieuMuaHang where MaPhieu=@MaPhieu and MaHangHoa = @MaHangHoa
+end
+
+
+go
+create procedure proXoaChiTietPhieuBanHangByMaPhieuBanMaHangHoa
+	@MaPhieuBan varchar(15),
+	@MaHangHoa varchar(15)
+as
+begin
+	delete from ChiTietPhieuBanHang where MaPhieuBan=@MaPhieuBan and MaHangHoa = @MaHangHoa
+end
+go
+create procedure proXoaChiTietPhieuMuaHangByMaPhieu
+	@MaPhieu varchar(15)
+as
+begin
+	delete from ChiTietPhieuMuaHang where MaPhieu=@MaPhieu
+end
+go
 --Xoa ChiTietPhieuBanHang bang MaPhieuBan
 create procedure proXoaChiTietPhieuBanHangIfMaPhieuBan
 	@MaPhieuBan varchar(15)
@@ -1476,6 +2038,7 @@ END
 
 
 go
+
 -- funtion tu dong tao machitietphieuban
 CREATE FUNCTION funAutoCreateIDMaChiTietPhieuBan()
 RETURNS VARCHAR(15)
@@ -1486,10 +2049,10 @@ BEGIN
 	DECLARE @soLuong int = (SELECT COUNT(*) FROM ChiTietPhieuBanHang)
 	
 	IF (@soLuong = 0)
-		SET @ID = 'CTP' + cast(@maSo as varchar(12))
+		SET @ID = 'CTPB' + cast(@maSo as varchar(12))
 	ELSE
 		begin
-			set @ID = 'CTP' + cast(@maSo+1 as varchar(12))
+			set @ID = 'CTPB' + cast(@maSo+1 as varchar(12))
 			while not EXISTS
 				(
 					SELECT MaChiTietPhieuBan
@@ -1498,7 +2061,65 @@ BEGIN
 				)
 			begin
 				set @maSo = @maSo + 1
-				set @ID = 'CTP' + cast(@maSo as varchar(12))			
+				set @ID = 'CTPB' + cast(@maSo as varchar(12))			
+			end
+		end
+	RETURN @ID
+END
+
+-- tu dong lay ma chitietphieuchuyen
+create FUNCTION funAutoCreateIDMaChiTietPhieuChuyen()
+RETURNS VARCHAR(15)
+AS
+BEGIN
+	DECLARE @ID VARCHAR(15);
+	DECLARE @maSo int = 1;
+	DECLARE @soLuong int;
+	set @soLuong = (SELECT COUNT(MaChiTietPhieuChuyen) FROM ChiTietChuyenKho)
+	
+	IF (@soLuong = 0)
+		SET @ID = 'CTPC' + cast(@maSo as varchar(12))
+	ELSE
+		begin
+			set @ID = 'CTPC' + cast(@maSo as varchar(12))
+			while EXISTS
+				(
+					SELECT MaChiTietPhieuChuyen
+					FROM ChiTietChuyenKho
+					WHERE @ID = ChiTietChuyenKho.MaChiTietPhieuChuyen
+				)
+			begin
+				set @maSo = @maSo + 1
+				set @ID = 'CTPC' + cast(@maSo as varchar(12))			
+			end
+		end
+	RETURN @ID
+END
+
+--
+go
+CREATE FUNCTION funAutoCreateIDMaChiTietPhieuTra()
+RETURNS VARCHAR(15)
+AS
+BEGIN
+	DECLARE @ID VARCHAR(15)
+	DECLARE @maSo int = 1
+	DECLARE @soLuong int = (SELECT COUNT(*) FROM ChiTietTraHang)
+	
+	IF (@soLuong = 0)
+		SET @ID = 'CTPT' + cast(@maSo as varchar(12))
+	ELSE
+		begin
+			set @ID = 'CTPT' + cast(@maSo+1 as varchar(12))
+			while EXISTS
+				(
+					SELECT MaChiTietPhieuTra
+					FROM ChiTietTraHang
+					WHERE @ID = ChiTietTraHang.MaChiTietPhieuTra
+				)
+			begin
+				set @maSo = @maSo + 1
+				set @ID = 'CTPT' + cast(@maSo as varchar(12))			
 			end
 		end
 	RETURN @ID

@@ -84,7 +84,7 @@ namespace Data_Acccess_Layer
                 new SqlParameter("@MaPhieuBan", bh.MaPhieuBan),
                 new SqlParameter("@TenPhieu", bh.TenPhieu),
                 new SqlParameter("@NgayLapPhieu", bh.NgayLapPhieu),
-                new SqlParameter("@MaKieuThanhToan", bh.MaKieuTT),
+                new SqlParameter("@MaThanhToan", bh.MaKieuTT),
                 new SqlParameter("@MaHinhThuc", bh.MaHinhThucTT),
                 new SqlParameter("@ThoiHanThanhToan", bh.ThoiHanThanhToan),
 
